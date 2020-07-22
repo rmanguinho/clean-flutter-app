@@ -4,8 +4,8 @@ import 'package:test/test.dart';
 
 import 'package:ForDev/domain/usecases/usecases.dart';
 
-import 'package:ForDev/data/usecases/usecases.dart';
 import 'package:ForDev/data/http/http.dart';
+import 'package:ForDev/data/usecases/usecases.dart';
 
 class HttpClientSpy extends Mock implements HttpClient {}
 
