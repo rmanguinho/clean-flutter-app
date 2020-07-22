@@ -1,0 +1,3 @@
+enum DomainError {
+  unexpected
+}
