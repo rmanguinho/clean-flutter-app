@@ -11,7 +11,7 @@
 1. ✅ Bad request - 400
 2. ✅ Unauthorized - 401
 3. ✅ Forbidden - 403
-4. Not found - 404
+4. ✅ Not found - 404
 5. ✅ Internal server error - 500
 
 > ## Exceção - Status code diferente dos citados acima
