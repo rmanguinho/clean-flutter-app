@@ -8,7 +8,7 @@
 5. ✅ No content - 204 e resposta sem dados
 
 > ## Erros
-1. Bad request - 400
+1. ✅ Bad request - 400
 2. Unauthorized - 401
 3. Forbidden - 403
 4. Not found - 404
