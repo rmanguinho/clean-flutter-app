@@ -51,7 +51,7 @@ class App extends StatelessWidget {
         inputDecorationTheme: inputDecorationTheme,
         buttonTheme: buttonTheme
       ),
-      home: LoginPage(),
+      home: LoginPage(null),
     );
   }
 }
