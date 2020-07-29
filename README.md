@@ -3,7 +3,7 @@
 
 # **4Dev Flutter - Enquetes para Programadores**
 
-[![alt text](./requirements/img/course-logo.png "Link para o treinamento")]()
+[![alt text](./requirements/assets/course-logo.png "Link para o treinamento")]()
 
 ---
 
@@ -17,7 +17,7 @@ O objetivo do treinamento é mostrar como criar um aplicativo com Flutter usando
 
 > ## Casos de Uso
 
-1. [Login](./requirements/login/remote_authentication_use_case.md)
+1. [Login](./requirements/use_cases/remote_authentication.md)
 
 > ## Princípios
 
@@ -45,13 +45,13 @@ O objetivo do treinamento é mostrar como criar um aplicativo com Flutter usando
 * Composition Root
 * Builder
 * Singleton
+* Observer
 
 > ## Metodologias e Designs
 
 * TDD
 * BDD
 * Clean Architecture
-* Bloc
 * Reactive Programming
 * GitFlow
 * Modular Design
@@ -64,6 +64,7 @@ O objetivo do treinamento é mostrar como criar um aplicativo com Flutter usando
 * Http
 * Provider
 * GetX
+* Equatable
 * Mockito
 * Faker
 * Git
@@ -71,6 +72,8 @@ O objetivo do treinamento é mostrar como criar um aplicativo com Flutter usando
 > ## Features de Testes
 
 * Testes Unitários
+* Testes de Widgets
+* Testes de Streams
 * Testes de Integração
 * Cobertura de Testes
 * Test Doubles
