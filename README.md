@@ -11,7 +11,7 @@
 
 Essa aplicativo faz parte do treinamento do professor Rodrigo Manguinho (Mango) na Udemy.
 
-O objetivo do treinamento é mostrar como criar um aplicativo com Flutter usando uma arquitetura bem definida e desacoplada, seguindo TDD (programação orientada a testes) como metodologia de trabalho, Clean Architecture para fazer a distribuição de responsabilidades em camadas, sempre seguindo os princípios do SOLID, DRY, YAGNI, KISS e aplicando Design Patterns para resolver alguns problemas comuns.
+O objetivo do treinamento é mostrar como criar um aplicativo com Flutter usando uma arquitetura bem definida e desacoplada, seguindo TDD (programação orientada a testes) como metodologia de trabalho, Clean Architecture para fazer a distribuição de responsabilidades em camadas, sempre seguindo os princípios do SOLID e aplicando Design Patterns para resolver alguns problemas comuns.
 
 ## [**Link para a documentação da API**](http://fordevs.herokuapp.com/api-docs)
 
@@ -44,8 +44,7 @@ O objetivo do treinamento é mostrar como criar um aplicativo com Flutter usando
 * Abstract Server
 * Composition Root
 * Builder
-* Proxy
-* Strategy
+* Singleton
 
 > ## Metodologias e Designs
 
@@ -62,8 +61,11 @@ O objetivo do treinamento é mostrar como criar um aplicativo com Flutter usando
 > ## Bibliotecas e Ferramentas
 
 * Flutter
-* Mockito
 * Http
+* Provider
+* GetX
+* Mockito
+* Faker
 * Git
 
 > ## Features de Testes
