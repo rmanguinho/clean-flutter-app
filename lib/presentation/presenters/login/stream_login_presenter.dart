@@ -9,6 +9,8 @@ class StreamLoginPresenter {
   final _emailErrorController = StreamController<String>();
   final _passwordErrorController = StreamController<String>();
   final _isFormValidController = StreamController<bool>();
+  String _email;
+  String _password;
   String _emailError;
   String _passwordError;
 
@@ -18,15 +20,26 @@ class StreamLoginPresenter {
 
   StreamLoginPresenter({@required this.validation});
 
+  void _validateForm() {
+    _isFormValidController.add(
+      _emailError == null
+        && _email != null
+        && _passwordError == null
+        && _password != null
+    );
+  }
+
   void validateEmail(String email) {
+    _email = email;
     _emailError = validation.validate(field: 'email', value: email);
     _emailErrorController.add(_emailError);
-    _isFormValidController.add(false);
+    _validateForm();
   }
 
   void validatePassword(String password) {
+    _password = password;
     _passwordError = validation.validate(field: 'password', value: password);
     _passwordErrorController.add(_passwordError);
-    _isFormValidController.add(false);
+    _validateForm();
   }
 }
