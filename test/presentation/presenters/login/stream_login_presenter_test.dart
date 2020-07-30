@@ -1,13 +1,11 @@
 import 'dart:async';
 
 import 'package:faker/faker.dart';
+import 'package:meta/meta.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
-import 'package:meta/meta.dart';
 
-abstract class Validation {
-  String validate({@required String field, @required String value});
-}
+import 'package:ForDev/presentation/protocols/protocols.dart';
 
 class StreamLoginPresenter {
   final Validation validation;
