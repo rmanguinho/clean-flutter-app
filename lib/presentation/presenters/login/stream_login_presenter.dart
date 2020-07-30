@@ -10,8 +10,8 @@ class StreamLoginPresenter {
   final _isFormValidController = StreamController<bool>();
   String _emailError;
 
-  Stream<String> get emailErrorStream => _emailErrorController.stream;
-  Stream<bool> get isFormValidStream => _isFormValidController.stream;
+  Stream<String> get emailErrorStream => _emailErrorController.stream.distinct();
+  Stream<bool> get isFormValidStream => _isFormValidController.stream.distinct();
 
   StreamLoginPresenter({@required this.validation});
 

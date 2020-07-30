@@ -15,3 +15,6 @@
 12. ⛔️ Gravar o Account no cache em caso de sucesso
 13. ⛔️ Levar o usuário pra tela de Enquetes em caso de sucesso
 14. Fechar todos os Streams no dispose
+15. ✅ Não notificar o emailErrorStream se o valor for igual ao último
+16. ✅ Não notificar o isFormValidStream se o valor for igual ao último
+17. Não notificar o passwordErrorStream se o valor for igual ao último
