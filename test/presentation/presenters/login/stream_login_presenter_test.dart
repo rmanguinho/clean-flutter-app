@@ -55,4 +55,14 @@ void main() {
 
     sut.validateEmail(email);
   });
+
+  test('Should emit no error if email validation succeeds', () {
+    when(validation.validate(field: anyNamed('field'), value: anyNamed('value')))
+      .thenReturn(null);
+
+    sut.emailErrorStream.listen(expectAsync1((error) => expect(error, null)));
+    sut.isFormValidStream.listen(expectAsync1((isValid) => expect(isValid, false)));
+
+    sut.validateEmail(email);
+  });
 }
