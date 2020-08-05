@@ -61,9 +61,9 @@ O objetivo do treinamento é mostrar como criar um aplicativo com Flutter usando
 > ## Bibliotecas e Ferramentas
 
 * Flutter
+* GetX
 * Http
 * Provider
-* GetX
 * Equatable
 * Mockito
 * Faker
