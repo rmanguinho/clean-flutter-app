@@ -14,40 +14,48 @@ class GetxLoginPresenter extends GetxController implements LoginPresenter {
   
   String _email;
   String _password;
-  var emailError = RxString();
-  var passwordError = RxString();
-  var mainError = RxString();
-  var isFormValid = false.obs;
-  var isLoading = false.obs;
+  var _emailError = RxString();
+  var _passwordError = RxString();
+  var _mainError = RxString();
+  var _isFormValid = false.obs;
+  var _isLoading = false.obs;
+
+  Stream<String> get emailErrorStream => _emailError.stream;
+  Stream<String> get passwordErrorStream => _passwordError.stream;
+  Stream<String> get mainErrorStream => _mainError.stream;
+  Stream<bool> get isFormValidStream => _isFormValid.stream;
+  Stream<bool> get isLoadingStream => _isLoading.stream;
 
   GetxLoginPresenter({@required this.validation, @required this.authentication});
 
   void validateEmail(String email) {
     _email = email;
-    emailError.value = validation.validate(field: 'email', value: email);
+    _emailError.value = validation.validate(field: 'email', value: email);
     _validateForm();
   }
 
   void validatePassword(String password) {
     _password = password;
-    passwordError.value = validation.validate(field: 'password', value: password);
+    _passwordError.value = validation.validate(field: 'password', value: password);
     _validateForm();
   }
 
   void _validateForm() {
-    isFormValid.value = emailError.value == null
-      && passwordError.value == null
+    _isFormValid.value = _emailError.value == null
+      && _passwordError.value == null
       && _email != null
       && _password != null;
   }
 
   Future<void> auth() async {
-    isLoading.value = true;
+    _isLoading.value = true;
     try {
       await authentication.auth(AuthenticationParams(email: _email, secret: _password));
     } on DomainError catch (error) {
-      mainError.value = error.description;
+      _mainError.value = error.description;
     }
-    isLoading.value = false;
+    _isLoading.value = false;
   }
+
+  void dispose() {}
 }
