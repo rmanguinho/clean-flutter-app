@@ -3,21 +3,17 @@
 
 # **4Dev Flutter - Enquetes para Programadores**
 
-[![alt text](./requirements/assets/course-logo.png "Link para o treinamento")]()
+[![alt text](./requirements/assets/course-logo.png "Link para o treinamento")](https://www.udemy.com/course/flutter-com-mango/?referralCode=4595D68027AC351A7454)
 
 ---
 
-## [**Link para o curso completo**]()
+## [**Link para o curso completo**](https://www.udemy.com/course/flutter-com-mango/?referralCode=4595D68027AC351A7454)
 
 Essa aplicativo faz parte do treinamento do professor Rodrigo Manguinho (Mango) na Udemy.
 
 O objetivo do treinamento é mostrar como criar um aplicativo com Flutter usando uma arquitetura bem definida e desacoplada, seguindo TDD (programação orientada a testes) como metodologia de trabalho, Clean Architecture para fazer a distribuição de responsabilidades em camadas, sempre seguindo os princípios do SOLID e aplicando Design Patterns para resolver alguns problemas comuns.
 
 ## [**Link para a documentação da API**](http://fordevs.herokuapp.com/api-docs)
-
-> ## Casos de Uso
-
-1. [Login](./requirements/use_cases/remote_authentication.md)
 
 > ## Princípios
 
@@ -30,7 +26,7 @@ O objetivo do treinamento é mostrar como criar um aplicativo com Flutter usando
 * Don't Repeat Yourself (DRY)
 * You Aren't Gonna Need It (YAGNI)
 * Keep It Simple, Silly (KISS)
-* Command Query Separation (CQS)
+* Command Query Responsibility Segregation (CQRS)
 * Composition Over Inheritance
 * Small Commits
 
