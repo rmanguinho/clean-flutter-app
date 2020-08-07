@@ -64,6 +64,7 @@ O objetivo do treinamento é mostrar como criar um aplicativo com Flutter usando
 * Mockito
 * Faker
 * Git
+* Flutter Secure Storage
 
 > ## Features de Testes
 
