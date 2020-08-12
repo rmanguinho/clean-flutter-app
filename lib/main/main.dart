@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 
+import '../utils/utils.dart';
 import '../ui/components/components.dart';
 import 'factories/factories.dart';
 
@@ -17,6 +18,8 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       title: '4Dev',
       debugShowCheckedModeBanner: false,
+      locale: Locale('pt', 'BR'),
+      translations: GetxTranslations(),
       theme: makeAppTheme(),
       initialRoute: '/',
       getPages: [

@@ -1,3 +1,5 @@
+import '../../utils/utils.dart';
+
 enum DomainError {
   unexpected,
   invalidCredentials
@@ -6,8 +8,8 @@ enum DomainError {
 extension DomainErrorExtension on DomainError {
   String get description {
     switch(this) {
-      case DomainError.invalidCredentials: return 'Credenciais inválidas.';
-      default: return 'Algo errado aconteceu. Tente novamente em breve.';
+      case DomainError.invalidCredentials: return S.msgInvalidCredentials;
+      default: return S.msgUnexpectedError;
     }
   }
 }
