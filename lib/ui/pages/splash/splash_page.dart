@@ -10,7 +10,7 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    presenter.loadCurrentAccount();
+    presenter.checkAccount();
 
     return Scaffold(
       appBar: AppBar(title: Text('4Dev')),
