@@ -65,6 +65,7 @@ O objetivo do treinamento é mostrar como criar um aplicativo com Flutter usando
 * Faker
 * Git
 * Flutter Secure Storage
+* i18n
 
 > ## Features de Testes
 

@@ -1,7 +1,7 @@
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 
-import '../../ui/helpers/errors/errors.dart';
+import '../../ui/helpers/helpers.dart';
 import '../../ui/pages/pages.dart';
 
 import '../../domain/helpers/helpers.dart';
@@ -74,7 +74,7 @@ class GetxLoginPresenter extends GetxController implements LoginPresenter {
     } on DomainError catch (error) {
       switch (error) {
         case DomainError.invalidCredentials: _mainError.value = UIError.invalidCredentials; break;
-        default: _mainError.value = UIError.unexpected;
+        default: _mainError.value = UIError.unexpected; break;
       }
       _isLoading.value = false;
     }
