@@ -18,8 +18,8 @@
 15. ✅ Remover mensagem de erro se a confirmação de senha for válida
 16. ✅ Habilitar o botão de criar conta se todos os campos forem válidos
 17. ✅ Desabilitar o botão de criar conta se algum campo for inválido
-18. Exibir loading no início da ação de criar conta
+18. ✅ Exibir loading no início da ação de criar conta
 19. ✅ Chamar o método de criar conta
 20. Exibir mensagem de erro caso a criação de conta falhe
-21. Esconder loading no fim da ação de criar conta
+21. ✅ Esconder loading no fim da ação de criar conta
 22. ✅ Fechar streams quando a página for encerrada
