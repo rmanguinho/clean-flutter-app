@@ -1,4 +1,4 @@
-import '../../helpers/errors/errors.dart';
+import '../../helpers/helpers.dart';
 
 abstract class LoginPresenter {
   Stream<UIError> get emailErrorStream;
