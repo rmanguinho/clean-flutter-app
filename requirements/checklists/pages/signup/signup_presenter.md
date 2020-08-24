@@ -24,11 +24,11 @@
 21. ✅ Para o formulário estar válido todos os Streams de erro precisam estar null e todos os campos obrigatórios não podem estar vazios
 22. ✅ Não notificar o isFormValidStream se o valor for igual ao último
 23. ✅ Chamar o AddAccount com valores corretos
-24. Notificar o isLoadingStream como true antes de chamar o AddAccount
-25. Notificar o isLoadingStream como false no fim do AddAccount
+24. ✅ Notificar o isLoadingStream como true antes de chamar o AddAccount
+25. ✅ Notificar o isLoadingStream como false no fim do AddAccount
 26. Notificar o mainErrorStream caso o AddAccount retorne erro
-27. Fechar todos os Streams no dispose
+27. ✅ Fechar todos os Streams no dispose
 28. ✅ Gravar o Account no cache em caso de sucesso
-29. Notificar o mainErrorStream caso o SaveCurrentAccount retorne erro
+29. ✅ Notificar o mainErrorStream caso o SaveCurrentAccount retorne erro
 30. Levar o usuário pra tela de Enquetes em caso de sucesso
 31. Levar o usuário pra tela de Login ao clicar no link de voltar para login
