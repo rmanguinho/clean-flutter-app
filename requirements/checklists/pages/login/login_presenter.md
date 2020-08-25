@@ -21,4 +21,4 @@
 18. ✅ Gravar o Account no cache em caso de sucesso
 19. ✅ Notificar o mainErrorStream caso o SaveCurrentAccount retorne erro
 20. ✅ Levar o usuário pra tela de Enquetes em caso de sucesso
-21. Levar o usuário pra tela de Criar Conta ao clicar no link de criar conta
+21. ✅ Levar o usuário pra tela de Criar Conta ao clicar no link de criar conta
