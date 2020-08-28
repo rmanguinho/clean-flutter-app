@@ -13,7 +13,10 @@ void main() {
 
   test('Should return null on invalid cases', () {
     expect(sut.validate({'any_field': 'any_value'}), null);
+    expect(sut.validate({'any_field': null}), null);
     expect(sut.validate({'other_field': 'any_value'}), null);
+    expect(sut.validate({'other_field': null}), null);
+    expect(sut.validate({'any_field': null, 'other_field': null}), null);
     expect(sut.validate({}), null);
   });
 
