@@ -152,4 +152,29 @@ void main() {
       expect(future, throwsA(HttpError.serverError));
     });
   });
+
+  group('get', () {
+    PostExpectation mockRequest() =>
+      when(client.get(any, headers: anyNamed('headers')));
+
+    void mockResponse(int statusCode, {String body = '{"any_key":"any_value"}'}) {
+      mockRequest().thenAnswer((_) async => Response(body, statusCode));
+    }
+
+    setUp(() {
+      mockResponse(200);
+    });
+
+    test('Should call get with correct values', () async {
+      await sut.request(url: url, method: 'get');
+
+      verify(client.get(
+        url,
+        headers: {
+          'content-type': 'application/json',
+          'accept': 'application/json'
+        }
+      ));
+    });
+  });
 }
