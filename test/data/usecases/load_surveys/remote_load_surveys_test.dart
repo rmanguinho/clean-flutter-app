@@ -53,6 +53,10 @@ void main() {
     mockRequest().thenAnswer((_) async => data);
   }
 
+  void mockHttpError(HttpError error) {
+    mockRequest().thenThrow(error);
+  }
+
   setUp(() {
     url = faker.internet.httpUrl();
     httpClient = HttpClientSpy();
@@ -87,6 +91,14 @@ void main() {
 
   test('Should throw UnexpectedError if HttpClient returns 200 with invalid data', () async {
     mockHttpData([{'invalid_key': 'invalid_value'}]);
+
+    final future = sut.load();
+
+    expect(future, throwsA(DomainError.unexpected));
+  });
+
+  test('Should throw UnexpectedError if HttpClient returns 404', () async {
+    mockHttpError(HttpError.notFound);
 
     final future = sut.load();
 

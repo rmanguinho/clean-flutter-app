@@ -7,7 +7,7 @@
 4. ✅ Sistema entrega os dados das enquetes
 
 > ## Exceção - URL inválida
-1. Sistema retorna uma mensagem de erro inesperado
+1. ✅ Sistema retorna uma mensagem de erro inesperado
 
 > ## Exceção - Acesso negado
 1. Sistema retorna uma mensagem de acesso negado
