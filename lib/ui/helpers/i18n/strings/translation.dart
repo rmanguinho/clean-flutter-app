@@ -12,6 +12,7 @@ abstract class Translation {
   String get login;
   String get name;
   String get password;
+  String get reload;
   String get surveys;
   String get wait;
 }
