@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../../components/components.dart';
 import '../../helpers/helpers.dart';
-import 'components/components.dart';
-import 'signup_presenter.dart';
+import './components/components.dart';
+import './signup.dart';
 
 class SignUpPage extends StatelessWidget {
   final SignUpPresenter presenter;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../survey_viewmodel.dart';
+import '../surveys.dart';
 
 class SurveyItem extends StatelessWidget {
   final SurveyViewModel viewModel;

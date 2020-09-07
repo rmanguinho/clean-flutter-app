@@ -1,4 +1,4 @@
-import 'translation.dart';
+import './translation.dart';
 
 class PtBr implements Translation {
   String get msgEmailInUse => 'O email já está em uso.';

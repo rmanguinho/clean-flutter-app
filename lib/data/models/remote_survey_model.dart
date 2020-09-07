@@ -1,7 +1,6 @@
 import 'package:meta/meta.dart';
 
 import '../../domain/entities/entities.dart';
-
 import '../../data/http/http.dart';
 
 class RemoteSurveyModel {

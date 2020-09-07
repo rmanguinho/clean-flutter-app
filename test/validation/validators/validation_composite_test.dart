@@ -2,7 +2,6 @@ import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
 import 'package:ForDev/presentation/protocols/protocols.dart';
-
 import 'package:ForDev/validation/protocols/protocols.dart';
 import 'package:ForDev/validation/validators/validators.dart';
 

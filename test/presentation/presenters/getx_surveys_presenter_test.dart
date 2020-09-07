@@ -5,10 +5,8 @@ import 'package:test/test.dart';
 import 'package:ForDev/domain/helpers/helpers.dart';
 import 'package:ForDev/domain/entities/entities.dart';
 import 'package:ForDev/domain/usecases/usecases.dart';
-
 import 'package:ForDev/ui/helpers/helpers.dart';
 import 'package:ForDev/ui/pages/pages.dart';
-
 import 'package:ForDev/presentation/presenters/presenters.dart';
 
 class LoadSurveysSpy extends Mock implements LoadSurveys {}

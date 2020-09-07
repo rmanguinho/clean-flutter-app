@@ -1,7 +1,6 @@
 import 'package:meta/meta.dart';
 
 import '../../domain/entities/entities.dart';
-
 import '../http/http.dart';
 
 class RemoteAccountModel {

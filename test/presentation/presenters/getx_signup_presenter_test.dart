@@ -3,11 +3,9 @@ import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
 import 'package:ForDev/ui/helpers/helpers.dart';
-
 import 'package:ForDev/domain/entities/entities.dart';
 import 'package:ForDev/domain/helpers/helpers.dart';
 import 'package:ForDev/domain/usecases/usecases.dart';
-
 import 'package:ForDev/presentation/presenters/presenters.dart';
 import 'package:ForDev/presentation/protocols/protocols.dart';
 
