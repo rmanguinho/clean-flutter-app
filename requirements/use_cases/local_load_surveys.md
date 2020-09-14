@@ -1,7 +1,7 @@
 # Local Load Surveys
 
 > ## Caso de sucesso
-1. Sistema solicita os dados das enquetes do Cache
+1. ✅ Sistema solicita os dados das enquetes do Cache
 2. Sistema entrega os dados das enquetes
 
 > ## Exceção - Erro ao carregar dados do Cache
