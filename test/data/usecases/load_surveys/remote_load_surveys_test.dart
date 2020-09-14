@@ -27,17 +27,17 @@ void main() {
     'date': faker.date.dateTime().toIso8601String(),
   }];
 
-  PostExpectation mockRequest() =>
-    when(httpClient.request(url: anyNamed('url'), method: anyNamed('method')));
+  PostExpectation mockRequest() => when(httpClient.request(
+    url: anyNamed('url'),
+    method: anyNamed('method')
+  ));
 
   void mockHttpData(List<Map> data) {
     list = data;
     mockRequest().thenAnswer((_) async => data);
   }
 
-  void mockHttpError(HttpError error) {
-    mockRequest().thenThrow(error);
-  }
+  void mockHttpError(HttpError error) => mockRequest().thenThrow(error);
 
   setUp(() {
     url = faker.internet.httpUrl();

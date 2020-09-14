@@ -25,25 +25,22 @@ void main() {
   PostExpectation mockValidationCall(String field) =>
     when(validation.validate(field: field == null ? anyNamed('field') : field, input: anyNamed('input')));
 
-  void mockValidation({String field, ValidationError value}) {
+  void mockValidation({String field, ValidationError value}) =>
     mockValidationCall(field).thenReturn(value);
-  }
 
   PostExpectation mockAuthenticationCall() => when(authentication.auth(any));
 
-  void mockAuthentication() {
-    mockAuthenticationCall().thenAnswer((_) async => AccountEntity(token: token));
-  }
+  void mockAuthentication() =>
+    mockAuthenticationCall().thenAnswer((_) async =>AccountEntity(token: token));
 
-  void mockAuthenticationError(DomainError error) {
+  void mockAuthenticationError(DomainError error) =>
     mockAuthenticationCall().thenThrow(error);
-  }
 
-  PostExpectation mockSaveCurrentAccountCall() => when(saveCurrentAccount.save(any));
+  PostExpectation mockSaveCurrentAccountCall() =>
+    when(saveCurrentAccount.save(any));
 
-  void mockSaveCurrentAccountError() {
+  void mockSaveCurrentAccountError() =>
     mockSaveCurrentAccountCall().thenThrow(DomainError.unexpected);
-  }
 
   setUp(() {
     validation = ValidationSpy();

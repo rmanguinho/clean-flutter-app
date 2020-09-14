@@ -26,16 +26,14 @@ void main() {
     mockTokenCall().thenAnswer((_) async => token);
   }
 
-  void mockTokenError() {
-    mockTokenCall().thenThrow(Exception());
-  }
+  void mockTokenError() => mockTokenCall().thenThrow(Exception());
 
   PostExpectation mockHttpResponseCall() => when(httpClient.request(
-      url: anyNamed('url'),
-      method: anyNamed('method'),
-      body: anyNamed('body'),
-      headers: anyNamed('headers'),
-    ));
+    url: anyNamed('url'),
+    method: anyNamed('method'),
+    body: anyNamed('body'),
+    headers: anyNamed('headers'),
+  ));
 
   void mockHttpResponse() {
     httpResponse = faker.randomGenerator.string(50);

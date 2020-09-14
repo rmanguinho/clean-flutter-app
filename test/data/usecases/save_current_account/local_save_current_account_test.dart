@@ -14,16 +14,15 @@ void main() {
   SaveSecureCacheStorageSpy saveSecureCacheStorage;
   AccountEntity account;
 
+  void mockError() =>
+    when(saveSecureCacheStorage.saveSecure(key: anyNamed('key'), value: anyNamed('value')))
+      .thenThrow(Exception());
+
   setUp(() {
     saveSecureCacheStorage = SaveSecureCacheStorageSpy();
     sut = LocalSaveCurrentAccount(saveSecureCacheStorage: saveSecureCacheStorage);
     account = AccountEntity(token: faker.guid.guid());
   });
-
-  void mockError() {
-    when(saveSecureCacheStorage.saveSecure(key: anyNamed('key'), value: anyNamed('value')))
-      .thenThrow(Exception());
-  }
 
   test('Should call SaveSecureCacheStorage with correct values', () async {
     await sut.save(account);

@@ -17,16 +17,15 @@ void main() {
 
   Map mockValidData() => {'accessToken': faker.guid.guid(), 'name': faker.person.name()};
 
-  PostExpectation mockRequest() =>
-    when(httpClient.request(url: anyNamed('url'), method: anyNamed('method'), body: anyNamed('body')));
+  PostExpectation mockRequest() => when(httpClient.request(
+    url: anyNamed('url'),
+    method: anyNamed('method'),
+    body: anyNamed('body')
+  ));
 
-  void mockHttpData(Map data) {
-    mockRequest().thenAnswer((_) async => data);
-  }
+  void mockHttpData(Map data) => mockRequest().thenAnswer((_) async => data);
 
-  void mockHttpError(HttpError error) {
-    mockRequest().thenThrow(error);
-  }
+  void mockHttpError(HttpError error) => mockRequest().thenThrow(error);
 
   setUp(() {
     httpClient = HttpClientSpy();

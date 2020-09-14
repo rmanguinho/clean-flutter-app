@@ -31,13 +31,10 @@ void main() {
     PostExpectation mockRequest() =>
       when(client.post(any, body: anyNamed('body'), headers: anyNamed('headers')));
 
-    void mockResponse(int statusCode, {String body = '{"any_key":"any_value"}'}) {
+    void mockResponse(int statusCode, {String body = '{"any_key":"any_value"}'}) =>
       mockRequest().thenAnswer((_) async => Response(body, statusCode));
-    }
 
-    void mockError() {
-      mockRequest().thenThrow(Exception());
-    }
+    void mockError() => mockRequest().thenThrow(Exception());
 
     setUp(() {
       mockResponse(200);
@@ -166,13 +163,10 @@ void main() {
     PostExpectation mockRequest() =>
       when(client.get(any, headers: anyNamed('headers')));
 
-    void mockResponse(int statusCode, {String body = '{"any_key":"any_value"}'}) {
+    void mockResponse(int statusCode, {String body = '{"any_key":"any_value"}'}) =>
       mockRequest().thenAnswer((_) async => Response(body, statusCode));
-    }
 
-    void mockError() {
-      mockRequest().thenThrow(Exception());
-    }
+    void mockError() => mockRequest().thenThrow(Exception());
 
     setUp(() {
       mockResponse(200);

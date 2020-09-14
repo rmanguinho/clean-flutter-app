@@ -41,13 +41,12 @@ class RemoteAddAccountParams {
     @required this.passwordConfirmation
   });
 
-  factory RemoteAddAccountParams.fromDomain(AddAccountParams params) => 
-    RemoteAddAccountParams(
-      name: params.name,
-      email: params.email,
-      password: params.password,
-      passwordConfirmation: params.passwordConfirmation,
-    );
+  factory RemoteAddAccountParams.fromDomain(AddAccountParams params) => RemoteAddAccountParams(
+    name: params.name,
+    email: params.email,
+    password: params.password,
+    passwordConfirmation: params.passwordConfirmation,
+  );
 
   Map toJson() => {
     'name': name,

@@ -14,16 +14,11 @@ void main() {
   FetchSecureCacheStorageSpy fetchSecureCacheStorage;
   String token;
 
-  PostExpectation mockFetchSecureCall() =>
-    when(fetchSecureCacheStorage.fetchSecure(any));
+  PostExpectation mockFetchSecureCall() => when(fetchSecureCacheStorage.fetchSecure(any));
 
-  void mockFetchSecure() {
-      mockFetchSecureCall().thenAnswer((_) async => token);
-  }
+  void mockFetchSecure() => mockFetchSecureCall().thenAnswer((_) async => token);
 
-  void mockFetchSecureError() {
-    mockFetchSecureCall().thenThrow(Exception());
-  }
+  void mockFetchSecureError() => mockFetchSecureCall().thenThrow(Exception());
 
   setUp(() {
     fetchSecureCacheStorage = FetchSecureCacheStorageSpy();
