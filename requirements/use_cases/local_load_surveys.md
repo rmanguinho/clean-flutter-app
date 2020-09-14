@@ -6,8 +6,8 @@
 3. Sistema entrega os dados das enquetes
 
 > ## Exceção - Cache vazio
-1. Sistema retorna uma mensagem de erro inesperado
+1. Sistema retorna uma lista vazia
 
 > ## Exceção - Dados inválidos no cache
-1. Sistema retorna uma mensagem de erro inesperado
-2. Sistema limpa os dados do cache
+1. Sistema limpa os dados do cache
+2. Sistema retorna uma lista vazia
