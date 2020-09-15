@@ -19,7 +19,7 @@
 2. ✅ Sistema valida os dados recebidos do Cache
 
 > ## Exceção - Erro ao carregar dados do Cache
-1. Sistema limpa os dados do cache
+1. ✅ Sistema limpa os dados do cache
 
 > ## Exceção - Dados inválidos no cache
 1. ✅ Sistema limpa os dados do cache
