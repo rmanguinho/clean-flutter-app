@@ -5,7 +5,7 @@
 2. ✅ Sistema entrega os dados das enquetes
 
 > ## Exceção - Erro ao carregar dados do Cache
-1. Sistema retorna uma mensagem de erro inesperado
+1. ✅ Sistema retorna uma mensagem de erro inesperado
 
 > ## Exceção - Cache vazio
 1. ✅ Sistema retorna uma mensagem de erro inesperado
