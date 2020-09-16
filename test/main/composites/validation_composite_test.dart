@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 import 'package:ForDev/presentation/protocols/protocols.dart';
 import 'package:ForDev/validation/protocols/protocols.dart';
-import 'package:ForDev/validation/validators/validators.dart';
+import 'package:ForDev/main/composites/composites.dart';
 
 class FieldValidationSpy extends Mock implements FieldValidation {}
 
