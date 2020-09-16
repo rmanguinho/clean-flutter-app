@@ -1,36 +1,11 @@
-import 'package:ForDev/domain/helpers/helpers.dart';
 import 'package:faker/faker.dart';
-import 'package:meta/meta.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
+import 'package:ForDev/domain/helpers/helpers.dart';
 import 'package:ForDev/domain/entities/entities.dart';
-import 'package:ForDev/domain/usecases/usecases.dart';
 import 'package:ForDev/data/usecases/usecases.dart';
-
-class RemoteLoadSurveysWithLocalFallback implements LoadSurveys {
-  final RemoteLoadSurveys remote;
-  final LocalLoadSurveys local;
-
-  RemoteLoadSurveysWithLocalFallback({
-    @required this.remote,
-    @required this.local
-  });
-
-  Future<List<SurveyEntity>> load() async {
-    try {
-      final surveys = await remote.load();
-      await local.save(surveys);
-      return surveys;
-    } catch(error) {
-      if (error == DomainError.accessDenied) {
-        rethrow;
-      }
-      await local.validate();
-      return await local.load();
-    }
-  }
-}
+import 'package:ForDev/main/composites/composites.dart';
 
 class RemoteLoadSurveysSpy extends Mock implements RemoteLoadSurveys {}
 class LocalLoadSurveysSpy extends Mock implements LocalLoadSurveys {}
