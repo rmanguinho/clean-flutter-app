@@ -38,9 +38,7 @@ void main() {
 
     setUp(() {
       cacheStorage = CacheStorageSpy();
-      sut = LocalLoadSurveys(
-        cacheStorage: cacheStorage
-      );
+      sut = LocalLoadSurveys(cacheStorage: cacheStorage);
       mockFetch(mockValidData());
     });
 
@@ -136,9 +134,7 @@ void main() {
 
     setUp(() {
       cacheStorage = CacheStorageSpy();
-      sut = LocalLoadSurveys(
-        cacheStorage: cacheStorage
-      );
+      sut = LocalLoadSurveys(cacheStorage: cacheStorage);
       mockFetch(mockValidData());
     });
 
@@ -207,9 +203,7 @@ void main() {
 
     setUp(() {
       cacheStorage = CacheStorageSpy();
-      sut = LocalLoadSurveys(
-        cacheStorage: cacheStorage
-      );
+      sut = LocalLoadSurveys(cacheStorage: cacheStorage);
       surveys = mockSurveys();
     });
 
