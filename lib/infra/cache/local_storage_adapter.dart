@@ -14,4 +14,8 @@ class LocalStorageAdapter {
   Future<void> delete(String key) async {
     await localStorage.deleteItem(key);
   }
+
+  Future<void> fetch(String key) async {
+    await localStorage.getItem(key);
+  }
 }
