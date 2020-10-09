@@ -5,8 +5,8 @@
 2. ✅ Exibir loading ao receber evento de isLoading do presenter como true
 3. ✅ Esconder loading ao receber evento de isLoading do presenter como false ou null
 4. ✅ Exibir mensagem de erro e esconder a lista ao receber evento de surveyResult com erro
-5. Esconder mensagem de erro e exibir o resultado da enquete ao receber evento de surveyResult com dados
-6. ✅ Chamar o método de Obter Resultado da Enquete ao clicar no botão de recarregar
+5. ✅ Chamar o método de Obter Resultado da Enquete ao clicar no botão de recarregar
+6. Esconder mensagem de erro em caso de sucesso
 7. Exibir a pergunta da enquete
 8. Exibir as respostas da enquete
 9. Exibir a porcentagem de cada resposta
