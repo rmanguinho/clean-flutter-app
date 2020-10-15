@@ -14,4 +14,4 @@
 
 > ## Exceção - HttpClient retornou erro Forbidden
 1. ✅ Retornar erro HTTP Forbidden - 403
-2. Apagar token de acesso do Cache
+2. ✅ Apagar token de acesso do Cache
