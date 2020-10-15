@@ -21,7 +21,7 @@ void main() {
   String token;
   String httpResponse;
 
-  PostExpectation mockTokenCall() => when(fetchSecureCacheStorage.fetchSecure(any));
+  PostExpectation mockTokenCall() => when(fetchSecureCacheStorage.fetch(any));
 
   void mockToken() {
     token = faker.guid.guid();
@@ -65,7 +65,7 @@ void main() {
   test('Should call FetchSecureCacheStorage with correct key', () async {
     await sut.request(url: url, method: method, body: body);
 
-    verify(fetchSecureCacheStorage.fetchSecure('token')).called(1);
+    verify(fetchSecureCacheStorage.fetch('token')).called(1);
   });
 
   test('Should call decoratee with access token on header', () async {
@@ -93,7 +93,7 @@ void main() {
     final future = sut.request(url: url, method: method, body: body);
 
     expect(future, throwsA(HttpError.forbidden));
-    verify(deleteSecureCacheStorage.deleteSecure('token')).called(1);
+    verify(deleteSecureCacheStorage.delete('token')).called(1);
   });
 
   test('Should rethrow if decoratee throws', () async {
@@ -108,9 +108,9 @@ void main() {
     mockHttpResponseError(HttpError.forbidden);
 
     final future = sut.request(url: url, method: method, body: body);
-    await untilCalled(deleteSecureCacheStorage.deleteSecure('token'));
+    await untilCalled(deleteSecureCacheStorage.delete('token'));
 
     expect(future, throwsA(HttpError.forbidden));
-    verify(deleteSecureCacheStorage.deleteSecure('token')).called(1);
+    verify(deleteSecureCacheStorage.delete('token')).called(1);
   });
 }
