@@ -97,7 +97,7 @@ void main() {
       expect(future, throwsA(DomainError.unexpected));
     });
 
-    test('Should throw UnexpectedError if cache is incomplete', () async {
+    test('Should throw UnexpectedError if cache throws', () async {
       mockFetchError();
 
       final future = sut.load();
