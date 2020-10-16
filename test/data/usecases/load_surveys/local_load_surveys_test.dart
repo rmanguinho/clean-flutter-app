@@ -168,7 +168,7 @@ void main() {
       verify(cacheStorage.delete('surveys')).called(1);
     });
 
-    test('Should delete cache if it is incomplete', () async {
+    test('Should delete cache if fetch fails', () async {
       mockFetchError();
 
       await sut.validate();
