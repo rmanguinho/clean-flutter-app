@@ -26,6 +26,12 @@ class SurveysPage extends StatelessWidget {
             }
           });
 
+          presenter.isSessionExpiredStream.listen((isExpired) {
+            if (isExpired == true) {
+              Get.offAllNamed('/login');
+            }
+          });
+
           presenter.navigateToStream.listen((page) {
             if (page?.isNotEmpty == true) {
               Get.toNamed(page);
