@@ -3,7 +3,7 @@
 > ## Caso de sucesso
 1. ✅ Sistema executa o loadBySurvey da implementação remota
 2. ✅ Sistema substitui os dados do Cache com os dados obtidos
-3. Sistema retorna esses dados
+3. ✅ Sistema retorna esses dados
 
 > ## Exceção - Acesso negado
 1. Sistema repassa a exceção de acesso negado
