@@ -86,6 +86,7 @@ class GetxSignUpPresenter extends GetxController with LoadingManager, Navigation
 
   Future<void> signUp() async {
     try {
+      mainError = null;
       isLoading = true;
       final account = await addAccount.add(AddAccountParams(
         name: _name,
