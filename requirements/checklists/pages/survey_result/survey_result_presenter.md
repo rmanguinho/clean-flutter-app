@@ -10,6 +10,6 @@
 7. ✅ Chamar SaveSurveyResult no método save
 8. ✅ Notificar o isLoadingStream como true antes de chamar o SaveSurveyResult
 9. ✅ Notificar o isLoadingStream como false no fim do SaveSurveyResult
-10. Notificar o surveyResultStream com erro caso o SaveSurveyResult retorne erro
+10. ✅ Notificar o surveyResultStream com erro caso o SaveSurveyResult retorne erro
 11. ✅ Notificar o surveyResultStream com um SurveyResult caso o SaveSurveyResult retorne sucesso
-12. Notificar o sessionExpiredStream como true caso o SaveSurveyResult retorne erro accessDenied
+12. ✅ Notificar o sessionExpiredStream como true caso o SaveSurveyResult retorne erro accessDenied
