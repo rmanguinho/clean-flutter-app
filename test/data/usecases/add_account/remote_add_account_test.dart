@@ -7,6 +7,8 @@ import 'package:ForDev/domain/usecases/usecases.dart';
 import 'package:ForDev/data/http/http.dart';
 import 'package:ForDev/data/usecases/usecases.dart';
 
+import '../../../mocks/mocks.dart';
+
 class HttpClientSpy extends Mock implements HttpClient {}
 
 void main() {
@@ -14,8 +16,7 @@ void main() {
   HttpClientSpy httpClient;
   String url;
   AddAccountParams params;
-
-  Map mockValidData() => {'accessToken': faker.guid.guid(), 'name': faker.person.name()};
+  Map apiResult;
 
   PostExpectation mockRequest() => when(httpClient.request(
     url: anyNamed('url'),
@@ -23,7 +24,10 @@ void main() {
     body: anyNamed('body')
   ));
 
-  void mockHttpData(Map data) => mockRequest().thenAnswer((_) async => data);
+  void mockHttpData(Map data) {
+    apiResult = data;
+    mockRequest().thenAnswer((_) async => data);
+  }
 
   void mockHttpError(HttpError error) => mockRequest().thenThrow(error);
 
@@ -31,13 +35,8 @@ void main() {
     httpClient = HttpClientSpy();
     url = faker.internet.httpUrl();
     sut = RemoteAddAccount(httpClient: httpClient, url: url);
-    params = AddAccountParams(
-      name: faker.person.name(),
-      email: faker.internet.email(),
-      password: faker.internet.password(),
-      passwordConfirmation: faker.internet.password()
-    );
-    mockHttpData(mockValidData());
+    params = FakeParamsFactory.makeAddAccount();
+    mockHttpData(FakeAccountFactory.makeApiJson());
   });
 
   test('Should call HttpClient with correct values', () async {
@@ -88,12 +87,9 @@ void main() {
   });
 
   test('Should return an Account if HttpClient returns 200', () async {
-    final validData = mockValidData();
-    mockHttpData(validData);
-
     final account = await sut.add(params);
 
-    expect(account.token, validData['accessToken']);
+    expect(account.token, apiResult['accessToken']);
   });
 
   test('Should throw UnexpectedError if HttpClient returns 200 with invalid data', () async {
