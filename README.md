@@ -49,7 +49,7 @@ O objetivo do treinamento é mostrar como criar um aplicativo com Flutter usando
 * Singleton
 * Observer
 * Strategy
-* AAA (Arrange, Act and Assert)
+* AAA (Arrange, Act, Assert)
 
 > ## Metodologias e Designs
 
@@ -65,11 +65,13 @@ O objetivo do treinamento é mostrar como criar um aplicativo com Flutter usando
 > ## Bibliotecas e Ferramentas
 
 * Flutter
+* Flutter Version Management
 * Http
 * Provider
 * GetX
 * Equatable
 * Mockito
+* Mocktail
 * Faker
 * Meta
 * Git
@@ -77,8 +79,10 @@ O objetivo do treinamento é mostrar como criar um aplicativo com Flutter usando
 * LocalStorage
 * i18n
 * Image Test Utils
+* Network Image Mock
 
 > ## Features do Dart/Flutter
+* Null Safety
 * Classes
 * Abstract Classes
 * Functions
