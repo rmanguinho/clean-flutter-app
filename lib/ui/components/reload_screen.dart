@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-
 import '../helpers/helpers.dart';
+
+import 'package:flutter/material.dart';
 
 class ReloadScreen extends StatelessWidget {
   final String error;

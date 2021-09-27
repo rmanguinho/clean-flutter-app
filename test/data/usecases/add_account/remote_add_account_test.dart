@@ -1,13 +1,13 @@
-import 'package:faker/faker.dart';
-import 'package:mockito/mockito.dart';
-import 'package:test/test.dart';
-
 import 'package:ForDev/domain/helpers/helpers.dart';
 import 'package:ForDev/domain/usecases/usecases.dart';
 import 'package:ForDev/data/http/http.dart';
 import 'package:ForDev/data/usecases/usecases.dart';
 
 import '../../../mocks/mocks.dart';
+
+import 'package:faker/faker.dart';
+import 'package:mockito/mockito.dart';
+import 'package:test/test.dart';
 
 class HttpClientSpy extends Mock implements HttpClient {}
 

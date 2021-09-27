@@ -1,11 +1,11 @@
-import 'package:mockito/mockito.dart';
-import 'package:test/test.dart';
-
 import 'package:ForDev/domain/entities/entities.dart';
 import 'package:ForDev/domain/usecases/usecases.dart';
 import 'package:ForDev/presentation/presenters/presenters.dart';
 
 import '../../mocks/mocks.dart';
+
+import 'package:mockito/mockito.dart';
+import 'package:test/test.dart';
 
 class LoadCurrentAccountSpy extends Mock implements LoadCurrentAccount {}
 

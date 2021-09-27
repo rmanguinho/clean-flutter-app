@@ -1,12 +1,12 @@
-import 'package:mockito/mockito.dart';
-import 'package:test/test.dart';
-
 import 'package:ForDev/domain/entities/entities.dart';
 import 'package:ForDev/domain/helpers/helpers.dart';
 import 'package:ForDev/data/cache/cache.dart';
 import 'package:ForDev/data/usecases/usecases.dart';
 
 import '../../../mocks/mocks.dart';
+
+import 'package:mockito/mockito.dart';
+import 'package:test/test.dart';
 
 class CacheStorageSpy extends Mock implements CacheStorage {}
 

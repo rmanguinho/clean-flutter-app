@@ -1,7 +1,7 @@
-import 'package:faker/faker.dart';
-
 import 'package:ForDev/domain/entities/entities.dart';
 import 'package:ForDev/ui/pages/pages.dart';
+
+import 'package:faker/faker.dart';
 
 class FakeSurveyResultFactory {
   static Map makeCacheJson() => {

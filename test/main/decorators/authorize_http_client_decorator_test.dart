@@ -1,10 +1,10 @@
-import 'package:faker/faker.dart';
-import 'package:mockito/mockito.dart';
-import 'package:test/test.dart';
-
 import 'package:ForDev/data/cache/cache.dart';
 import 'package:ForDev/data/http/http.dart';
 import 'package:ForDev/main/decorators/decorators.dart';
+
+import 'package:faker/faker.dart';
+import 'package:mockito/mockito.dart';
+import 'package:test/test.dart';
 
 class FetchSecureCacheStorageSpy extends Mock implements FetchSecureCacheStorage {}
 class DeleteSecureCacheStorageSpy extends Mock implements DeleteSecureCacheStorage {}

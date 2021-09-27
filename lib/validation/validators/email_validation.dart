@@ -1,7 +1,7 @@
-import 'package:equatable/equatable.dart';
-
 import '../../presentation/protocols/protocols.dart';
 import '../protocols/protocols.dart';
+
+import 'package:equatable/equatable.dart';
 
 class EmailValidation extends Equatable implements FieldValidation {
   final String field;

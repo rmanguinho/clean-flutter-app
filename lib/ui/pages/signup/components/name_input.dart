@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import '../../../helpers/helpers.dart';
 import '../signup.dart';
+
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class NameInput extends StatelessWidget {
   @override

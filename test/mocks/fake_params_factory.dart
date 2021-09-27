@@ -1,6 +1,6 @@
-import 'package:faker/faker.dart';
-
 import 'package:ForDev/domain/usecases/usecases.dart';
+
+import 'package:faker/faker.dart';
 
 class FakeParamsFactory {
   static AddAccountParams makeAddAccount() => AddAccountParams(

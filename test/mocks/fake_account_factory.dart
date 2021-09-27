@@ -1,6 +1,6 @@
-import 'package:faker/faker.dart';
-
 import 'package:ForDev/domain/entities/entities.dart';
+
+import 'package:faker/faker.dart';
 
 class FakeAccountFactory {
   static Map makeApiJson() => {

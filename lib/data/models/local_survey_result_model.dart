@@ -1,7 +1,7 @@
-import 'package:meta/meta.dart';
-
 import '../../domain/entities/entities.dart';
-import 'models.dart';
+import './models.dart';
+
+import 'package:meta/meta.dart';
 
 class LocalSurveyResultModel {
   final String surveyId;

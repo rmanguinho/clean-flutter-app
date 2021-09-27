@@ -1,7 +1,7 @@
-import 'package:test/test.dart';
-
 import 'package:ForDev/presentation/protocols/protocols.dart';
 import 'package:ForDev/validation/validators/validators.dart';
+
+import 'package:test/test.dart';
 
 void main() {
   RequiredFieldValidation sut;

@@ -1,9 +1,9 @@
-import 'package:get/get.dart';
-import 'package:meta/meta.dart';
-
 import '../../domain/usecases/usecases.dart';
 import '../../ui/pages/pages.dart';
 import '../mixins/mixins.dart';
+
+import 'package:get/get.dart';
+import 'package:meta/meta.dart';
 
 class GetxSplashPresenter extends GetxController with NavigationManager implements SplashPresenter {
   final LoadCurrentAccount loadCurrentAccount;

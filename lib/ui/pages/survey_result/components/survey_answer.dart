@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-
 import '../survey_result.dart';
 import './components.dart';
+
+import 'package:flutter/material.dart';
 
 class SurveyAnswer extends StatelessWidget {
   final SurveyAnswerViewModel viewModel;

@@ -1,9 +1,9 @@
+import 'package:ForDev/infra/cache/cache.dart';
+
 import 'package:faker/faker.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
-
-import 'package:ForDev/infra/cache/cache.dart';
 
 class LocalStorageSpy extends Mock implements LocalStorage {}
 

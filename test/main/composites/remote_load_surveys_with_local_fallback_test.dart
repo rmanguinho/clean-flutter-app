@@ -1,12 +1,12 @@
-import 'package:mockito/mockito.dart';
-import 'package:test/test.dart';
-
 import 'package:ForDev/domain/entities/entities.dart';
 import 'package:ForDev/domain/helpers/helpers.dart';
 import 'package:ForDev/data/usecases/usecases.dart';
 import 'package:ForDev/main/composites/composites.dart';
 
 import '../../mocks/mocks.dart';
+
+import 'package:mockito/mockito.dart';
+import 'package:test/test.dart';
 
 class LocalLoadSurveysSpy extends Mock implements LocalLoadSurveys {}
 class RemoteLoadSurveysSpy extends Mock implements RemoteLoadSurveys {}

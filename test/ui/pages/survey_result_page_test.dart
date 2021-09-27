@@ -1,16 +1,15 @@
-import 'dart:async';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:image_test_utils/image_test_utils.dart';
-import 'package:mockito/mockito.dart';
-
 import 'package:ForDev/ui/helpers/helpers.dart';
 import 'package:ForDev/ui/pages/pages.dart';
 import 'package:ForDev/ui/pages/survey_result/components/components.dart';
 
 import '../../mocks/mocks.dart';
 import '../helpers/helpers.dart';
+
+import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:image_test_utils/image_test_utils.dart';
+import 'package:mockito/mockito.dart';
 
 class SurveyResultPresenterSpy extends Mock implements SurveyResultPresenter {}
 

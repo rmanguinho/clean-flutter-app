@@ -1,9 +1,9 @@
-import 'package:meta/meta.dart';
-
 import '../../domain/entities/entities.dart';
 import '../../domain/helpers/helpers.dart';
 import '../../domain/usecases/usecases.dart';
 import '../../data/usecases/usecases.dart';
+
+import 'package:meta/meta.dart';
 
 class RemoteLoadSurveyResultWithLocalFallback implements LoadSurveyResult {
   final RemoteLoadSurveyResult remote;

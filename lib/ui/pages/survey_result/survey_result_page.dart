@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-
 import '../../components/components.dart';
 import '../../helpers/helpers.dart';
 import '../../mixins/mixins.dart';
 import './components/components.dart';
 import './survey_result.dart';
+
+import 'package:flutter/material.dart';
 
 class SurveyResultPage extends StatelessWidget with LoadingManager, SessionManager {
   final SurveyResultPresenter presenter;

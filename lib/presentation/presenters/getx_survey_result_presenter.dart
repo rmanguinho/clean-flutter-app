@@ -1,6 +1,3 @@
-import 'package:get/get.dart';
-import 'package:meta/meta.dart';
-
 import '../../domain/entities/entities.dart';
 import '../../domain/helpers/helpers.dart';
 import '../../domain/usecases/usecases.dart';
@@ -8,6 +5,9 @@ import '../../ui/helpers/helpers.dart';
 import '../../ui/pages/pages.dart';
 import '../helpers/helpers.dart';
 import '../mixins/mixins.dart';
+
+import 'package:get/get.dart';
+import 'package:meta/meta.dart';
 
 class GetxSurveyResultPresenter extends GetxController with LoadingManager, SessionManager implements SurveyResultPresenter {
   final LoadSurveyResult loadSurveyResult;
