@@ -4,15 +4,13 @@ import '../../../domain/usecases/usecases.dart';
 import '../../http/http.dart';
 import '../../models/models.dart';
 
-import 'package:meta/meta.dart';
-
 class RemoteAddAccount implements AddAccount {
   final HttpClient httpClient;
   final String url;
 
   RemoteAddAccount({
-    @required this.httpClient,
-    @required this.url
+    required this.httpClient,
+    required this.url
   });
 
   Future<AccountEntity> add(AddAccountParams params) async {
@@ -35,10 +33,10 @@ class RemoteAddAccountParams {
   final String passwordConfirmation;
 
   RemoteAddAccountParams({
-    @required this.name,
-    @required this.email,
-    @required this.password,
-    @required this.passwordConfirmation
+    required this.name,
+    required this.email,
+    required this.password,
+    required this.passwordConfirmation
   });
 
   factory RemoteAddAccountParams.fromDomain(AddAccountParams params) => RemoteAddAccountParams(

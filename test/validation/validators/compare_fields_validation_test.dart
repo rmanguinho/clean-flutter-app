@@ -1,10 +1,10 @@
-import 'package:ForDev/presentation/protocols/protocols.dart';
-import 'package:ForDev/validation/validators/validators.dart';
+import 'package:fordev/presentation/protocols/protocols.dart';
+import 'package:fordev/validation/validators/validators.dart';
 
 import 'package:test/test.dart';
 
 void main() {
-  CompareFieldsValidation sut;
+  late CompareFieldsValidation sut;
 
   setUp(() {
     sut = CompareFieldsValidation(field: 'any_field', fieldToCompare: 'other_field');

@@ -3,12 +3,12 @@ import '../../../domain/usecases/usecases.dart';
 import '../../composites/composites.dart';
 import '../factories.dart';
 
-LoadSurveyResult makeRemoteLoadSurveyResult(String surveyId) => RemoteLoadSurveyResult(
+RemoteLoadSurveyResult makeRemoteLoadSurveyResult(String surveyId) => RemoteLoadSurveyResult(
   httpClient: makeAuthorizeHttpClientDecorator(),
   url: makeApiUrl('surveys/$surveyId/results')
 );
 
-LoadSurveyResult makeLocalLoadSurveyResult(String surveyId) => LocalLoadSurveyResult(
+LocalLoadSurveyResult makeLocalLoadSurveyResult(String surveyId) => LocalLoadSurveyResult(
   cacheStorage: makeLocalStorageAdapter()
 );
 

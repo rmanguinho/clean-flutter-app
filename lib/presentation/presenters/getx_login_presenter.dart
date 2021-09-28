@@ -6,26 +6,25 @@ import '../protocols/protocols.dart';
 import '../mixins/mixins.dart';
 
 import 'package:get/get.dart';
-import 'package:meta/meta.dart';
 
 class GetxLoginPresenter extends GetxController with LoadingManager, NavigationManager, FormManager, UIErrorManager implements LoginPresenter {
   final Validation validation;
   final Authentication authentication;
   final SaveCurrentAccount saveCurrentAccount;
   
-  final _emailError = Rx<UIError>();
-  final _passwordError = Rx<UIError>();
+  final _emailError = Rx<UIError?>(null);
+  final _passwordError = Rx<UIError?>(null);
   
-  String _email;
-  String _password;
+  String? _email;
+  String? _password;
 
-  Stream<UIError> get emailErrorStream => _emailError.stream;
-  Stream<UIError> get passwordErrorStream => _passwordError.stream;
+  Stream<UIError?> get emailErrorStream => _emailError.stream;
+  Stream<UIError?> get passwordErrorStream => _passwordError.stream;
 
   GetxLoginPresenter({
-    @required this.validation,
-    @required this.authentication,
-    @required this.saveCurrentAccount
+    required this.validation,
+    required this.authentication,
+    required this.saveCurrentAccount
   });
 
   void validateEmail(String email) {
@@ -40,7 +39,7 @@ class GetxLoginPresenter extends GetxController with LoadingManager, NavigationM
     _validateForm();
   }
 
-  UIError _validateField(String field) {
+  UIError? _validateField(String field) {
     final formData = {
       'email': _email,
       'password': _password,
@@ -64,7 +63,7 @@ class GetxLoginPresenter extends GetxController with LoadingManager, NavigationM
     try {
       mainError = null;
       isLoading = true;
-      final account = await authentication.auth(AuthenticationParams(email: _email, secret: _password));
+      final account = await authentication.auth(AuthenticationParams(email: _email!, secret: _password!));
       await saveCurrentAccount.save(account);
       navigateTo = '/surveys';
     } on DomainError catch (error) {

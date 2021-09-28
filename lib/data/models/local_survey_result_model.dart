@@ -1,17 +1,15 @@
 import '../../domain/entities/entities.dart';
 import './models.dart';
 
-import 'package:meta/meta.dart';
-
 class LocalSurveyResultModel {
   final String surveyId;
   final String question;
   final List<LocalSurveyAnswerModel> answers;
 
   LocalSurveyResultModel({
-    @required this.surveyId,
-    @required this.question,
-    @required this.answers,
+    required this.surveyId,
+    required this.question,
+    required this.answers,
   });
 
   factory LocalSurveyResultModel.fromJson(Map json) {

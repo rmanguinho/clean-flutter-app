@@ -43,7 +43,7 @@ ThemeData makeAppTheme() {
     secondaryHeaderColor: secondaryColorDark,
     disabledColor: disabledColor,
     dividerColor: dividerColor,
-    accentColor: primaryColor,
+    colorScheme: ColorScheme.light(primary: primaryColor),
     backgroundColor: Colors.white,
     textTheme: textTheme,
     inputDecorationTheme: inputDecorationTheme,

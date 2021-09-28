@@ -1,9 +1,7 @@
-import 'package:meta/meta.dart';
-
 abstract class Validation {
-  ValidationError validate({
-    @required String field,
-    @required Map input
+  ValidationError? validate({
+    required String field,
+    required Map input
   });
 }
 

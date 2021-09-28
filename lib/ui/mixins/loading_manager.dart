@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 mixin LoadingManager {
   void handleLoading(BuildContext context, Stream<bool> stream) {
-    stream.listen((isLoading) {
+    stream.listen((isLoading) async {
       if (isLoading == true) {
-        showLoading(context);
+        await showLoading(context);
       } else {
         hideLoading(context);
       }

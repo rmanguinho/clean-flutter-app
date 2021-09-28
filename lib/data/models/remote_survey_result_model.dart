@@ -1,5 +1,3 @@
-import 'package:meta/meta.dart';
-
 import '../../domain/entities/entities.dart';
 import '../http/http.dart';
 import './models.dart';
@@ -10,9 +8,9 @@ class RemoteSurveyResultModel {
   final List<RemoteSurveyAnswerModel> answers;
 
   RemoteSurveyResultModel({
-    @required this.surveyId,
-    @required this.question,
-    @required this.answers,
+    required this.surveyId,
+    required this.question,
+    required this.answers,
   });
 
   factory RemoteSurveyResultModel.fromJson(Map json) {

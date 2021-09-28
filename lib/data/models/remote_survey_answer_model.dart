@@ -1,19 +1,17 @@
-import 'package:meta/meta.dart';
-
 import '../../domain/entities/entities.dart';
 import '../http/http.dart';
 
 class RemoteSurveyAnswerModel {
-  final String image;
+  final String? image;
   final String answer;
   final bool isCurrentAccountAnswer;
   final int percent;
 
   RemoteSurveyAnswerModel({
     this.image,
-    @required this.answer,
-    @required this.isCurrentAccountAnswer,
-    @required this.percent,
+    required this.answer,
+    required this.isCurrentAccountAnswer,
+    required this.percent,
   });
 
   factory RemoteSurveyAnswerModel.fromJson(Map json) {
