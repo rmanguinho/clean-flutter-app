@@ -8,8 +8,9 @@ class RequiredFieldValidation extends Equatable implements FieldValidation {
   final String field;
 
   @override
-  List get props => [field];
+  List<String> get props => <String>[field];
 
+  @override
   const RequiredFieldValidation(this.field);
 
   @override

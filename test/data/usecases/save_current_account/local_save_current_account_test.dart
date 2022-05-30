@@ -1,7 +1,6 @@
 import 'package:faker/faker.dart';
-import 'package:fordev/data/usecases/usecases.dart';
-import 'package:fordev/domain/entities/entities.dart';
-import 'package:fordev/domain/helpers/helpers.dart';
+import 'package:fordev/data/data.dart';
+import 'package:fordev/domain/domain.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -28,7 +27,7 @@ void main() {
       () async {
     secureCacheStorage.mockSaveError();
 
-    final future = sut.save(account);
+    final Future<void> future = sut.save(account);
 
     expect(future, throwsA(DomainError.unexpected));
   });

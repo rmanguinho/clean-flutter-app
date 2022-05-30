@@ -10,7 +10,7 @@ class SurveyItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<SurveysPresenter>(context);
+    final SurveysPresenter presenter = Provider.of<SurveysPresenter>(context);
     return GestureDetector(
       onTap: () => presenter.goToSurveyResult(viewModel.id),
       child: Padding(
@@ -29,7 +29,9 @@ class SurveyItem extends StatelessWidget {
                 color: Colors.black,
               )
             ],
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(10),
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,4 +1,4 @@
-import '../../domain/entities/entities.dart';
+import '../../domain/domain.dart';
 import '../http/http.dart';
 
 class RemoteAccountModel {

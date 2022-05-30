@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import './components.dart';
 import '../survey_result.dart';
 
 class SurveyResult extends StatelessWidget {
@@ -16,11 +15,11 @@ class SurveyResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemBuilder: (context, index) {
+      itemBuilder: (BuildContext context, int index) {
         if (index == 0) {
           return SurveyHeader(viewModel.question);
         }
-        final answer = viewModel.answers[index - 1];
+        final SurveyAnswerViewModel answer = viewModel.answers[index - 1];
         return GestureDetector(
           onTap: () =>
               answer.isCurrentAnswer ? null : onSave(answer: answer.answer),

@@ -1,6 +1,6 @@
 import 'package:faker/faker.dart';
-import 'package:fordev/presentation/protocols/protocols.dart';
-import 'package:fordev/validation/validators/validators.dart';
+import 'package:fordev/presentation/presentation.dart';
+import 'package:fordev/validation/validation.dart';
 import 'package:test/test.dart';
 
 void main() {

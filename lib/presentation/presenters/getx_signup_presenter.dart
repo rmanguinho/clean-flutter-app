@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../domain/helpers/helpers.dart';
-import '../../domain/usecases/usecases.dart';
+import '../../domain/domain.dart';
 import '../../ui/helpers/helpers.dart';
 import '../../ui/pages/pages.dart';
 import '../mixins/mixins.dart';
@@ -14,10 +13,10 @@ class GetxSignUpPresenter extends GetxController
   final AddAccount addAccount;
   final SaveCurrentAccount saveCurrentAccount;
 
-  final _emailError = Rx<UIError?>(null);
-  final _nameError = Rx<UIError?>(null);
-  final _passwordError = Rx<UIError?>(null);
-  final _passwordConfirmationError = Rx<UIError?>(null);
+  final Rx<UIError?> _emailError = Rx<UIError?>(null);
+  final Rx<UIError?> _nameError = Rx<UIError?>(null);
+  final Rx<UIError?> _passwordError = Rx<UIError?>(null);
+  final Rx<UIError?> _passwordConfirmationError = Rx<UIError?>(null);
 
   String? _name;
   String? _email;
@@ -69,13 +68,14 @@ class GetxSignUpPresenter extends GetxController
   }
 
   UIError? _validateField(String field) {
-    final formData = {
+    final Map<String, String?> formData = {
       'name': _name,
       'email': _email,
       'password': _password,
       'passwordConfirmation': _passwordConfirmation
     };
-    final error = validation.validate(field: field, input: formData);
+    final ValidationError? error =
+        validation.validate(field: field, input: formData);
     switch (error) {
       case ValidationError.invalidField:
         return UIError.invalidField;
@@ -102,7 +102,7 @@ class GetxSignUpPresenter extends GetxController
     try {
       mainError = null;
       isLoading = true;
-      final account = await addAccount.add(
+      final AccountEntity account = await addAccount.add(
         AddAccountParams(
           name: _name!,
           email: _email!,

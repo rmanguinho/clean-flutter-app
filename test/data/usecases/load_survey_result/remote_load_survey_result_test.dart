@@ -1,8 +1,6 @@
 import 'package:faker/faker.dart';
-import 'package:fordev/data/http/http.dart';
-import 'package:fordev/data/usecases/usecases.dart';
-import 'package:fordev/domain/entities/entities.dart';
-import 'package:fordev/domain/helpers/helpers.dart';
+import 'package:fordev/data/data.dart';
+import 'package:fordev/domain/domain.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -32,7 +30,8 @@ void main() {
   });
 
   test('Should return surveyResult on 200', () async {
-    final result = await sut.loadBySurvey(surveyId: surveyId);
+    final SurveyResultEntity result =
+        await sut.loadBySurvey(surveyId: surveyId);
 
     expect(
       result,
@@ -63,7 +62,8 @@ void main() {
       () async {
     httpClient.mockRequest(ApiFactory.makeInvalidJson());
 
-    final future = sut.loadBySurvey(surveyId: surveyId);
+    final Future<SurveyResultEntity> future =
+        sut.loadBySurvey(surveyId: surveyId);
 
     expect(future, throwsA(DomainError.unexpected));
   });
@@ -71,7 +71,8 @@ void main() {
   test('Should throw UnexpectedError if HttpClient returns 404', () async {
     httpClient.mockRequestError(HttpError.notFound);
 
-    final future = sut.loadBySurvey(surveyId: surveyId);
+    final Future<SurveyResultEntity> future =
+        sut.loadBySurvey(surveyId: surveyId);
 
     expect(future, throwsA(DomainError.unexpected));
   });
@@ -79,7 +80,8 @@ void main() {
   test('Should throw UnexpectedError if HttpClient returns 500', () async {
     httpClient.mockRequestError(HttpError.serverError);
 
-    final future = sut.loadBySurvey(surveyId: surveyId);
+    final Future<SurveyResultEntity> future =
+        sut.loadBySurvey(surveyId: surveyId);
 
     expect(future, throwsA(DomainError.unexpected));
   });
@@ -87,7 +89,8 @@ void main() {
   test('Should throw AccessDeniedError if HttpClient returns 403', () async {
     httpClient.mockRequestError(HttpError.forbidden);
 
-    final future = sut.loadBySurvey(surveyId: surveyId);
+    final Future<SurveyResultEntity> future =
+        sut.loadBySurvey(surveyId: surveyId);
 
     expect(future, throwsA(DomainError.accessDenied));
   });

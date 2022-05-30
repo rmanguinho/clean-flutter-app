@@ -9,10 +9,10 @@ class NameInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<SignUpPresenter>(context);
+    final SignUpPresenter presenter = Provider.of<SignUpPresenter>(context);
     return StreamBuilder<UIError?>(
       stream: presenter.nameErrorStream,
-      builder: (context, snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<UIError?> snapshot) {
         return TextFormField(
           decoration: InputDecoration(
             labelText: R.string.name,

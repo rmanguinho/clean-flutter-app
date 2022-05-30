@@ -16,12 +16,13 @@ class HttpAdapter implements HttpClient {
     Map? body,
     Map? headers,
   }) async {
-    final defaultHeaders = headers?.cast<String, String>() ?? {}
-      ..addAll(
-        {'content-type': 'application/json', 'accept': 'application/json'},
-      );
-    final jsonBody = body != null ? jsonEncode(body) : null;
-    var response = Response('', 500);
+    final Map<String, String> defaultHeaders =
+        headers?.cast<String, String>() ?? {}
+          ..addAll(
+            {'content-type': 'application/json', 'accept': 'application/json'},
+          );
+    final String? jsonBody = body != null ? jsonEncode(body) : null;
+    Response response = Response('', 500);
     Future<Response>? futureResponse;
     try {
       if (method == 'post') {

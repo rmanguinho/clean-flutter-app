@@ -1,4 +1,4 @@
-import 'package:fordev/data/http/http.dart';
+import 'package:fordev/data/data.dart';
 
 import 'package:mocktail/mocktail.dart';
 

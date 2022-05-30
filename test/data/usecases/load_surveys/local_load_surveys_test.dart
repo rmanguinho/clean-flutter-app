@@ -1,6 +1,5 @@
-import 'package:fordev/data/usecases/usecases.dart';
-import 'package:fordev/domain/entities/entities.dart';
-import 'package:fordev/domain/helpers/helpers.dart';
+import 'package:fordev/data/data.dart';
+import 'package:fordev/domain/domain.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -30,7 +29,7 @@ void main() {
     });
 
     test('Should return a list of surveys on success', () async {
-      final surveys = await sut.load();
+      final List<SurveyEntity> surveys = await sut.load();
 
       expect(surveys, [
         SurveyEntity(
@@ -51,7 +50,7 @@ void main() {
     test('Should throw UnexpectedError if cache is empty', () async {
       cacheStorage.mockFetch([]);
 
-      final future = sut.load();
+      final Future<List<SurveyEntity>> future = sut.load();
 
       expect(future, throwsA(DomainError.unexpected));
     });
@@ -59,7 +58,7 @@ void main() {
     test('Should throw UnexpectedError if cache is isvalid', () async {
       cacheStorage.mockFetch(CacheFactory.makeInvalidSurveyList());
 
-      final future = sut.load();
+      final Future<List<SurveyEntity>> future = sut.load();
 
       expect(future, throwsA(DomainError.unexpected));
     });
@@ -67,7 +66,7 @@ void main() {
     test('Should throw UnexpectedError if cache is incomplete', () async {
       cacheStorage.mockFetch(CacheFactory.makeIncompleteSurveyList());
 
-      final future = sut.load();
+      final Future<List<SurveyEntity>> future = sut.load();
 
       expect(future, throwsA(DomainError.unexpected));
     });
@@ -75,7 +74,7 @@ void main() {
     test('Should throw UnexpectedError if cache throws', () async {
       cacheStorage.mockFetchError();
 
-      final future = sut.load();
+      final Future<List<SurveyEntity>> future = sut.load();
 
       expect(future, throwsA(DomainError.unexpected));
     });
@@ -115,7 +114,7 @@ void main() {
 
   group('save', () {
     test('Should call cacheStorage with correct values', () async {
-      final list = [
+      final List<Map<String, String>> list = [
         {
           'id': surveys[0].id,
           'question': surveys[0].question,
@@ -138,7 +137,7 @@ void main() {
     test('Should throw UnexpectedError if save throws', () async {
       cacheStorage.mockSaveError();
 
-      final future = sut.save(surveys);
+      final Future<void> future = sut.save(surveys);
 
       expect(future, throwsA(DomainError.unexpected));
     });

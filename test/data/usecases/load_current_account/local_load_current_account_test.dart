@@ -1,7 +1,6 @@
 import 'package:faker/faker.dart';
-import 'package:fordev/data/usecases/usecases.dart';
-import 'package:fordev/domain/entities/entities.dart';
-import 'package:fordev/domain/helpers/helpers.dart';
+import 'package:fordev/data/data.dart';
+import 'package:fordev/domain/domain.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -26,7 +25,7 @@ void main() {
   });
 
   test('Should return an AccountEntity', () async {
-    final account = await sut.load();
+    final AccountEntity account = await sut.load();
 
     expect(account, AccountEntity(token: token));
   });
@@ -35,7 +34,7 @@ void main() {
       () async {
     secureCacheStorage.mockFetchError();
 
-    final future = sut.load();
+    final Future<AccountEntity> future = sut.load();
 
     expect(future, throwsA(DomainError.unexpected));
   });
@@ -44,7 +43,7 @@ void main() {
       () async {
     secureCacheStorage.mockFetch(null);
 
-    final future = sut.load();
+    final Future<AccountEntity> future = sut.load();
 
     expect(future, throwsA(DomainError.unexpected));
   });

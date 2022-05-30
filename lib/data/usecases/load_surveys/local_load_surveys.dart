@@ -33,7 +33,7 @@ class LocalLoadSurveys implements LoadSurveys {
 
   Future<void> save(List<SurveyEntity> surveys) async {
     try {
-      final json = _mapToJson(surveys);
+      final List<Map> json = _mapToJson(surveys);
       await cacheStorage.save(key: 'surveys', value: json);
     } catch (error) {
       throw DomainError.unexpected;
@@ -45,6 +45,8 @@ class LocalLoadSurveys implements LoadSurveys {
       .toList();
 
   List<Map> _mapToJson(List<SurveyEntity> list) => list
-      .map((entity) => LocalSurveyModel.fromEntity(entity).toJson())
+      .map(
+        (SurveyEntity entity) => LocalSurveyModel.fromEntity(entity).toJson(),
+      )
       .toList();
 }

@@ -1,11 +1,10 @@
 import 'package:faker/faker.dart';
-import 'package:fordev/data/usecases/usecases.dart';
-import 'package:fordev/domain/entities/entities.dart';
-import 'package:fordev/domain/helpers/helpers.dart';
+import 'package:fordev/data/data.dart';
+import 'package:fordev/domain/domain.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-import '../../../domain/mocks/mocks.dart';
+import '../../../domain/domain.dart';
 import '../../../infra/mocks/mocks.dart';
 import '../../mocks/mocks.dart';
 
@@ -33,7 +32,8 @@ void main() {
     });
 
     test('Should return surveyResult on success', () async {
-      final surveyResult = await sut.loadBySurvey(surveyId: surveyId);
+      final SurveyResultEntity surveyResult =
+          await sut.loadBySurvey(surveyId: surveyId);
 
       expect(
         surveyResult,
@@ -60,7 +60,8 @@ void main() {
     test('Should throw UnexpectedError if cache is empty', () async {
       cacheStorage.mockFetch({});
 
-      final future = sut.loadBySurvey(surveyId: surveyId);
+      final Future<SurveyResultEntity> future =
+          sut.loadBySurvey(surveyId: surveyId);
 
       expect(future, throwsA(DomainError.unexpected));
     });
@@ -68,7 +69,8 @@ void main() {
     test('Should throw UnexpectedError if cache is isvalid', () async {
       cacheStorage.mockFetch(CacheFactory.makeInvalidSurveyResult());
 
-      final future = sut.loadBySurvey(surveyId: surveyId);
+      final Future<SurveyResultEntity> future =
+          sut.loadBySurvey(surveyId: surveyId);
 
       expect(future, throwsA(DomainError.unexpected));
     });
@@ -76,7 +78,8 @@ void main() {
     test('Should throw UnexpectedError if cache is incomplete', () async {
       cacheStorage.mockFetch(CacheFactory.makeIncompleteSurveyResult());
 
-      final future = sut.loadBySurvey(surveyId: surveyId);
+      final Future<SurveyResultEntity> future =
+          sut.loadBySurvey(surveyId: surveyId);
 
       expect(future, throwsA(DomainError.unexpected));
     });
@@ -84,7 +87,8 @@ void main() {
     test('Should throw UnexpectedError if cache throws', () async {
       cacheStorage.mockFetchError();
 
-      final future = sut.loadBySurvey(surveyId: surveyId);
+      final Future<SurveyResultEntity> future =
+          sut.loadBySurvey(surveyId: surveyId);
 
       expect(future, throwsA(DomainError.unexpected));
     });
@@ -156,7 +160,7 @@ void main() {
     test('Should throw UnexpectedError if save throws', () async {
       cacheStorage.mockSaveError();
 
-      final future = sut.save(surveyResult);
+      final Future<void> future = sut.save(surveyResult);
 
       expect(future, throwsA(DomainError.unexpected));
     });

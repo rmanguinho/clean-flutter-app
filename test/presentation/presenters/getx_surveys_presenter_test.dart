@@ -1,8 +1,6 @@
-import 'package:fordev/domain/entities/entities.dart';
-import 'package:fordev/domain/helpers/helpers.dart';
-import 'package:fordev/presentation/presenters/presenters.dart';
-import 'package:fordev/ui/helpers/helpers.dart';
-import 'package:fordev/ui/pages/pages.dart';
+import 'package:fordev/domain/domain.dart';
+import 'package:fordev/presentation/presentation.dart';
+import 'package:fordev/ui/ui.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -31,7 +29,7 @@ void main() {
     expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
     sut.surveysStream.listen(
       expectAsync1(
-        (surveys) => expect(surveys, [
+        (List<SurveyViewModel> surveys) => expect(surveys, [
           SurveyViewModel(
             id: surveys[0].id,
             question: surveys[0].question,
@@ -58,7 +56,7 @@ void main() {
     sut.surveysStream.listen(
       null,
       onError: expectAsync1(
-        (error) => expect(error, UIError.unexpected.description),
+        (Object? error) => expect(error, UIError.unexpected.description),
       ),
     );
 

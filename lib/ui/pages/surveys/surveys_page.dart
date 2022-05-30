@@ -26,7 +26,7 @@ class _SurveysPageState extends State<SurveysPage>
     return Scaffold(
       appBar: AppBar(title: Text(R.string.surveys)),
       body: Builder(
-        builder: (context) {
+        builder: (BuildContext context) {
           handleLoading(context, widget.presenter.isLoadingStream);
           handleSessionExpired(widget.presenter.isSessionExpiredStream);
           handleNavigation(widget.presenter.navigateToStream);
@@ -34,7 +34,10 @@ class _SurveysPageState extends State<SurveysPage>
 
           return StreamBuilder<List<SurveyViewModel>>(
             stream: widget.presenter.surveysStream,
-            builder: (context, snapshot) {
+            builder: (
+              BuildContext context,
+              AsyncSnapshot<List<SurveyViewModel>> snapshot,
+            ) {
               if (snapshot.hasError) {
                 return ReloadScreen(
                   error: '${snapshot.error}',
@@ -47,7 +50,7 @@ class _SurveysPageState extends State<SurveysPage>
                   child: SurveyItems(snapshot.data!),
                 );
               }
-              return const SizedBox(height: 0);
+              return const SizedBox.shrink();
             },
           );
         },

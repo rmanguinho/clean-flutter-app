@@ -1,8 +1,7 @@
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-import '../../domain/helpers/helpers.dart';
-import '../../domain/usecases/usecases.dart';
+import '../../domain/domain.dart';
 import '../../ui/helpers/helpers.dart';
 import '../../ui/pages/pages.dart';
 import '../mixins/mixins.dart';
@@ -11,7 +10,7 @@ class GetxSurveysPresenter extends GetxController
     with SessionManager, LoadingManager, NavigationManager
     implements SurveysPresenter {
   final LoadSurveys loadSurveys;
-  final _surveys = Rx<List<SurveyViewModel>>([]);
+  final Rx<List<SurveyViewModel>> _surveys = Rx<List<SurveyViewModel>>([]);
 
   @override
   Stream<List<SurveyViewModel>> get surveysStream => _surveys.stream;
@@ -22,10 +21,10 @@ class GetxSurveysPresenter extends GetxController
   Future<void> loadData() async {
     try {
       isLoading = true;
-      final surveys = await loadSurveys.load();
+      final List<SurveyEntity> surveys = await loadSurveys.load();
       _surveys.value = surveys
           .map(
-            (survey) => SurveyViewModel(
+            (SurveyEntity survey) => SurveyViewModel(
               id: survey.id,
               question: survey.question,
               date: DateFormat('dd MMM yyyy').format(survey.dateTime),

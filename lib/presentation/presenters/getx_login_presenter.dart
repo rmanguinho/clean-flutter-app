@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../domain/helpers/helpers.dart';
-import '../../domain/usecases/usecases.dart';
+import '../../domain/domain.dart';
 import '../../ui/helpers/helpers.dart';
 import '../../ui/pages/pages.dart';
 import '../mixins/mixins.dart';
@@ -14,8 +13,8 @@ class GetxLoginPresenter extends GetxController
   final Authentication authentication;
   final SaveCurrentAccount saveCurrentAccount;
 
-  final _emailError = Rx<UIError?>(null);
-  final _passwordError = Rx<UIError?>(null);
+  final Rx<UIError?> _emailError = Rx<UIError?>(null);
+  final Rx<UIError?> _passwordError = Rx<UIError?>(null);
 
   String? _email;
   String? _password;
@@ -46,11 +45,12 @@ class GetxLoginPresenter extends GetxController
   }
 
   UIError? _validateField(String field) {
-    final formData = {
+    final Map<String, String?> formData = {
       'email': _email,
       'password': _password,
     };
-    final error = validation.validate(field: field, input: formData);
+    final ValidationError? error =
+        validation.validate(field: field, input: formData);
     switch (error) {
       case ValidationError.invalidField:
         return UIError.invalidField;
@@ -73,7 +73,7 @@ class GetxLoginPresenter extends GetxController
     try {
       mainError = null;
       isLoading = true;
-      final account = await authentication
+      final AccountEntity account = await authentication
           .auth(AuthenticationParams(email: _email!, secret: _password!));
       await saveCurrentAccount.save(account);
       navigateTo = '/surveys';

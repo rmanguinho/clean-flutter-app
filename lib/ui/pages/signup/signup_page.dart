@@ -17,7 +17,7 @@ class SignUpPage extends StatelessWidget
   Widget build(BuildContext context) {
     return Scaffold(
       body: Builder(
-        builder: (context) {
+        builder: (BuildContext context) {
           handleLoading(context, presenter.isLoadingStream);
           handleMainError(context, presenter.mainErrorStream);
           handleNavigation(presenter.navigateToStream, clear: true);
@@ -32,7 +32,7 @@ class SignUpPage extends StatelessWidget
                   Headline1(text: R.string.addAccount),
                   Padding(
                     padding: const EdgeInsets.all(32),
-                    child: ListenableProvider(
+                    child: ListenableProvider<SignUpPresenter>(
                       create: (_) => presenter,
                       child: Form(
                         child: Column(

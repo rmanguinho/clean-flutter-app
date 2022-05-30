@@ -8,16 +8,16 @@ class EmailValidation extends Equatable implements FieldValidation {
   final String field;
 
   @override
-  List get props => [field];
+  List<String> get props => <String>[field];
 
   const EmailValidation(this.field);
 
   @override
   ValidationError? validate(Map input) {
-    final regex = RegExp(
+    final RegExp regex = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
     );
-    final isValid =
+    final bool isValid =
         input[field]?.isNotEmpty != true || regex.hasMatch(input[field]);
     return isValid ? null : ValidationError.invalidField;
   }

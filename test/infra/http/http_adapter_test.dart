@@ -1,6 +1,6 @@
 import 'package:faker/faker.dart';
-import 'package:fordev/data/http/http.dart';
-import 'package:fordev/infra/http/http.dart';
+import 'package:fordev/data/data.dart';
+import 'package:fordev/infra/infra.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -23,7 +23,7 @@ void main() {
 
   group('shared', () {
     test('Should throw ServerError if invalid method is provided', () async {
-      final future = sut.request(url: url, method: 'invalid_method');
+      final Future future = sut.request(url: url, method: 'invalid_method');
 
       expect(future, throwsA(HttpError.serverError));
     });
@@ -102,7 +102,7 @@ void main() {
     test('Should return BadRequestError if post returns 400', () async {
       client.mockPost(400, body: '');
 
-      final future = sut.request(url: url, method: 'post');
+      final Future future = sut.request(url: url, method: 'post');
 
       expect(future, throwsA(HttpError.badRequest));
     });
@@ -110,7 +110,7 @@ void main() {
     test('Should return BadRequestError if post returns 400', () async {
       client.mockPost(400);
 
-      final future = sut.request(url: url, method: 'post');
+      final Future future = sut.request(url: url, method: 'post');
 
       expect(future, throwsA(HttpError.badRequest));
     });
@@ -118,7 +118,7 @@ void main() {
     test('Should return UnauthorizedError if post returns 401', () async {
       client.mockPost(401);
 
-      final future = sut.request(url: url, method: 'post');
+      final Future future = sut.request(url: url, method: 'post');
 
       expect(future, throwsA(HttpError.unauthorized));
     });
@@ -126,7 +126,7 @@ void main() {
     test('Should return ForbiddenError if post returns 403', () async {
       client.mockPost(403);
 
-      final future = sut.request(url: url, method: 'post');
+      final Future future = sut.request(url: url, method: 'post');
 
       expect(future, throwsA(HttpError.forbidden));
     });
@@ -134,7 +134,7 @@ void main() {
     test('Should return NotFoundError if post returns 404', () async {
       client.mockPost(404);
 
-      final future = sut.request(url: url, method: 'post');
+      final Future future = sut.request(url: url, method: 'post');
 
       expect(future, throwsA(HttpError.notFound));
     });
@@ -142,7 +142,7 @@ void main() {
     test('Should return ServerError if post returns 500', () async {
       client.mockPost(500);
 
-      final future = sut.request(url: url, method: 'post');
+      final Future future = sut.request(url: url, method: 'post');
 
       expect(future, throwsA(HttpError.serverError));
     });
@@ -150,7 +150,7 @@ void main() {
     test('Should return ServerError if post throws', () async {
       client.mockPostError();
 
-      final future = sut.request(url: url, method: 'post');
+      final Future future = sut.request(url: url, method: 'post');
 
       expect(future, throwsA(HttpError.serverError));
     });
@@ -219,7 +219,7 @@ void main() {
     test('Should return BadRequestError if get returns 400', () async {
       client.mockGet(400, body: '');
 
-      final future = sut.request(url: url, method: 'get');
+      final Future future = sut.request(url: url, method: 'get');
 
       expect(future, throwsA(HttpError.badRequest));
     });
@@ -227,7 +227,7 @@ void main() {
     test('Should return BadRequestError if get returns 400', () async {
       client.mockGet(400);
 
-      final future = sut.request(url: url, method: 'get');
+      final Future future = sut.request(url: url, method: 'get');
 
       expect(future, throwsA(HttpError.badRequest));
     });
@@ -235,7 +235,7 @@ void main() {
     test('Should return UnauthorizedError if get returns 401', () async {
       client.mockGet(401);
 
-      final future = sut.request(url: url, method: 'get');
+      final Future future = sut.request(url: url, method: 'get');
 
       expect(future, throwsA(HttpError.unauthorized));
     });
@@ -243,7 +243,7 @@ void main() {
     test('Should return ForbiddenError if get returns 403', () async {
       client.mockGet(403);
 
-      final future = sut.request(url: url, method: 'get');
+      final Future future = sut.request(url: url, method: 'get');
 
       expect(future, throwsA(HttpError.forbidden));
     });
@@ -251,7 +251,7 @@ void main() {
     test('Should return NotFoundError if get returns 404', () async {
       client.mockGet(404);
 
-      final future = sut.request(url: url, method: 'get');
+      final Future future = sut.request(url: url, method: 'get');
 
       expect(future, throwsA(HttpError.notFound));
     });
@@ -259,7 +259,7 @@ void main() {
     test('Should return ServerError if get returns 500', () async {
       client.mockGet(500);
 
-      final future = sut.request(url: url, method: 'get');
+      final Future future = sut.request(url: url, method: 'get');
 
       expect(future, throwsA(HttpError.serverError));
     });
@@ -267,7 +267,7 @@ void main() {
     test('Should return ServerError if get throws', () async {
       client.mockGetError();
 
-      final future = sut.request(url: url, method: 'get');
+      final Future future = sut.request(url: url, method: 'get');
 
       expect(future, throwsA(HttpError.serverError));
     });
@@ -346,7 +346,7 @@ void main() {
     test('Should return BadRequestError if put returns 400', () async {
       client.mockPut(400, body: '');
 
-      final future = sut.request(url: url, method: 'put');
+      final Future future = sut.request(url: url, method: 'put');
 
       expect(future, throwsA(HttpError.badRequest));
     });
@@ -354,7 +354,7 @@ void main() {
     test('Should return BadRequestError if put returns 400', () async {
       client.mockPut(400);
 
-      final future = sut.request(url: url, method: 'put');
+      final Future future = sut.request(url: url, method: 'put');
 
       expect(future, throwsA(HttpError.badRequest));
     });
@@ -362,7 +362,7 @@ void main() {
     test('Should return UnauthorizedError if put returns 401', () async {
       client.mockPut(401);
 
-      final future = sut.request(url: url, method: 'put');
+      final Future future = sut.request(url: url, method: 'put');
 
       expect(future, throwsA(HttpError.unauthorized));
     });
@@ -370,7 +370,7 @@ void main() {
     test('Should return ForbiddenError if put returns 403', () async {
       client.mockPut(403);
 
-      final future = sut.request(url: url, method: 'put');
+      final Future future = sut.request(url: url, method: 'put');
 
       expect(future, throwsA(HttpError.forbidden));
     });
@@ -378,7 +378,7 @@ void main() {
     test('Should return NotFoundError if put returns 404', () async {
       client.mockPut(404);
 
-      final future = sut.request(url: url, method: 'put');
+      final Future future = sut.request(url: url, method: 'put');
 
       expect(future, throwsA(HttpError.notFound));
     });
@@ -386,7 +386,7 @@ void main() {
     test('Should return ServerError if put returns 500', () async {
       client.mockPut(500);
 
-      final future = sut.request(url: url, method: 'put');
+      final Future future = sut.request(url: url, method: 'put');
 
       expect(future, throwsA(HttpError.serverError));
     });
@@ -394,7 +394,7 @@ void main() {
     test('Should return ServerError if put throws', () async {
       client.mockPutError();
 
-      final future = sut.request(url: url, method: 'put');
+      final Future future = sut.request(url: url, method: 'put');
 
       expect(future, throwsA(HttpError.serverError));
     });

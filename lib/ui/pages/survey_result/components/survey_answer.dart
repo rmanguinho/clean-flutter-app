@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import './components.dart';
 import '../survey_result.dart';
 
 class SurveyAnswer extends StatelessWidget {

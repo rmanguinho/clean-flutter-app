@@ -14,7 +14,7 @@ class ReloadScreen extends StatelessWidget {
       padding: const EdgeInsets.all(40),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        children: <Widget>[
           Text(
             error,
             style: const TextStyle(fontSize: 16),

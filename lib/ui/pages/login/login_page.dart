@@ -17,7 +17,7 @@ class LoginPage extends StatelessWidget
   Widget build(BuildContext context) {
     return Scaffold(
       body: Builder(
-        builder: (context) {
+        builder: (BuildContext context) {
           handleLoading(context, presenter.isLoadingStream);
           handleMainError(context, presenter.mainErrorStream);
           handleNavigation(presenter.navigateToStream, clear: true);
@@ -32,7 +32,7 @@ class LoginPage extends StatelessWidget
                   Headline1(text: R.string.login),
                   Padding(
                     padding: const EdgeInsets.all(32),
-                    child: ListenableProvider(
+                    child: ListenableProvider<LoginPresenter>(
                       create: (_) => presenter,
                       child: Form(
                         child: Column(

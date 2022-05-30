@@ -7,7 +7,7 @@ Future<void> showLoading(BuildContext context) async {
   await showDialog(
     context: context,
     barrierDismissible: false,
-    builder: (context) {
+    builder: (BuildContext context) {
       return SimpleDialog(
         children: <Widget>[
           Column(

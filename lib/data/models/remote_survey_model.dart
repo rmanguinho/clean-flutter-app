@@ -1,5 +1,5 @@
 import '../../data/http/http.dart';
-import '../../domain/entities/entities.dart';
+import '../../domain/domain.dart';
 
 class RemoteSurveyModel {
   final String id;

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fordev/ui/helpers/helpers.dart';
-import 'package:fordev/ui/pages/pages.dart';
-import 'package:fordev/ui/pages/survey_result/components/components.dart';
+import 'package:fordev/ui/ui.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 
@@ -98,7 +96,7 @@ void main() {
     expect(find.text('40%'), findsOneWidget);
     expect(find.byType(ActiveIcon), findsOneWidget);
     expect(find.byType(DisabledIcon), findsOneWidget);
-    final image =
+    final NetworkImage image =
         tester.widget<Image>(find.byType(Image)).image as NetworkImage;
     expect(image.url, 'Image 0');
   });

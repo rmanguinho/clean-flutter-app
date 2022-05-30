@@ -1,4 +1,4 @@
-import 'package:fordev/ui/pages/pages.dart';
+import 'package:fordev/ui/ui.dart';
 
 class ViewModelFactory {
   static SurveyResultViewModel makeSurveyResult() =>

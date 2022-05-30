@@ -12,12 +12,12 @@ class LoginHeader extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          colors: [
+          colors: <Color>[
             Theme.of(context).primaryColorLight,
             Theme.of(context).primaryColorDark
           ],
         ),
-        boxShadow: const [
+        boxShadow: const <BoxShadow>[
           BoxShadow(
             offset: Offset(0, 0),
             spreadRadius: 0,

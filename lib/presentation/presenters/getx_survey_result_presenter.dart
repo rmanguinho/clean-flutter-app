@@ -1,8 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../domain/entities/entities.dart';
-import '../../domain/helpers/helpers.dart';
-import '../../domain/usecases/usecases.dart';
+import '../../domain/domain.dart';
 import '../../ui/helpers/helpers.dart';
 import '../../ui/pages/pages.dart';
 import '../helpers/helpers.dart';
@@ -14,7 +12,8 @@ class GetxSurveyResultPresenter extends GetxController
   final LoadSurveyResult loadSurveyResult;
   final SaveSurveyResult saveSurveyResult;
   final String surveyId;
-  final _surveyResult = Rx<SurveyResultViewModel?>(null);
+  final Rx<SurveyResultViewModel?> _surveyResult =
+      Rx<SurveyResultViewModel?>(null);
 
   @override
   Stream<SurveyResultViewModel?> get surveyResultStream => _surveyResult.stream;
@@ -42,7 +41,7 @@ class GetxSurveyResultPresenter extends GetxController
   ) async {
     try {
       isLoading = true;
-      final surveyResult = await action();
+      final SurveyResultEntity surveyResult = await action();
       _surveyResult.subject.add(surveyResult.toViewModel());
     } on DomainError catch (error) {
       if (error == DomainError.accessDenied) {

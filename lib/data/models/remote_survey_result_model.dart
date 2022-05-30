@@ -1,5 +1,5 @@
 import './models.dart';
-import '../../domain/entities/entities.dart';
+import '../../domain/domain.dart';
 import '../http/http.dart';
 
 class RemoteSurveyResultModel {
@@ -14,7 +14,9 @@ class RemoteSurveyResultModel {
   });
 
   factory RemoteSurveyResultModel.fromJson(Map json) {
-    if (!json.keys.toSet().containsAll(['surveyId', 'question', 'answers'])) {
+    if (!json.keys
+        .toSet()
+        .containsAll(<String>['surveyId', 'question', 'answers'])) {
       throw HttpError.invalidData;
     }
     return RemoteSurveyResultModel(
@@ -32,7 +34,9 @@ class RemoteSurveyResultModel {
         surveyId: surveyId,
         question: question,
         answers: answers
-            .map<SurveyAnswerEntity>((answer) => answer.toEntity())
+            .map<SurveyAnswerEntity>(
+              (RemoteSurveyAnswerModel answer) => answer.toEntity(),
+            )
             .toList(),
       );
 }

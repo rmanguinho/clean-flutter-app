@@ -9,10 +9,10 @@ class EmailInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<LoginPresenter>(context);
+    final LoginPresenter presenter = Provider.of<LoginPresenter>(context);
     return StreamBuilder<UIError?>(
       stream: presenter.emailErrorStream,
-      builder: (context, snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<UIError?> snapshot) {
         return TextFormField(
           decoration: InputDecoration(
             labelText: R.string.email,

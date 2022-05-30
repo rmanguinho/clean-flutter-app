@@ -1,11 +1,13 @@
-import '../../domain/entities/entities.dart';
+import '../../domain/domain.dart';
 import '../../ui/pages/pages.dart';
 
 extension SurveyResultEntityExtensions on SurveyResultEntity {
   SurveyResultViewModel toViewModel() => SurveyResultViewModel(
         surveyId: surveyId,
         question: question,
-        answers: answers.map((answer) => answer.toViewModel()).toList(),
+        answers: answers
+            .map((SurveyAnswerEntity answer) => answer.toViewModel())
+            .toList(),
       );
 }
 

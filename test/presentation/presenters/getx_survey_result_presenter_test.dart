@@ -1,9 +1,7 @@
 import 'package:faker/faker.dart';
-import 'package:fordev/domain/entities/entities.dart';
-import 'package:fordev/domain/helpers/helpers.dart';
-import 'package:fordev/presentation/presenters/presenters.dart';
-import 'package:fordev/ui/helpers/helpers.dart';
-import 'package:fordev/ui/pages/pages.dart';
+import 'package:fordev/domain/domain.dart';
+import 'package:fordev/presentation/presentation.dart';
+import 'package:fordev/ui/ui.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -64,7 +62,10 @@ void main() {
     test('Should emit correct events on success', () async {
       expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
       sut.surveyResultStream.listen(
-        expectAsync1((result) => expect(result, mapToViewModel(loadResult))),
+        expectAsync1(
+          (SurveyResultViewModel? result) =>
+              expect(result, mapToViewModel(loadResult)),
+        ),
       );
 
       await sut.loadData();
@@ -77,7 +78,7 @@ void main() {
       sut.surveyResultStream.listen(
         null,
         onError: expectAsync1(
-          (error) => expect(error, UIError.unexpected.description),
+          (Object? error) => expect(error, UIError.unexpected.description),
         ),
       );
 
@@ -122,7 +123,7 @@ void main() {
       sut.surveyResultStream.listen(
         null,
         onError: expectAsync1(
-          (error) => expect(error, UIError.unexpected.description),
+          (Object? error) => expect(error, UIError.unexpected.description),
         ),
       );
 

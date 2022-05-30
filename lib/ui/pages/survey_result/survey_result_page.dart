@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import './components/components.dart';
 import './survey_result.dart';
 import '../../components/components.dart';
 import '../../helpers/helpers.dart';
@@ -17,14 +16,17 @@ class SurveyResultPage extends StatelessWidget
     return Scaffold(
       appBar: AppBar(title: Text(R.string.surveyResult)),
       body: Builder(
-        builder: (context) {
+        builder: (BuildContext context) {
           handleLoading(context, presenter.isLoadingStream);
           handleSessionExpired(presenter.isSessionExpiredStream);
           presenter.loadData();
 
           return StreamBuilder<SurveyResultViewModel?>(
             stream: presenter.surveyResultStream,
-            builder: (context, snapshot) {
+            builder: (
+              BuildContext context,
+              AsyncSnapshot<SurveyResultViewModel?> snapshot,
+            ) {
               if (snapshot.hasError) {
                 return ReloadScreen(
                   error: '${snapshot.error}',

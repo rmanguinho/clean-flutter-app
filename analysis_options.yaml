@@ -23,8 +23,8 @@ linter:
   # producing the lint.
   rules:
     require_trailing_commas: true
-    use_super_parameters: true
     always_put_required_named_parameters_first: true
+    use_super_parameters: true
     always_declare_return_types: true
     avoid_print: true
     curly_braces_in_flow_control_structures: true
@@ -72,7 +72,7 @@ linter:
     avoid_return_types_on_setters: true
     parameter_assignments: true
     prefer_function_declarations_over_variables: false
-    # unawaited_futures: true # Error testing
+    unawaited_futures: false
     prefer_relative_imports: true
     annotate_overrides: false
     overridden_fields: false

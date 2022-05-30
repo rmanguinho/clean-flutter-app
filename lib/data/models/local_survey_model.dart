@@ -1,4 +1,4 @@
-import '../../domain/entities/entities.dart';
+import '../../domain/domain.dart';
 
 class LocalSurveyModel {
   final String id;

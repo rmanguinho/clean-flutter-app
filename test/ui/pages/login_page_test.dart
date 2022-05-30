@@ -1,8 +1,7 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:fordev/ui/helpers/helpers.dart';
-import 'package:fordev/ui/pages/pages.dart';
+import 'package:fordev/ui/ui.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../helpers/helpers.dart';
@@ -25,11 +24,11 @@ void main() {
       (WidgetTester tester) async {
     await loadPage(tester);
 
-    final email = faker.internet.email();
+    final String email = faker.internet.email();
     await tester.enterText(find.bySemanticsLabel('Email'), email);
     verify(() => presenter.validateEmail(email));
 
-    final password = faker.internet.password();
+    final String password = faker.internet.password();
     await tester.enterText(find.bySemanticsLabel('Senha'), password);
     verify(() => presenter.validatePassword(password));
   });
@@ -103,7 +102,8 @@ void main() {
     presenter.emitFormValid();
     await tester.pump();
 
-    final button = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
+    final ElevatedButton button =
+        tester.widget<ElevatedButton>(find.byType(ElevatedButton));
     expect(button.onPressed, isNotNull);
   });
 
@@ -114,7 +114,8 @@ void main() {
     presenter.emitFormError();
     await tester.pump();
 
-    final button = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
+    final ElevatedButton button =
+        tester.widget<ElevatedButton>(find.byType(ElevatedButton));
     expect(button.onPressed, null);
   });
 
@@ -124,7 +125,7 @@ void main() {
 
     presenter.emitFormValid();
     await tester.pump();
-    final button = find.byType(ElevatedButton);
+    final Finder button = find.byType(ElevatedButton);
     await tester.ensureVisible(button);
     await tester.tap(button);
     await tester.pump();
@@ -193,7 +194,7 @@ void main() {
       (WidgetTester tester) async {
     await loadPage(tester);
 
-    final button = find.text('Criar conta');
+    final Finder button = find.text('Criar conta');
     await tester.ensureVisible(button);
     await tester.tap(button);
     await tester.pump();

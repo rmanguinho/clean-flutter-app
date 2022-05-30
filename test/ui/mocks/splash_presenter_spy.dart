@@ -1,10 +1,11 @@
 import 'dart:async';
 
-import 'package:fordev/ui/pages/pages.dart';
+import 'package:fordev/ui/ui.dart';
 import 'package:mocktail/mocktail.dart';
 
 class SplashPresenterSpy extends Mock implements SplashPresenter {
-  final navigateToController = StreamController<String?>();
+  final StreamController<String?> navigateToController =
+      StreamController<String?>();
 
   SplashPresenterSpy() {
     when(() => checkAccount(durationInSeconds: any(named: 'durationInSeconds')))

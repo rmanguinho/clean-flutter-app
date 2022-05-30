@@ -9,7 +9,7 @@ class CompareFieldsValidation extends Equatable implements FieldValidation {
   final String fieldToCompare;
 
   @override
-  List get props => [field, fieldToCompare];
+  List<String> get props => <String>[field, fieldToCompare];
 
   const CompareFieldsValidation({
     required this.field,
@@ -17,9 +17,11 @@ class CompareFieldsValidation extends Equatable implements FieldValidation {
   });
 
   @override
-  ValidationError? validate(Map input) => input[field] != null &&
-          input[fieldToCompare] != null &&
-          input[field] != input[fieldToCompare]
-      ? ValidationError.invalidField
-      : null;
+  ValidationError? validate(Map input) {
+    return input[field] != null &&
+            input[fieldToCompare] != null &&
+            input[field] != input[fieldToCompare]
+        ? ValidationError.invalidField
+        : null;
+  }
 }

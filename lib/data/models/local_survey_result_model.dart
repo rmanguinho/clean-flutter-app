@@ -1,5 +1,5 @@
 import './models.dart';
-import '../../domain/entities/entities.dart';
+import '../../domain/domain.dart';
 
 class LocalSurveyResultModel {
   final String surveyId;
@@ -33,7 +33,8 @@ class LocalSurveyResultModel {
         question: entity.question,
         answers: entity.answers
             .map<LocalSurveyAnswerModel>(
-              (answer) => LocalSurveyAnswerModel.fromEntity(answer),
+              (SurveyAnswerEntity answer) =>
+                  LocalSurveyAnswerModel.fromEntity(answer),
             )
             .toList(),
       );
@@ -42,13 +43,17 @@ class LocalSurveyResultModel {
         surveyId: surveyId,
         question: question,
         answers: answers
-            .map<SurveyAnswerEntity>((answer) => answer.toEntity())
+            .map<SurveyAnswerEntity>(
+              (LocalSurveyAnswerModel answer) => answer.toEntity(),
+            )
             .toList(),
       );
 
   Map toJson() => {
         'surveyId': surveyId,
         'question': question,
-        'answers': answers.map<Map>((answer) => answer.toJson()).toList()
+        'answers': answers
+            .map<Map>((LocalSurveyAnswerModel answer) => answer.toJson())
+            .toList()
       };
 }

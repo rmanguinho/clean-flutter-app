@@ -15,7 +15,7 @@ class SplashPage extends StatelessWidget with NavigationManager {
     return Scaffold(
       appBar: AppBar(title: const Text('4Dev')),
       body: Builder(
-        builder: (context) {
+        builder: (BuildContext context) {
           handleNavigation(presenter.navigateToStream, clear: true);
 
           return const Center(

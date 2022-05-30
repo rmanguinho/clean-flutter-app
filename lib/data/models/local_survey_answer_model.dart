@@ -1,4 +1,4 @@
-import '../../domain/entities/entities.dart';
+import '../../domain/domain.dart';
 
 class LocalSurveyAnswerModel {
   final String? image;
@@ -16,7 +16,7 @@ class LocalSurveyAnswerModel {
   factory LocalSurveyAnswerModel.fromJson(Map json) {
     if (!json.keys
         .toSet()
-        .containsAll(['answer', 'isCurrentAnswer', 'percent'])) {
+        .containsAll(<String>['answer', 'isCurrentAnswer', 'percent'])) {
       throw Exception();
     }
     return LocalSurveyAnswerModel(

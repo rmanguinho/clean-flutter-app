@@ -1,8 +1,6 @@
 import 'package:faker/faker.dart';
-import 'package:fordev/data/http/http.dart';
-import 'package:fordev/data/usecases/usecases.dart';
-import 'package:fordev/domain/helpers/helpers.dart';
-import 'package:fordev/domain/usecases/usecases.dart';
+import 'package:fordev/data/data.dart';
+import 'package:fordev/domain/domain.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -41,7 +39,7 @@ void main() {
   test('Should throw UnexpectedError if HttpClient returns 400', () async {
     httpClient.mockRequestError(HttpError.badRequest);
 
-    final future = sut.auth(params);
+    final Future<AccountEntity> future = sut.auth(params);
 
     expect(future, throwsA(DomainError.unexpected));
   });
@@ -49,7 +47,7 @@ void main() {
   test('Should throw UnexpectedError if HttpClient returns 404', () async {
     httpClient.mockRequestError(HttpError.notFound);
 
-    final future = sut.auth(params);
+    final Future<AccountEntity> future = sut.auth(params);
 
     expect(future, throwsA(DomainError.unexpected));
   });
@@ -57,7 +55,7 @@ void main() {
   test('Should throw UnexpectedError if HttpClient returns 500', () async {
     httpClient.mockRequestError(HttpError.serverError);
 
-    final future = sut.auth(params);
+    final Future<AccountEntity> future = sut.auth(params);
 
     expect(future, throwsA(DomainError.unexpected));
   });
@@ -66,13 +64,13 @@ void main() {
       () async {
     httpClient.mockRequestError(HttpError.unauthorized);
 
-    final future = sut.auth(params);
+    final Future<AccountEntity> future = sut.auth(params);
 
     expect(future, throwsA(DomainError.invalidCredentials));
   });
 
   test('Should return an Account if HttpClient returns 200', () async {
-    final account = await sut.auth(params);
+    final AccountEntity account = await sut.auth(params);
 
     expect(account.token, apiResult['accessToken']);
   });
@@ -82,7 +80,7 @@ void main() {
       () async {
     httpClient.mockRequest({'invalid_key': 'invalid_value'});
 
-    final future = sut.auth(params);
+    final Future<AccountEntity> future = sut.auth(params);
 
     expect(future, throwsA(DomainError.unexpected));
   });

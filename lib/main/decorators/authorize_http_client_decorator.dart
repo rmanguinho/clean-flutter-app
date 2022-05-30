@@ -20,8 +20,8 @@ class AuthorizeHttpClientDecorator implements HttpClient {
     Map? headers,
   }) async {
     try {
-      final token = await fetchSecureCacheStorage.fetch('token');
-      final authorizedHeaders = headers ?? {}
+      final String? token = await fetchSecureCacheStorage.fetch('token');
+      final Map authorizedHeaders = headers ?? {}
         ..addAll({'x-access-token': token});
       return await decoratee.request(
         url: url,

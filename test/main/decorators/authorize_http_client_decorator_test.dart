@@ -1,6 +1,6 @@
 import 'package:faker/faker.dart';
-import 'package:fordev/data/http/http.dart';
-import 'package:fordev/main/decorators/decorators.dart';
+import 'package:fordev/data/data.dart';
+import 'package:fordev/main/main.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -76,7 +76,7 @@ void main() {
       () async {
     secureCacheStorage.mockFetchError();
 
-    final future = sut.request(url: url, method: method, body: body);
+    final Future future = sut.request(url: url, method: method, body: body);
 
     expect(future, throwsA(HttpError.forbidden));
     verify(() => secureCacheStorage.delete('token')).called(1);
@@ -85,7 +85,7 @@ void main() {
   test('Should rethrow if decoratee throws', () async {
     httpClient.mockRequestError(HttpError.badRequest);
 
-    final future = sut.request(url: url, method: method, body: body);
+    final Future future = sut.request(url: url, method: method, body: body);
 
     expect(future, throwsA(HttpError.badRequest));
   });
@@ -93,7 +93,7 @@ void main() {
   test('Should delete cache if request throws ForbiddenError', () async {
     httpClient.mockRequestError(HttpError.forbidden);
 
-    final future = sut.request(url: url, method: method, body: body);
+    final Future future = sut.request(url: url, method: method, body: body);
     await untilCalled(() => secureCacheStorage.delete('token'));
 
     expect(future, throwsA(HttpError.forbidden));

@@ -1,16 +1,19 @@
 import 'dart:async';
 
-import 'package:fordev/ui/helpers/helpers.dart';
-import 'package:fordev/ui/pages/pages.dart';
+import 'package:fordev/ui/ui.dart';
 import 'package:mocktail/mocktail.dart';
 
 class LoginPresenterSpy extends Mock implements LoginPresenter {
-  final emailErrorController = StreamController<UIError?>();
-  final passwordErrorController = StreamController<UIError?>();
-  final mainErrorController = StreamController<UIError?>();
-  final navigateToController = StreamController<String?>();
-  final isFormValidController = StreamController<bool>();
-  final isLoadingController = StreamController<bool>();
+  final StreamController<UIError?> emailErrorController =
+      StreamController<UIError?>();
+  final StreamController<UIError?> passwordErrorController =
+      StreamController<UIError?>();
+  final StreamController<UIError?> mainErrorController =
+      StreamController<UIError?>();
+  final StreamController<String?> navigateToController =
+      StreamController<String?>();
+  final StreamController<bool> isFormValidController = StreamController<bool>();
+  final StreamController<bool> isLoadingController = StreamController<bool>();
 
   LoginPresenterSpy() {
     when(() => auth()).thenAnswer((_) async => _);

@@ -1,5 +1,5 @@
 import 'package:faker/faker.dart';
-import 'package:fordev/infra/cache/cache.dart';
+import 'package:fordev/infra/infra.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
@@ -32,7 +32,7 @@ void main() {
     test('Should throw if deleteItem throws', () async {
       localStorage.mockDeleteError();
 
-      final future = sut.save(key: key, value: value);
+      final Future<void> future = sut.save(key: key, value: value);
 
       expect(future, throwsA(const TypeMatcher<Exception>()));
     });
@@ -40,7 +40,7 @@ void main() {
     test('Should throw if deleteItem throws', () async {
       localStorage.mockSaveError();
 
-      final future = sut.save(key: key, value: value);
+      final Future<void> future = sut.save(key: key, value: value);
 
       expect(future, throwsA(const TypeMatcher<Exception>()));
     });
@@ -56,7 +56,7 @@ void main() {
     test('Should throw if deleteItem throws', () async {
       localStorage.mockDeleteError();
 
-      final future = sut.delete(key);
+      final Future<void> future = sut.delete(key);
 
       expect(future, throwsA(const TypeMatcher<Exception>()));
     });
@@ -78,7 +78,7 @@ void main() {
     test('Should throw if getItem throws', () async {
       localStorage.mockFetchError();
 
-      final future = sut.fetch(key);
+      final Future future = sut.fetch(key);
 
       expect(future, throwsA(const TypeMatcher<Exception>()));
     });

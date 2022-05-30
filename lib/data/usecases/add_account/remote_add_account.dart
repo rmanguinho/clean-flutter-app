@@ -12,7 +12,7 @@ class RemoteAddAccount implements AddAccount {
 
   @override
   Future<AccountEntity> add(AddAccountParams params) async {
-    final body = RemoteAddAccountParams.fromDomain(params).toJson();
+    final Map body = RemoteAddAccountParams.fromDomain(params).toJson();
     try {
       final httpResponse =
           await httpClient.request(url: url, method: 'post', body: body);

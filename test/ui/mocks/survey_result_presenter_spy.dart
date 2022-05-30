@@ -1,12 +1,14 @@
 import 'dart:async';
 
-import 'package:fordev/ui/pages/pages.dart';
+import 'package:fordev/ui/ui.dart';
 import 'package:mocktail/mocktail.dart';
 
 class SurveyResultPresenterSpy extends Mock implements SurveyResultPresenter {
-  final surveyResultController = StreamController<SurveyResultViewModel?>();
-  final isSessionExpiredController = StreamController<bool>();
-  final isLoadingController = StreamController<bool>();
+  final StreamController<SurveyResultViewModel?> surveyResultController =
+      StreamController<SurveyResultViewModel?>();
+  final StreamController<bool> isSessionExpiredController =
+      StreamController<bool>();
+  final StreamController<bool> isLoadingController = StreamController<bool>();
 
   SurveyResultPresenterSpy() {
     when(() => loadData()).thenAnswer((_) async => _);
