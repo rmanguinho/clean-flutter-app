@@ -7,9 +7,10 @@ class SurveyResultEntity extends Equatable {
   final String question;
   final List<SurveyAnswerEntity> answers;
 
-  List get props => [surveyId, question, answers];
+  @override
+  List<Object> get props => <Object>[surveyId, question, answers];
 
-  SurveyResultEntity({
+  const SurveyResultEntity({
     required this.surveyId,
     required this.question,
     required this.answers,

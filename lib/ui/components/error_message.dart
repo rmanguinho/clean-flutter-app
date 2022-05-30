@@ -5,6 +5,6 @@ void showErrorMessage(BuildContext context, String error) {
     SnackBar(
       backgroundColor: Colors.red[900],
       content: Text(error, textAlign: TextAlign.center),
-    )
+    ),
   );
 }

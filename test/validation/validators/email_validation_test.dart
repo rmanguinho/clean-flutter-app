@@ -1,5 +1,5 @@
-import 'package:fordev/presentation/protocols/protocols.dart';
-import 'package:fordev/validation/validators/validators.dart';
+import 'package:fordev/presentation/presentation.dart';
+import 'package:fordev/validation/validation.dart';
 
 import 'package:test/test.dart';
 
@@ -7,7 +7,7 @@ void main() {
   late EmailValidation sut;
 
   setUp(() {
-    sut = EmailValidation('any_field');
+    sut = const EmailValidation('any_field');
   });
 
   test('Should return null if email is empty', () {
@@ -24,6 +24,9 @@ void main() {
   });
 
   test('Should return error if email is invalid', () {
-    expect(sut.validate({'any_field': 'rodrigo.manguinho'}), ValidationError.invalidField);
+    expect(
+      sut.validate({'any_field': 'rodrigo.manguinho'}),
+      ValidationError.invalidField,
+    );
   });
 }

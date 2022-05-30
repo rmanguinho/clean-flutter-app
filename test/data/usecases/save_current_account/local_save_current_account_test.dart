@@ -1,12 +1,10 @@
-import 'package:fordev/domain/entities/entities.dart';
-import 'package:fordev/domain/helpers/helpers.dart';
-import 'package:fordev/data/usecases/usecases.dart';
-
-import '../../mocks/mocks.dart';
-
 import 'package:faker/faker.dart';
+import 'package:fordev/data/data.dart';
+import 'package:fordev/domain/domain.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
+
+import '../../mocks/mocks.dart';
 
 void main() {
   late LocalSaveCurrentAccount sut;
@@ -25,10 +23,11 @@ void main() {
     verify(() => secureCacheStorage.save(key: 'token', value: account.token));
   });
 
-  test('Should throw UnexpectedError if SaveSecureCacheStorage throws', () async {
+  test('Should throw UnexpectedError if SaveSecureCacheStorage throws',
+      () async {
     secureCacheStorage.mockSaveError();
 
-    final future = sut.save(account);
+    final Future<void> future = sut.save(account);
 
     expect(future, throwsA(DomainError.unexpected));
   });

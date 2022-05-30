@@ -1,13 +1,11 @@
-import 'package:fordev/domain/entities/entities.dart';
-import 'package:fordev/domain/helpers/helpers.dart';
-import 'package:fordev/data/usecases/usecases.dart';
+import 'package:fordev/data/data.dart';
+import 'package:fordev/domain/domain.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:test/test.dart';
 
 import '../../../domain/mocks/entity_factory.dart';
 import '../../../infra/mocks/mocks.dart';
 import '../../mocks/mocks.dart';
-
-import 'package:mocktail/mocktail.dart';
-import 'package:test/test.dart';
 
 void main() {
   late LocalLoadSurveys sut;
@@ -31,18 +29,28 @@ void main() {
     });
 
     test('Should return a list of surveys on success', () async {
-      final surveys = await sut.load();
+      final List<SurveyEntity> surveys = await sut.load();
 
       expect(surveys, [
-        SurveyEntity(id: data[0]['id'], question: data[0]['question'], dateTime: DateTime.utc(2020, 7, 20), didAnswer: false),
-        SurveyEntity(id: data[1]['id'], question: data[1]['question'], dateTime: DateTime.utc(2019, 2, 2), didAnswer: true),
+        SurveyEntity(
+          id: data[0]['id'],
+          question: data[0]['question'],
+          dateTime: DateTime.utc(2020, 7, 20),
+          didAnswer: false,
+        ),
+        SurveyEntity(
+          id: data[1]['id'],
+          question: data[1]['question'],
+          dateTime: DateTime.utc(2019, 2, 2),
+          didAnswer: true,
+        ),
       ]);
     });
 
     test('Should throw UnexpectedError if cache is empty', () async {
       cacheStorage.mockFetch([]);
 
-      final future = sut.load();
+      final Future<List<SurveyEntity>> future = sut.load();
 
       expect(future, throwsA(DomainError.unexpected));
     });
@@ -50,7 +58,7 @@ void main() {
     test('Should throw UnexpectedError if cache is isvalid', () async {
       cacheStorage.mockFetch(CacheFactory.makeInvalidSurveyList());
 
-      final future = sut.load();
+      final Future<List<SurveyEntity>> future = sut.load();
 
       expect(future, throwsA(DomainError.unexpected));
     });
@@ -58,7 +66,7 @@ void main() {
     test('Should throw UnexpectedError if cache is incomplete', () async {
       cacheStorage.mockFetch(CacheFactory.makeIncompleteSurveyList());
 
-      final future = sut.load();
+      final Future<List<SurveyEntity>> future = sut.load();
 
       expect(future, throwsA(DomainError.unexpected));
     });
@@ -66,7 +74,7 @@ void main() {
     test('Should throw UnexpectedError if cache throws', () async {
       cacheStorage.mockFetchError();
 
-      final future = sut.load();
+      final Future<List<SurveyEntity>> future = sut.load();
 
       expect(future, throwsA(DomainError.unexpected));
     });
@@ -106,17 +114,20 @@ void main() {
 
   group('save', () {
     test('Should call cacheStorage with correct values', () async {
-      final list = [{
-        'id': surveys[0].id,
-        'question': surveys[0].question,
-        'date': '2020-02-02T00:00:00.000Z',
-        'didAnswer': 'true',
-      }, {
-        'id': surveys[1].id,
-        'question': surveys[1].question,
-        'date': '2018-12-20T00:00:00.000Z',
-        'didAnswer': 'false',
-      }];
+      final List<Map<String, String>> list = [
+        {
+          'id': surveys[0].id,
+          'question': surveys[0].question,
+          'date': '2020-02-02T00:00:00.000Z',
+          'didAnswer': 'true',
+        },
+        {
+          'id': surveys[1].id,
+          'question': surveys[1].question,
+          'date': '2018-12-20T00:00:00.000Z',
+          'didAnswer': 'false',
+        }
+      ];
 
       await sut.save(surveys);
 
@@ -126,7 +137,7 @@ void main() {
     test('Should throw UnexpectedError if save throws', () async {
       cacheStorage.mockSaveError();
 
-      final future = sut.save(surveys);
+      final Future<void> future = sut.save(surveys);
 
       expect(future, throwsA(DomainError.unexpected));
     });

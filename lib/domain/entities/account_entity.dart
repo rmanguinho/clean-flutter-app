@@ -3,7 +3,8 @@ import 'package:equatable/equatable.dart';
 class AccountEntity extends Equatable {
   final String token;
 
-  List get props => [token];
+  @override
+  List<String> get props => <String>[token];
 
-  AccountEntity({ required this.token });
+  const AccountEntity({required this.token});
 }

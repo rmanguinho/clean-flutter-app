@@ -1,9 +1,8 @@
-import 'package:fordev/presentation/presenters/presenters.dart';
-
-import '../../domain/mocks/mocks.dart';
-
+import 'package:fordev/presentation/presentation.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
+
+import '../../domain/mocks/mocks.dart';
 
 void main() {
   late GetxSplashPresenter sut;
@@ -26,7 +25,8 @@ void main() {
   });
 
   test('Should go to surveys page on success', () async {
-    sut.navigateToStream.listen(expectAsync1((page) => expect(page, '/surveys')));
+    sut.navigateToStream
+        .listen(expectAsync1((String? page) => expect(page, '/surveys')));
 
     await sut.checkAccount(durationInSeconds: 0);
   });
@@ -34,7 +34,8 @@ void main() {
   test('Should go to login page on error', () async {
     loadCurrentAccount.mockLoadError();
 
-    sut.navigateToStream.listen(expectAsync1((page) => expect(page, '/login')));
+    sut.navigateToStream
+        .listen(expectAsync1((String? page) => expect(page, '/login')));
 
     await sut.checkAccount(durationInSeconds: 0);
   });
