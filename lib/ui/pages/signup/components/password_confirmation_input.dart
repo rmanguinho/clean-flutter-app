@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class PasswordConfirmationInput extends StatelessWidget {
-  const PasswordConfirmationInput({Key? key}) : super(key: key);
+  const PasswordConfirmationInput({super.key});
 
   @override
   Widget build(BuildContext context) {

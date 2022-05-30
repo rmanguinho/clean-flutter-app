@@ -11,7 +11,7 @@ class LoginPage extends StatelessWidget
     with KeyboardManager, LoadingManager, UIErrorManager, NavigationManager {
   final LoginPresenter presenter;
 
-  LoginPage(this.presenter, {Key? key}) : super(key: key);
+  LoginPage(this.presenter, {super.key});
 
   @override
   Widget build(BuildContext context) {

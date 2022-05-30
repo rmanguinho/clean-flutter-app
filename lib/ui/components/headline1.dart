@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Headline1 extends StatelessWidget {
   final String text;
 
-  const Headline1({Key? key, required this.text}) : super(key: key);
+  const Headline1({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class NameInput extends StatelessWidget {
-  const NameInput({Key? key}) : super(key: key);
+  const NameInput({super.key});
 
   @override
   Widget build(BuildContext context) {

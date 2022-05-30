@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DisabledIcon extends StatelessWidget {
-  const DisabledIcon({Key? key}) : super(key: key);
+  const DisabledIcon({super.key});
 
   @override
   Widget build(BuildContext context) {

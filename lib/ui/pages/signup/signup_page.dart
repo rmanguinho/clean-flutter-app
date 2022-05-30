@@ -11,7 +11,7 @@ class SignUpPage extends StatelessWidget
     with KeyboardManager, LoadingManager, UIErrorManager, NavigationManager {
   final SignUpPresenter presenter;
 
-  SignUpPage(this.presenter, {Key? key}) : super(key: key);
+  SignUpPage(this.presenter, {super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -7,7 +7,7 @@ class SurveyResult extends StatelessWidget {
   final SurveyResultViewModel viewModel;
   final void Function({required String answer}) onSave;
 
-   const SurveyResult({Key? key, required this.viewModel, required this.onSave}) : super(key: key);
+   const SurveyResult({super.key, required this.viewModel, required this.onSave});
 
   @override
   Widget build(BuildContext context) {
