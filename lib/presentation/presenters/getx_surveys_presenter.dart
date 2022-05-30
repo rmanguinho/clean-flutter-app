@@ -24,11 +24,14 @@ class GetxSurveysPresenter extends GetxController
       isLoading = true;
       final surveys = await loadSurveys.load();
       _surveys.value = surveys
-          .map((survey) => SurveyViewModel(
+          .map(
+            (survey) => SurveyViewModel(
               id: survey.id,
               question: survey.question,
               date: DateFormat('dd MMM yyyy').format(survey.dateTime),
-              didAnswer: survey.didAnswer))
+              didAnswer: survey.didAnswer,
+            ),
+          )
           .toList();
     } on DomainError catch (error) {
       if (error == DomainError.accessDenied) {

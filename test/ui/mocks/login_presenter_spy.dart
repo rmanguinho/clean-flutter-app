@@ -14,18 +14,14 @@ class LoginPresenterSpy extends Mock implements LoginPresenter {
 
   LoginPresenterSpy() {
     when(() => auth()).thenAnswer((_) async => _);
-    when(() => emailErrorStream)
-        .thenAnswer((_) => emailErrorController.stream);
+    when(() => emailErrorStream).thenAnswer((_) => emailErrorController.stream);
     when(() => passwordErrorStream)
         .thenAnswer((_) => passwordErrorController.stream);
-    when(() => mainErrorStream)
-        .thenAnswer((_) => mainErrorController.stream);
-    when(() => navigateToStream)
-        .thenAnswer((_) => navigateToController.stream);
+    when(() => mainErrorStream).thenAnswer((_) => mainErrorController.stream);
+    when(() => navigateToStream).thenAnswer((_) => navigateToController.stream);
     when(() => isFormValidStream)
         .thenAnswer((_) => isFormValidController.stream);
-    when(() => isLoadingStream)
-        .thenAnswer((_) => isLoadingController.stream);
+    when(() => isLoadingStream).thenAnswer((_) => isLoadingController.stream);
   }
 
   void emitEmailError(UIError error) => emailErrorController.add(error);

@@ -9,8 +9,7 @@ class CacheStorageSpy extends Mock implements CacheStorage {
   }
 
   When mockFetchCall() => when(() => fetch(any()));
-  void mockFetch(dynamic json) =>
-      mockFetchCall().thenAnswer((_) async => json);
+  void mockFetch(dynamic json) => mockFetchCall().thenAnswer((_) async => json);
   void mockFetchError() => mockFetchCall().thenThrow(Exception());
 
   When mockDeleteCall() => when(() => delete(any()));

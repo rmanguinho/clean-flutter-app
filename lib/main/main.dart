@@ -24,12 +24,16 @@ class App extends StatelessWidget {
       getPages: [
         GetPage(name: '/', page: makeSplashPage, transition: Transition.fade),
         GetPage(
-            name: '/login', page: makeLoginPage, transition: Transition.fadeIn),
+          name: '/login',
+          page: makeLoginPage,
+          transition: Transition.fadeIn,
+        ),
         GetPage(name: '/signup', page: makeSignUpPage),
         GetPage(
-            name: '/surveys',
-            page: makeSurveysPage,
-            transition: Transition.fadeIn),
+          name: '/surveys',
+          page: makeSurveysPage,
+          transition: Transition.fadeIn,
+        ),
         GetPage(name: '/survey_result/:survey_id', page: makeSurveyResultPage),
       ],
     );

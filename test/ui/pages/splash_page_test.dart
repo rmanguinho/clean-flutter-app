@@ -13,7 +13,8 @@ void main() {
   Future<void> loadPage(WidgetTester tester) async {
     presenter = SplashPresenterSpy();
     await tester.pumpWidget(
-        makePage(path: '/', page: () => SplashPage(presenter: presenter)));
+      makePage(path: '/', page: () => SplashPage(presenter: presenter)),
+    );
   }
 
   tearDown(() {

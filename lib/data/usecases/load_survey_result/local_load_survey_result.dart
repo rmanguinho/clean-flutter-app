@@ -35,7 +35,9 @@ class LocalLoadSurveyResult implements LoadSurveyResult {
     try {
       final json = LocalSurveyResultModel.fromEntity(surveyResult).toJson();
       await cacheStorage.save(
-          key: 'survey_result/${surveyResult.surveyId}', value: json);
+        key: 'survey_result/${surveyResult.surveyId}',
+        value: json,
+      );
     } catch (error) {
       throw DomainError.unexpected;
     }

@@ -16,22 +16,17 @@ class SignUpPresenterSpy extends Mock implements SignUpPresenter {
 
   SignUpPresenterSpy() {
     when(() => signUp()).thenAnswer((_) async => _);
-    when(() => nameErrorStream)
-        .thenAnswer((_) => nameErrorController.stream);
-    when(() => emailErrorStream)
-        .thenAnswer((_) => emailErrorController.stream);
+    when(() => nameErrorStream).thenAnswer((_) => nameErrorController.stream);
+    when(() => emailErrorStream).thenAnswer((_) => emailErrorController.stream);
     when(() => passwordErrorStream)
         .thenAnswer((_) => passwordErrorController.stream);
     when(() => passwordConfirmationErrorStream)
         .thenAnswer((_) => passwordConfirmationErrorController.stream);
-    when(() => mainErrorStream)
-        .thenAnswer((_) => mainErrorController.stream);
-    when(() => navigateToStream)
-        .thenAnswer((_) => navigateToController.stream);
+    when(() => mainErrorStream).thenAnswer((_) => mainErrorController.stream);
+    when(() => navigateToStream).thenAnswer((_) => navigateToController.stream);
     when(() => isFormValidStream)
         .thenAnswer((_) => isFormValidController.stream);
-    when(() => isLoadingStream)
-        .thenAnswer((_) => isLoadingController.stream);
+    when(() => isLoadingStream).thenAnswer((_) => isLoadingController.stream);
   }
 
   void emitNameError(UIError error) => nameErrorController.add(error);

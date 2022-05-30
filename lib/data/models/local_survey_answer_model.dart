@@ -20,24 +20,27 @@ class LocalSurveyAnswerModel {
       throw Exception();
     }
     return LocalSurveyAnswerModel(
-        image: json['image'],
-        answer: json['answer'],
-        isCurrentAnswer: json['isCurrentAnswer'].toLowerCase() == 'true',
-        percent: int.parse(json['percent']));
+      image: json['image'],
+      answer: json['answer'],
+      isCurrentAnswer: json['isCurrentAnswer'].toLowerCase() == 'true',
+      percent: int.parse(json['percent']),
+    );
   }
 
   factory LocalSurveyAnswerModel.fromEntity(SurveyAnswerEntity entity) =>
       LocalSurveyAnswerModel(
-          image: entity.image,
-          answer: entity.answer,
-          percent: entity.percent,
-          isCurrentAnswer: entity.isCurrentAnswer);
+        image: entity.image,
+        answer: entity.answer,
+        percent: entity.percent,
+        isCurrentAnswer: entity.isCurrentAnswer,
+      );
 
   SurveyAnswerEntity toEntity() => SurveyAnswerEntity(
-      image: image,
-      answer: answer,
-      isCurrentAnswer: isCurrentAnswer,
-      percent: percent);
+        image: image,
+        answer: answer,
+        isCurrentAnswer: isCurrentAnswer,
+        percent: percent,
+      );
 
   Map toJson() => {
         'image': image,

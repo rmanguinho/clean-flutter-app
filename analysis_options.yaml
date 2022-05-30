@@ -22,7 +22,7 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
-    # require_trailing_commas: true
+    require_trailing_commas: true
     # always_put_required_named_parameters_first: true
     # use_super_parameters: true
     # always_declare_return_types: true

@@ -33,20 +33,23 @@ class _SurveysPageState extends State<SurveysPage>
           widget.presenter.loadData();
 
           return StreamBuilder<List<SurveyViewModel>>(
-              stream: widget.presenter.surveysStream,
-              builder: (context, snapshot) {
-                if (snapshot.hasError) {
-                  return ReloadScreen(
-                      error: '${snapshot.error}',
-                      reload: widget.presenter.loadData);
-                }
-                if (snapshot.hasData) {
-                  return ListenableProvider(
-                      create: (_) => widget.presenter,
-                      child: SurveyItems(snapshot.data!));
-                }
-                return const SizedBox(height: 0);
-              });
+            stream: widget.presenter.surveysStream,
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return ReloadScreen(
+                  error: '${snapshot.error}',
+                  reload: widget.presenter.loadData,
+                );
+              }
+              if (snapshot.hasData) {
+                return ListenableProvider(
+                  create: (_) => widget.presenter,
+                  child: SurveyItems(snapshot.data!),
+                );
+              }
+              return const SizedBox(height: 0);
+            },
+          );
         },
       ),
     );

@@ -8,7 +8,9 @@ void main() {
 
   setUp(() {
     sut = const CompareFieldsValidation(
-        field: 'any_field', fieldToCompare: 'other_field');
+      field: 'any_field',
+      fieldToCompare: 'other_field',
+    );
   });
 
   test('Should return null on invalid cases', () {

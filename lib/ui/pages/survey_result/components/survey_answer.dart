@@ -18,21 +18,24 @@ class SurveyAnswer extends StatelessWidget {
             child: Text(viewModel.answer, style: const TextStyle(fontSize: 16)),
           ),
         ),
-        Text(viewModel.percent,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).primaryColorDark,
-            )),
+        Text(
+          viewModel.percent,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).primaryColorDark,
+          ),
+        ),
         viewModel.isCurrentAnswer ? ActiveIcon() : DisabledIcon()
       ];
       if (viewModel.image != null) {
         children.insert(
-            0,
-            Image.network(
-              viewModel.image!,
-              width: 40,
-            ));
+          0,
+          Image.network(
+            viewModel.image!,
+            width: 40,
+          ),
+        );
       }
       return children;
     }

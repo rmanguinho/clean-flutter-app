@@ -16,7 +16,9 @@ void main() {
       const MinLengthValidation(field: 'password', size: 3),
       const RequiredFieldValidation('passwordConfirmation'),
       const CompareFieldsValidation(
-          field: 'passwordConfirmation', fieldToCompare: 'password')
+        field: 'passwordConfirmation',
+        fieldToCompare: 'password',
+      )
     ]);
   });
 }

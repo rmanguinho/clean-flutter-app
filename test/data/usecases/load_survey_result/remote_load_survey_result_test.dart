@@ -36,25 +36,27 @@ void main() {
     final result = await sut.loadBySurvey(surveyId: surveyId);
 
     expect(
-        result,
-        SurveyResultEntity(
-            surveyId: surveyResult['surveyId'],
-            question: surveyResult['question'],
-            answers: [
-              SurveyAnswerEntity(
-                image: surveyResult['answers'][0]['image'],
-                answer: surveyResult['answers'][0]['answer'],
-                isCurrentAnswer: surveyResult['answers'][0]
-                    ['isCurrentAccountAnswer'],
-                percent: surveyResult['answers'][0]['percent'],
-              ),
-              SurveyAnswerEntity(
-                answer: surveyResult['answers'][1]['answer'],
-                isCurrentAnswer: surveyResult['answers'][1]
-                    ['isCurrentAccountAnswer'],
-                percent: surveyResult['answers'][1]['percent'],
-              )
-            ]));
+      result,
+      SurveyResultEntity(
+        surveyId: surveyResult['surveyId'],
+        question: surveyResult['question'],
+        answers: [
+          SurveyAnswerEntity(
+            image: surveyResult['answers'][0]['image'],
+            answer: surveyResult['answers'][0]['answer'],
+            isCurrentAnswer: surveyResult['answers'][0]
+                ['isCurrentAccountAnswer'],
+            percent: surveyResult['answers'][0]['percent'],
+          ),
+          SurveyAnswerEntity(
+            answer: surveyResult['answers'][1]['answer'],
+            isCurrentAnswer: surveyResult['answers'][1]
+                ['isCurrentAccountAnswer'],
+            percent: surveyResult['answers'][1]['percent'],
+          )
+        ],
+      ),
+    );
   });
 
   test(

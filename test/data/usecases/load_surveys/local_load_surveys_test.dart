@@ -35,15 +35,17 @@ void main() {
 
       expect(surveys, [
         SurveyEntity(
-            id: data[0]['id'],
-            question: data[0]['question'],
-            dateTime: DateTime.utc(2020, 7, 20),
-            didAnswer: false),
+          id: data[0]['id'],
+          question: data[0]['question'],
+          dateTime: DateTime.utc(2020, 7, 20),
+          didAnswer: false,
+        ),
         SurveyEntity(
-            id: data[1]['id'],
-            question: data[1]['question'],
-            dateTime: DateTime.utc(2019, 2, 2),
-            didAnswer: true),
+          id: data[1]['id'],
+          question: data[1]['question'],
+          dateTime: DateTime.utc(2019, 2, 2),
+          didAnswer: true,
+        ),
       ]);
     });
 

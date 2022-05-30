@@ -16,7 +16,8 @@ class RemoteLoadSurveys implements LoadSurveys {
       final httpResponse = await httpClient.request(url: url, method: 'get');
       return httpResponse
           .map<SurveyEntity>(
-              (json) => RemoteSurveyModel.fromJson(json).toEntity())
+            (json) => RemoteSurveyModel.fromJson(json).toEntity(),
+          )
           .toList();
     } on HttpError catch (error) {
       throw error == HttpError.forbidden

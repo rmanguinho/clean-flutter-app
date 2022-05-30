@@ -10,14 +10,12 @@ class SurveyResultPresenterSpy extends Mock implements SurveyResultPresenter {
 
   SurveyResultPresenterSpy() {
     when(() => loadData()).thenAnswer((_) async => _);
-    when(() => save(answer: any(named: 'answer')))
-        .thenAnswer((_) async => _);
+    when(() => save(answer: any(named: 'answer'))).thenAnswer((_) async => _);
     when(() => surveyResultStream)
         .thenAnswer((_) => surveyResultController.stream);
     when(() => isSessionExpiredStream)
         .thenAnswer((_) => isSessionExpiredController.stream);
-    when(() => isLoadingStream)
-        .thenAnswer((_) => isLoadingController.stream);
+    when(() => isLoadingStream).thenAnswer((_) => isLoadingController.stream);
   }
 
   void emitSurveyResult(SurveyResultViewModel? data) =>

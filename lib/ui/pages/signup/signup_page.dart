@@ -44,14 +44,16 @@ class SignUpPage extends StatelessWidget
                             ),
                             PasswordInput(),
                             Padding(
-                              padding: const EdgeInsets.only(top: 8, bottom: 32),
+                              padding:
+                                  const EdgeInsets.only(top: 8, bottom: 32),
                               child: PasswordConfirmationInput(),
                             ),
                             SignUpButton(),
                             TextButton.icon(
-                                onPressed: presenter.goToLogin,
-                                icon: const Icon(Icons.exit_to_app),
-                                label: Text(R.string.login))
+                              onPressed: presenter.goToLogin,
+                              icon: const Icon(Icons.exit_to_app),
+                              label: Text(R.string.login),
+                            )
                           ],
                         ),
                       ),

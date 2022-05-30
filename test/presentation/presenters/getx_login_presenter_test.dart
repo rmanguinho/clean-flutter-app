@@ -30,9 +30,10 @@ void main() {
     authentication.mockAuthentication(account);
     saveCurrentAccount = SaveCurrentAccountSpy();
     sut = GetxLoginPresenter(
-        validation: validation,
-        authentication: authentication,
-        saveCurrentAccount: saveCurrentAccount);
+      validation: validation,
+      authentication: authentication,
+      saveCurrentAccount: saveCurrentAccount,
+    );
   });
 
   setUpAll(() {
@@ -115,7 +116,9 @@ void main() {
 
   test('Should disable form button if any field is invalid', () {
     validation.mockValidationError(
-        field: 'email', value: ValidationError.invalidField);
+      field: 'email',
+      value: ValidationError.invalidField,
+    );
 
     sut.isFormValidStream
         .listen(expectAsync1((isValid) => expect(isValid, false)));
@@ -138,8 +141,10 @@ void main() {
 
     await sut.auth();
 
-    verify(() => authentication
-        .auth(AuthenticationParams(email: email, secret: password))).called(1);
+    verify(
+      () => authentication
+          .auth(AuthenticationParams(email: email, secret: password)),
+    ).called(1);
   });
 
   test('Should call SaveCurrentAccount with correct value', () async {
@@ -189,7 +194,9 @@ void main() {
 
     expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
     expectLater(
-        sut.mainErrorStream, emitsInOrder([null, UIError.invalidCredentials]));
+      sut.mainErrorStream,
+      emitsInOrder([null, UIError.invalidCredentials]),
+    );
 
     await sut.auth();
   });

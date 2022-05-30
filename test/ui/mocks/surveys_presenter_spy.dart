@@ -14,10 +14,8 @@ class SurveysPresenterSpy extends Mock implements SurveysPresenter {
     when(() => surveysStream).thenAnswer((_) => surveysController.stream);
     when(() => isSessionExpiredStream)
         .thenAnswer((_) => isSessionExpiredController.stream);
-    when(() => isLoadingStream)
-        .thenAnswer((_) => isLoadingController.stream);
-    when(() => navigateToStream)
-        .thenAnswer((_) => navigateToController.stream);
+    when(() => isLoadingStream).thenAnswer((_) => isLoadingController.stream);
+    when(() => navigateToStream).thenAnswer((_) => navigateToController.stream);
   }
 
   void emitSurveys(List<SurveyViewModel> data) => surveysController.add(data);

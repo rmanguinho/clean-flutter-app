@@ -15,7 +15,8 @@ void main() {
   Future<void> loadPage(WidgetTester tester) async {
     presenter = SignUpPresenterSpy();
     await tester.pumpWidget(
-        makePage(path: '/signup', page: () => SignUpPage(presenter)));
+      makePage(path: '/signup', page: () => SignUpPage(presenter)),
+    );
   }
 
   tearDown(() {
@@ -56,9 +57,12 @@ void main() {
     presenter.emitEmailValid();
     await tester.pump();
     expect(
-        find.descendant(
-            of: find.bySemanticsLabel('Email'), matching: find.byType(Text)),
-        findsOneWidget);
+      find.descendant(
+        of: find.bySemanticsLabel('Email'),
+        matching: find.byType(Text),
+      ),
+      findsOneWidget,
+    );
   });
 
   testWidgets('Should present name error', (WidgetTester tester) async {
@@ -75,9 +79,12 @@ void main() {
     presenter.emitNameValid();
     await tester.pump();
     expect(
-        find.descendant(
-            of: find.bySemanticsLabel('Nome'), matching: find.byType(Text)),
-        findsOneWidget);
+      find.descendant(
+        of: find.bySemanticsLabel('Nome'),
+        matching: find.byType(Text),
+      ),
+      findsOneWidget,
+    );
   });
 
   testWidgets('Should present password error', (WidgetTester tester) async {
@@ -94,9 +101,12 @@ void main() {
     presenter.emitPasswordValid();
     await tester.pump();
     expect(
-        find.descendant(
-            of: find.bySemanticsLabel('Senha'), matching: find.byType(Text)),
-        findsOneWidget);
+      find.descendant(
+        of: find.bySemanticsLabel('Senha'),
+        matching: find.byType(Text),
+      ),
+      findsOneWidget,
+    );
   });
 
   testWidgets('Should present passwordConfirmation error',
@@ -114,10 +124,12 @@ void main() {
     presenter.emitPasswordConfirmationValid();
     await tester.pump();
     expect(
-        find.descendant(
-            of: find.bySemanticsLabel('Confirmar senha'),
-            matching: find.byType(Text)),
-        findsOneWidget);
+      find.descendant(
+        of: find.bySemanticsLabel('Confirmar senha'),
+        matching: find.byType(Text),
+      ),
+      findsOneWidget,
+    );
   });
 
   testWidgets('Should enable button if form is valid',
@@ -188,8 +200,10 @@ void main() {
     presenter.emitMainError(UIError.unexpected);
     await tester.pump();
 
-    expect(find.text('Algo errado aconteceu. Tente novamente em breve.'),
-        findsOneWidget);
+    expect(
+      find.text('Algo errado aconteceu. Tente novamente em breve.'),
+      findsOneWidget,
+    );
   });
 
   testWidgets('Should change page', (WidgetTester tester) async {

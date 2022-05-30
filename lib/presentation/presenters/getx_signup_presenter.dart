@@ -34,10 +34,11 @@ class GetxSignUpPresenter extends GetxController
   Stream<UIError?> get passwordConfirmationErrorStream =>
       _passwordConfirmationError.stream;
 
-  GetxSignUpPresenter(
-      {required this.validation,
-      required this.addAccount,
-      required this.saveCurrentAccount});
+  GetxSignUpPresenter({
+    required this.validation,
+    required this.addAccount,
+    required this.saveCurrentAccount,
+  });
 
   @override
   void validateEmail(String email) {
@@ -101,11 +102,14 @@ class GetxSignUpPresenter extends GetxController
     try {
       mainError = null;
       isLoading = true;
-      final account = await addAccount.add(AddAccountParams(
+      final account = await addAccount.add(
+        AddAccountParams(
           name: _name!,
           email: _email!,
           password: _password!,
-          passwordConfirmation: _passwordConfirmation!));
+          passwordConfirmation: _passwordConfirmation!,
+        ),
+      );
       await saveCurrentAccount.save(account);
       navigateTo = '/surveys';
     } on DomainError catch (error) {

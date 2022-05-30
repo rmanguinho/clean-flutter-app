@@ -34,9 +34,10 @@ void main() {
     addAccount.mockAddAccount(account);
     saveCurrentAccount = SaveCurrentAccountSpy();
     sut = GetxSignUpPresenter(
-        validation: validation,
-        addAccount: addAccount,
-        saveCurrentAccount: saveCurrentAccount);
+      validation: validation,
+      addAccount: addAccount,
+      saveCurrentAccount: saveCurrentAccount,
+    );
   });
 
   setUpAll(() {
@@ -195,9 +196,9 @@ void main() {
 
     sut.validatePasswordConfirmation(passwordConfirmation);
 
-    verify(() =>
-            validation.validate(field: 'passwordConfirmation', input: formData))
-        .called(1);
+    verify(
+      () => validation.validate(field: 'passwordConfirmation', input: formData),
+    ).called(1);
   });
 
   test('Should emit invalidFieldError if passwordConfirmation is invalid', () {
@@ -255,11 +256,16 @@ void main() {
 
     await sut.signUp();
 
-    verify(() => addAccount.add(AddAccountParams(
-        name: name,
-        email: email,
-        password: password,
-        passwordConfirmation: passwordConfirmation))).called(1);
+    verify(
+      () => addAccount.add(
+        AddAccountParams(
+          name: name,
+          email: email,
+          password: password,
+          passwordConfirmation: passwordConfirmation,
+        ),
+      ),
+    ).called(1);
   });
 
   test('Should call SaveCurrentAccount with correct value', () async {

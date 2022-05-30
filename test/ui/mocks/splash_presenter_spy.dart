@@ -9,8 +9,7 @@ class SplashPresenterSpy extends Mock implements SplashPresenter {
   SplashPresenterSpy() {
     when(() => checkAccount(durationInSeconds: any(named: 'durationInSeconds')))
         .thenAnswer((_) async => _);
-    when(() => navigateToStream)
-        .thenAnswer((_) => navigateToController.stream);
+    when(() => navigateToStream).thenAnswer((_) => navigateToController.stream);
   }
   void emitNavigateTo(String route) => navigateToController.add(route);
 

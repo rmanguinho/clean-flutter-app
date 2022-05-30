@@ -31,11 +31,12 @@ class RemoteAddAccountParams {
   final String password;
   final String passwordConfirmation;
 
-  RemoteAddAccountParams(
-      {required this.name,
-      required this.email,
-      required this.password,
-      required this.passwordConfirmation});
+  RemoteAddAccountParams({
+    required this.name,
+    required this.email,
+    required this.password,
+    required this.passwordConfirmation,
+  });
 
   factory RemoteAddAccountParams.fromDomain(AddAccountParams params) =>
       RemoteAddAccountParams(

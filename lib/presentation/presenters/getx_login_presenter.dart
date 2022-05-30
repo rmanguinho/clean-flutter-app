@@ -25,10 +25,11 @@ class GetxLoginPresenter extends GetxController
   @override
   Stream<UIError?> get passwordErrorStream => _passwordError.stream;
 
-  GetxLoginPresenter(
-      {required this.validation,
-      required this.authentication,
-      required this.saveCurrentAccount});
+  GetxLoginPresenter({
+    required this.validation,
+    required this.authentication,
+    required this.saveCurrentAccount,
+  });
 
   @override
   void validateEmail(String email) {

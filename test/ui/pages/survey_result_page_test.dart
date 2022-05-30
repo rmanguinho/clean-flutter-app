@@ -59,8 +59,10 @@ void main() {
     presenter.emitSurveyResultError(UIError.unexpected.description);
     await tester.pump();
 
-    expect(find.text('Algo errado aconteceu. Tente novamente em breve.'),
-        findsOneWidget);
+    expect(
+      find.text('Algo errado aconteceu. Tente novamente em breve.'),
+      findsOneWidget,
+    );
     expect(find.text('Recarregar'), findsOneWidget);
     expect(find.text('Question'), findsNothing);
   });
@@ -85,8 +87,10 @@ void main() {
       await tester.pump();
     });
 
-    expect(find.text('Algo errado aconteceu. Tente novamente em breve.'),
-        findsNothing);
+    expect(
+      find.text('Algo errado aconteceu. Tente novamente em breve.'),
+      findsNothing,
+    );
     expect(find.text('Recarregar'), findsNothing);
     expect(find.text('Question'), findsOneWidget);
     expect(find.text('Answer 0'), findsOneWidget);

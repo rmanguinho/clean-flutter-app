@@ -34,25 +34,34 @@ void main() {
     test('Should call post with correct values', () async {
       await sut
           .request(url: url, method: 'post', body: {'any_key': 'any_value'});
-      verify(() => client.post(Uri.parse(url),
+      verify(
+        () => client.post(
+          Uri.parse(url),
           headers: {
             'content-type': 'application/json',
             'accept': 'application/json'
           },
-          body: '{"any_key":"any_value"}'));
+          body: '{"any_key":"any_value"}',
+        ),
+      );
 
       await sut.request(
-          url: url,
-          method: 'post',
-          body: {'any_key': 'any_value'},
-          headers: {'any_header': 'any_value'});
-      verify(() => client.post(Uri.parse(url),
+        url: url,
+        method: 'post',
+        body: {'any_key': 'any_value'},
+        headers: {'any_header': 'any_value'},
+      );
+      verify(
+        () => client.post(
+          Uri.parse(url),
           headers: {
             'content-type': 'application/json',
             'accept': 'application/json',
             'any_header': 'any_value'
           },
-          body: '{"any_key":"any_value"}'));
+          body: '{"any_key":"any_value"}',
+        ),
+      );
     });
 
     test('Should call post without body', () async {
@@ -151,18 +160,31 @@ void main() {
   group('get', () {
     test('Should call get with correct values', () async {
       await sut.request(url: url, method: 'get');
-      verify(() => client.get(Uri.parse(url), headers: {
+      verify(
+        () => client.get(
+          Uri.parse(url),
+          headers: {
             'content-type': 'application/json',
             'accept': 'application/json'
-          }));
+          },
+        ),
+      );
 
       await sut.request(
-          url: url, method: 'get', headers: {'any_header': 'any_value'});
-      verify(() => client.get(Uri.parse(url), headers: {
+        url: url,
+        method: 'get',
+        headers: {'any_header': 'any_value'},
+      );
+      verify(
+        () => client.get(
+          Uri.parse(url),
+          headers: {
             'content-type': 'application/json',
             'accept': 'application/json',
             'any_header': 'any_value'
-          }));
+          },
+        ),
+      );
     });
 
     test('Should return data if get returns 200', () async {
@@ -256,25 +278,34 @@ void main() {
     test('Should call put with correct values', () async {
       await sut
           .request(url: url, method: 'put', body: {'any_key': 'any_value'});
-      verify(() => client.put(Uri.parse(url),
+      verify(
+        () => client.put(
+          Uri.parse(url),
           headers: {
             'content-type': 'application/json',
             'accept': 'application/json'
           },
-          body: '{"any_key":"any_value"}'));
+          body: '{"any_key":"any_value"}',
+        ),
+      );
 
       await sut.request(
-          url: url,
-          method: 'put',
-          body: {'any_key': 'any_value'},
-          headers: {'any_header': 'any_value'});
-      verify(() => client.put(Uri.parse(url),
+        url: url,
+        method: 'put',
+        body: {'any_key': 'any_value'},
+        headers: {'any_header': 'any_value'},
+      );
+      verify(
+        () => client.put(
+          Uri.parse(url),
           headers: {
             'content-type': 'application/json',
             'accept': 'application/json',
             'any_header': 'any_value'
           },
-          body: '{"any_key":"any_value"}'));
+          body: '{"any_key":"any_value"}',
+        ),
+      );
     });
 
     test('Should call put without body', () async {

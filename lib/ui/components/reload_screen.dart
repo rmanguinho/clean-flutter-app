@@ -15,8 +15,11 @@ class ReloadScreen extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(error,
-              style: const TextStyle(fontSize: 16), textAlign: TextAlign.center),
+          Text(
+            error,
+            style: const TextStyle(fontSize: 16),
+            textAlign: TextAlign.center,
+          ),
           const SizedBox(height: 10),
           ElevatedButton(
             onPressed: reload,

@@ -9,12 +9,13 @@ class SignUpButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final presenter = Provider.of<SignUpPresenter>(context);
     return StreamBuilder<bool>(
-        stream: presenter.isFormValidStream,
-        builder: (context, snapshot) {
-          return ElevatedButton(
-            onPressed: snapshot.data == true ? presenter.signUp : null,
-            child: Text(R.string.addAccount.toUpperCase()),
-          );
-        });
+      stream: presenter.isFormValidStream,
+      builder: (context, snapshot) {
+        return ElevatedButton(
+          onPressed: snapshot.data == true ? presenter.signUp : null,
+          child: Text(R.string.addAccount.toUpperCase()),
+        );
+      },
+    );
   }
 }

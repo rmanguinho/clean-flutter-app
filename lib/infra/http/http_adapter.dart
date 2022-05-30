@@ -9,21 +9,26 @@ class HttpAdapter implements HttpClient {
   HttpAdapter(this.client);
 
   @override
-  Future<dynamic> request(
-      {required String url,
-      required String method,
-      Map? body,
-      Map? headers}) async {
+  Future<dynamic> request({
+    required String url,
+    required String method,
+    Map? body,
+    Map? headers,
+  }) async {
     final defaultHeaders = headers?.cast<String, String>() ?? {}
       ..addAll(
-          {'content-type': 'application/json', 'accept': 'application/json'});
+        {'content-type': 'application/json', 'accept': 'application/json'},
+      );
     final jsonBody = body != null ? jsonEncode(body) : null;
     var response = Response('', 500);
     Future<Response>? futureResponse;
     try {
       if (method == 'post') {
-        futureResponse = client.post(Uri.parse(url),
-            headers: defaultHeaders, body: jsonBody);
+        futureResponse = client.post(
+          Uri.parse(url),
+          headers: defaultHeaders,
+          body: jsonBody,
+        );
       } else if (method == 'get') {
         futureResponse = client.get(Uri.parse(url), headers: defaultHeaders);
       } else if (method == 'put') {

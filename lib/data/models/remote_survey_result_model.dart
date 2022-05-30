@@ -22,7 +22,8 @@ class RemoteSurveyResultModel {
       question: json['question'],
       answers: json['answers']
           .map<RemoteSurveyAnswerModel>(
-              (answerJson) => RemoteSurveyAnswerModel.fromJson(answerJson))
+            (answerJson) => RemoteSurveyAnswerModel.fromJson(answerJson),
+          )
           .toList(),
     );
   }

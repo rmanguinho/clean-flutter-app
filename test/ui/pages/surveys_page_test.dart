@@ -14,7 +14,8 @@ void main() {
   Future<void> loadPage(WidgetTester tester) async {
     presenter = SurveysPresenterSpy();
     await tester.pumpWidget(
-        makePage(path: '/surveys', page: () => SurveysPage(presenter)));
+      makePage(path: '/surveys', page: () => SurveysPage(presenter)),
+    );
   }
 
   tearDown(() {
@@ -61,8 +62,10 @@ void main() {
     presenter.emitSurveysError(UIError.unexpected.description);
     await tester.pump();
 
-    expect(find.text('Algo errado aconteceu. Tente novamente em breve.'),
-        findsOneWidget);
+    expect(
+      find.text('Algo errado aconteceu. Tente novamente em breve.'),
+      findsOneWidget,
+    );
     expect(find.text('Recarregar'), findsOneWidget);
     expect(find.text('Question 1'), findsNothing);
   });
@@ -74,8 +77,10 @@ void main() {
     presenter.emitSurveys(ViewModelFactory.makeSurveyList());
     await tester.pump();
 
-    expect(find.text('Algo errado aconteceu. Tente novamente em breve.'),
-        findsNothing);
+    expect(
+      find.text('Algo errado aconteceu. Tente novamente em breve.'),
+      findsNothing,
+    );
     expect(find.text('Recarregar'), findsNothing);
     expect(find.text('Question 1'), findsWidgets);
     expect(find.text('Question 2'), findsWidgets);

@@ -39,14 +39,16 @@ class LoginPage extends StatelessWidget
                           children: <Widget>[
                             EmailInput(),
                             Padding(
-                              padding: const EdgeInsets.only(top: 8, bottom: 32),
+                              padding:
+                                  const EdgeInsets.only(top: 8, bottom: 32),
                               child: PasswordInput(),
                             ),
                             LoginButton(),
                             TextButton.icon(
-                                onPressed: presenter.goToSignUp,
-                                icon: const Icon(Icons.person),
-                                label: Text(R.string.addAccount))
+                              onPressed: presenter.goToSignUp,
+                              icon: const Icon(Icons.person),
+                              label: Text(R.string.addAccount),
+                            )
                           ],
                         ),
                       ),
