@@ -31,7 +31,7 @@ class SignUpPage extends StatelessWidget
                   LoginHeader(),
                   Headline1(text: R.string.addAccount),
                   Padding(
-                    padding: EdgeInsets.all(32),
+                    padding: const EdgeInsets.all(32),
                     child: ListenableProvider(
                       create: (_) => presenter,
                       child: Form(
@@ -39,18 +39,18 @@ class SignUpPage extends StatelessWidget
                           children: <Widget>[
                             NameInput(),
                             Padding(
-                              padding: EdgeInsets.symmetric(vertical: 8),
+                              padding: const EdgeInsets.symmetric(vertical: 8),
                               child: EmailInput(),
                             ),
                             PasswordInput(),
                             Padding(
-                              padding: EdgeInsets.only(top: 8, bottom: 32),
+                              padding: const EdgeInsets.only(top: 8, bottom: 32),
                               child: PasswordConfirmationInput(),
                             ),
                             SignUpButton(),
                             TextButton.icon(
                                 onPressed: presenter.goToLogin,
-                                icon: Icon(Icons.exit_to_app),
+                                icon: const Icon(Icons.exit_to_app),
                                 label: Text(R.string.login))
                           ],
                         ),

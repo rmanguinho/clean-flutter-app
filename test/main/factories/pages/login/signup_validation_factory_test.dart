@@ -8,14 +8,14 @@ void main() {
     final validations = makeSignUpValidations();
 
     expect(validations, [
-      RequiredFieldValidation('name'),
-      MinLengthValidation(field: 'name', size: 3),
-      RequiredFieldValidation('email'),
-      EmailValidation('email'),
-      RequiredFieldValidation('password'),
-      MinLengthValidation(field: 'password', size: 3),
-      RequiredFieldValidation('passwordConfirmation'),
-      CompareFieldsValidation(
+      const RequiredFieldValidation('name'),
+      const MinLengthValidation(field: 'name', size: 3),
+      const RequiredFieldValidation('email'),
+      const EmailValidation('email'),
+      const RequiredFieldValidation('password'),
+      const MinLengthValidation(field: 'password', size: 3),
+      const RequiredFieldValidation('passwordConfirmation'),
+      const CompareFieldsValidation(
           field: 'passwordConfirmation', fieldToCompare: 'password')
     ]);
   });

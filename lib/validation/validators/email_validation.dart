@@ -4,12 +4,15 @@ import '../protocols/protocols.dart';
 import 'package:equatable/equatable.dart';
 
 class EmailValidation extends Equatable implements FieldValidation {
+  @override
   final String field;
 
+  @override
   List get props => [field];
 
-  EmailValidation(this.field);
+  const EmailValidation(this.field);
 
+  @override
   ValidationError? validate(Map input) {
     final regex = RegExp(
         r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");

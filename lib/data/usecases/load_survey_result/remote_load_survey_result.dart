@@ -10,6 +10,7 @@ class RemoteLoadSurveyResult implements LoadSurveyResult {
 
   RemoteLoadSurveyResult({required this.url, required this.httpClient});
 
+  @override
   Future<SurveyResultEntity> loadBySurvey({required String surveyId}) async {
     try {
       final json = await httpClient.request(url: url, method: 'get');

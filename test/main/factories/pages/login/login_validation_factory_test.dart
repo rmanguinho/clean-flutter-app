@@ -8,10 +8,10 @@ void main() {
     final validations = makeLoginValidations();
 
     expect(validations, [
-      RequiredFieldValidation('email'),
-      EmailValidation('email'),
-      RequiredFieldValidation('password'),
-      MinLengthValidation(field: 'password', size: 3)
+      const RequiredFieldValidation('email'),
+      const EmailValidation('email'),
+      const RequiredFieldValidation('password'),
+      const MinLengthValidation(field: 'password', size: 3)
     ]);
   });
 }

@@ -2,7 +2,7 @@ import 'package:fordev/ui/pages/pages.dart';
 
 class ViewModelFactory {
   static SurveyResultViewModel makeSurveyResult() =>
-      SurveyResultViewModel(surveyId: 'Any id', question: 'Question', answers: [
+      const SurveyResultViewModel(surveyId: 'Any id', question: 'Question', answers: [
         SurveyAnswerViewModel(
             image: 'Image 0',
             answer: 'Answer 0',
@@ -13,9 +13,9 @@ class ViewModelFactory {
       ]);
 
   static List<SurveyViewModel> makeSurveyList() => [
-        SurveyViewModel(
+        const SurveyViewModel(
             id: '1', question: 'Question 1', date: 'Date 1', didAnswer: true),
-        SurveyViewModel(
+        const SurveyViewModel(
             id: '2', question: 'Question 2', date: 'Date 2', didAnswer: false),
       ];
 }

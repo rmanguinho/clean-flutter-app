@@ -7,11 +7,11 @@ Widget makePage({required String path, required Widget Function() page}) {
     GetPage(
         name: '/any_route',
         page: () => Scaffold(
-            appBar: AppBar(title: Text('any title')), body: Text('fake page')))
+            appBar: AppBar(title: const Text('any title')), body: const Text('fake page')))
   ];
   if (path != '/login') {
     getPages.add(GetPage(
-        name: '/login', page: () => Scaffold(body: Text('fake login'))));
+        name: '/login', page: () => const Scaffold(body: Text('fake login'))));
   }
   return GetMaterialApp(
     initialRoute: path,

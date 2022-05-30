@@ -6,9 +6,10 @@ class SurveyViewModel extends Equatable {
   final String date;
   final bool didAnswer;
 
+  @override
   List get props => [id, question, date, didAnswer];
 
-  SurveyViewModel(
+  const SurveyViewModel(
       {required this.id,
       required this.question,
       required this.date,

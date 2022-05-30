@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 class SurveysPage extends StatefulWidget {
   final SurveysPresenter presenter;
 
-  SurveysPage(this.presenter);
+  const SurveysPage(this.presenter);
 
   @override
   _SurveysPageState createState() => _SurveysPageState();
@@ -45,7 +45,7 @@ class _SurveysPageState extends State<SurveysPage>
                       create: (_) => widget.presenter,
                       child: SurveyItems(snapshot.data!));
                 }
-                return SizedBox(height: 0);
+                return const SizedBox(height: 0);
               });
         },
       ),

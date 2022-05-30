@@ -32,7 +32,7 @@ class SurveyResultPage extends StatelessWidget
                   return SurveyResult(
                       viewModel: snapshot.data!, onSave: presenter.save);
                 }
-                return SizedBox.shrink();
+                return const SizedBox.shrink();
               });
         }));
   }

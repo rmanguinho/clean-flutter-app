@@ -12,6 +12,7 @@ class RemoteLoadSurveyResultWithLocalFallback implements LoadSurveyResult {
     required this.local,
   });
 
+  @override
   Future<SurveyResultEntity> loadBySurvey({required String surveyId}) async {
     try {
       final surveyResult = await remote.loadBySurvey(surveyId: surveyId);

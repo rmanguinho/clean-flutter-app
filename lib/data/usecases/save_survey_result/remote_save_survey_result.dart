@@ -10,6 +10,7 @@ class RemoteSaveSurveyResult implements SaveSurveyResult {
 
   RemoteSaveSurveyResult({required this.url, required this.httpClient});
 
+  @override
   Future<SurveyResultEntity> save({required String answer}) async {
     try {
       final json = await httpClient

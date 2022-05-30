@@ -12,6 +12,7 @@ class AuthorizeHttpClientDecorator implements HttpClient {
     required this.decoratee,
   });
 
+  @override
   Future<dynamic> request({
     required String url,
     required String method,

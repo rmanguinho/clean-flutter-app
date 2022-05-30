@@ -35,7 +35,7 @@ void main() {
 
       final future = sut.save(key: key, value: value);
 
-      expect(future, throwsA(TypeMatcher<Exception>()));
+      expect(future, throwsA(const TypeMatcher<Exception>()));
     });
 
     test('Should throw if deleteItem throws', () async {
@@ -43,7 +43,7 @@ void main() {
 
       final future = sut.save(key: key, value: value);
 
-      expect(future, throwsA(TypeMatcher<Exception>()));
+      expect(future, throwsA(const TypeMatcher<Exception>()));
     });
   });
 
@@ -59,7 +59,7 @@ void main() {
 
       final future = sut.delete(key);
 
-      expect(future, throwsA(TypeMatcher<Exception>()));
+      expect(future, throwsA(const TypeMatcher<Exception>()));
     });
   });
 
@@ -81,7 +81,7 @@ void main() {
 
       final future = sut.fetch(key);
 
-      expect(future, throwsA(TypeMatcher<Exception>()));
+      expect(future, throwsA(const TypeMatcher<Exception>()));
     });
   });
 }

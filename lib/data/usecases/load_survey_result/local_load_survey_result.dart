@@ -9,6 +9,7 @@ class LocalLoadSurveyResult implements LoadSurveyResult {
 
   LocalLoadSurveyResult({required this.cacheStorage});
 
+  @override
   Future<SurveyResultEntity> loadBySurvey({required String surveyId}) async {
     try {
       final data = await cacheStorage.fetch('survey_result/$surveyId');

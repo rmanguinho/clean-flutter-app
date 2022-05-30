@@ -5,7 +5,7 @@ class LoginHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 240,
-      margin: EdgeInsets.only(bottom: 32),
+      margin: const EdgeInsets.only(bottom: 32),
       decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topRight,
@@ -14,15 +14,15 @@ class LoginHeader extends StatelessWidget {
                 Theme.of(context).primaryColorLight,
                 Theme.of(context).primaryColorDark
               ]),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
                 offset: Offset(0, 0),
                 spreadRadius: 0,
                 blurRadius: 4,
                 color: Colors.black)
           ],
-          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(80))),
-      child: Image(image: AssetImage('lib/ui/assets/logo.png')),
+          borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(80))),
+      child: const Image(image: AssetImage('lib/ui/assets/logo.png')),
     );
   }
 }

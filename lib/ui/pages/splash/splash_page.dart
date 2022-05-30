@@ -13,12 +13,12 @@ class SplashPage extends StatelessWidget with NavigationManager {
     presenter.checkAccount();
 
     return Scaffold(
-      appBar: AppBar(title: Text('4Dev')),
+      appBar: AppBar(title: const Text('4Dev')),
       body: Builder(
         builder: (context) {
           handleNavigation(presenter.navigateToStream, clear: true);
 
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         },

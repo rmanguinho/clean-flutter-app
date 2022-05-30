@@ -6,20 +6,20 @@ import 'package:mocktail/mocktail.dart';
 
 class LocalLoadSurveysSpy extends Mock implements LocalLoadSurveys {
   LocalLoadSurveysSpy() {
-    this.mockValidate();
-    this.mockSave();
+    mockValidate();
+    mockSave();
   }
 
-  When mockLoadCall() => when(() => this.load());
+  When mockLoadCall() => when(() => load());
   void mockLoad(List<SurveyEntity> surveys) =>
-      this.mockLoadCall().thenAnswer((_) async => surveys);
-  void mockLoadError() => this.mockLoadCall().thenThrow(DomainError.unexpected);
+      mockLoadCall().thenAnswer((_) async => surveys);
+  void mockLoadError() => mockLoadCall().thenThrow(DomainError.unexpected);
 
-  When mockValidateCall() => when(() => this.validate());
-  void mockValidate() => this.mockValidateCall().thenAnswer((_) async => _);
-  void mockValidateError() => this.mockValidateCall().thenThrow(Exception());
+  When mockValidateCall() => when(() => validate());
+  void mockValidate() => mockValidateCall().thenAnswer((_) async => _);
+  void mockValidateError() => mockValidateCall().thenThrow(Exception());
 
-  When mockSaveCall() => when(() => this.save(any()));
-  void mockSave() => this.mockSaveCall().thenAnswer((_) async => _);
-  void mockSaveError() => this.mockSaveCall().thenThrow(Exception());
+  When mockSaveCall() => when(() => save(any()));
+  void mockSave() => mockSaveCall().thenAnswer((_) async => _);
+  void mockSaveError() => mockSaveCall().thenThrow(Exception());
 }

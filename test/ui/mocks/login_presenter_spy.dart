@@ -13,18 +13,18 @@ class LoginPresenterSpy extends Mock implements LoginPresenter {
   final isLoadingController = StreamController<bool>();
 
   LoginPresenterSpy() {
-    when(() => this.auth()).thenAnswer((_) async => _);
-    when(() => this.emailErrorStream)
+    when(() => auth()).thenAnswer((_) async => _);
+    when(() => emailErrorStream)
         .thenAnswer((_) => emailErrorController.stream);
-    when(() => this.passwordErrorStream)
+    when(() => passwordErrorStream)
         .thenAnswer((_) => passwordErrorController.stream);
-    when(() => this.mainErrorStream)
+    when(() => mainErrorStream)
         .thenAnswer((_) => mainErrorController.stream);
-    when(() => this.navigateToStream)
+    when(() => navigateToStream)
         .thenAnswer((_) => navigateToController.stream);
-    when(() => this.isFormValidStream)
+    when(() => isFormValidStream)
         .thenAnswer((_) => isFormValidController.stream);
-    when(() => this.isLoadingStream)
+    when(() => isLoadingStream)
         .thenAnswer((_) => isLoadingController.stream);
   }
 

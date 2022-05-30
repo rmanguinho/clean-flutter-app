@@ -10,6 +10,7 @@ class RemoteLoadSurveysWithLocalFallback implements LoadSurveys {
   RemoteLoadSurveysWithLocalFallback(
       {required this.remote, required this.local});
 
+  @override
   Future<List<SurveyEntity>> load() async {
     try {
       final surveys = await remote.load();

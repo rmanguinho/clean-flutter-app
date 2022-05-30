@@ -24,9 +24,13 @@ class GetxSignUpPresenter extends GetxController
   String? _password;
   String? _passwordConfirmation;
 
+  @override
   Stream<UIError?> get emailErrorStream => _emailError.stream;
+  @override
   Stream<UIError?> get nameErrorStream => _nameError.stream;
+  @override
   Stream<UIError?> get passwordErrorStream => _passwordError.stream;
+  @override
   Stream<UIError?> get passwordConfirmationErrorStream =>
       _passwordConfirmationError.stream;
 
@@ -35,24 +39,28 @@ class GetxSignUpPresenter extends GetxController
       required this.addAccount,
       required this.saveCurrentAccount});
 
+  @override
   void validateEmail(String email) {
     _email = email;
     _emailError.value = _validateField('email');
     _validateForm();
   }
 
+  @override
   void validateName(String name) {
     _name = name;
     _nameError.value = _validateField('name');
     _validateForm();
   }
 
+  @override
   void validatePassword(String password) {
     _password = password;
     _passwordError.value = _validateField('password');
     _validateForm();
   }
 
+  @override
   void validatePasswordConfirmation(String passwordConfirmation) {
     _passwordConfirmation = passwordConfirmation;
     _passwordConfirmationError.value = _validateField('passwordConfirmation');
@@ -88,6 +96,7 @@ class GetxSignUpPresenter extends GetxController
         _passwordConfirmation != null;
   }
 
+  @override
   Future<void> signUp() async {
     try {
       mainError = null;
@@ -112,6 +121,7 @@ class GetxSignUpPresenter extends GetxController
     }
   }
 
+  @override
   void goToLogin() {
     navigateTo = '/login';
   }

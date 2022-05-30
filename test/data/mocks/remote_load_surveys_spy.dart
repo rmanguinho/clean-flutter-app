@@ -5,8 +5,8 @@ import 'package:fordev/domain/helpers/helpers.dart';
 import 'package:mocktail/mocktail.dart';
 
 class RemoteLoadSurveysSpy extends Mock implements RemoteLoadSurveys {
-  When mockLoadCall() => when(() => this.load());
+  When mockLoadCall() => when(() => load());
   void mockLoad(List<SurveyEntity> surveys) =>
-      this.mockLoadCall().thenAnswer((_) async => surveys);
-  void mockLoadError(DomainError error) => this.mockLoadCall().thenThrow(error);
+      mockLoadCall().thenAnswer((_) async => surveys);
+  void mockLoadError(DomainError error) => mockLoadCall().thenThrow(error);
 }

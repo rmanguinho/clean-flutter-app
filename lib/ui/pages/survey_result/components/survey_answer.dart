@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class SurveyAnswer extends StatelessWidget {
   final SurveyAnswerViewModel viewModel;
 
-  SurveyAnswer(this.viewModel);
+  const SurveyAnswer(this.viewModel);
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +14,8 @@ class SurveyAnswer extends StatelessWidget {
       List<Widget> children = [
         Expanded(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Text(viewModel.answer, style: TextStyle(fontSize: 16)),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Text(viewModel.answer, style: const TextStyle(fontSize: 16)),
           ),
         ),
         Text(viewModel.percent,
@@ -40,14 +40,14 @@ class SurveyAnswer extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.all(15),
+          padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: _buildItems(),
           ),
         ),
-        Divider(height: 1)
+        const Divider(height: 1)
       ],
     );
   }

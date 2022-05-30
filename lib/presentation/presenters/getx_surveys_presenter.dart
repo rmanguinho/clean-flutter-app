@@ -13,10 +13,12 @@ class GetxSurveysPresenter extends GetxController
   final LoadSurveys loadSurveys;
   final _surveys = Rx<List<SurveyViewModel>>([]);
 
+  @override
   Stream<List<SurveyViewModel>> get surveysStream => _surveys.stream;
 
   GetxSurveysPresenter({required this.loadSurveys});
 
+  @override
   Future<void> loadData() async {
     try {
       isLoading = true;
@@ -39,6 +41,7 @@ class GetxSurveysPresenter extends GetxController
     }
   }
 
+  @override
   void goToSurveyResult(String surveyId) {
     navigateTo = '/survey_result/$surveyId';
   }

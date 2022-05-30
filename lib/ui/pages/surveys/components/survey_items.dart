@@ -7,12 +7,12 @@ import 'package:flutter/material.dart';
 class SurveyItems extends StatelessWidget {
   final List<SurveyViewModel> viewModels;
 
-  SurveyItems(this.viewModels);
+  const SurveyItems(this.viewModels);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 20),
       child: CarouselSlider(
         options: CarouselOptions(enlargeCenterPage: true, aspectRatio: 1),
         items: viewModels.map((viewModel) => SurveyItem(viewModel)).toList(),

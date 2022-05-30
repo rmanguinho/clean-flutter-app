@@ -3,23 +3,23 @@ import 'package:mocktail/mocktail.dart';
 
 class LocalStorageSpy extends Mock implements LocalStorage {
   LocalStorageSpy() {
-    this.mockDelete();
-    this.mockSave();
+    mockDelete();
+    mockSave();
   }
 
-  When mockDeleteCall() => when(() => this.deleteItem(any()));
-  void mockDelete() => this.mockDeleteCall().thenAnswer((_) async => _);
+  When mockDeleteCall() => when(() => deleteItem(any()));
+  void mockDelete() => mockDeleteCall().thenAnswer((_) async => _);
   void mockDeleteError() =>
-      when(() => this.mockDeleteCall().thenThrow(Exception()));
+      when(() => mockDeleteCall().thenThrow(Exception()));
 
-  When mockSaveCall() => when(() => this.setItem(any(), any()));
-  void mockSave() => this.mockSaveCall().thenAnswer((_) async => _);
+  When mockSaveCall() => when(() => setItem(any(), any()));
+  void mockSave() => mockSaveCall().thenAnswer((_) async => _);
   void mockSaveError() =>
-      when(() => this.mockSaveCall().thenThrow(Exception()));
+      when(() => mockSaveCall().thenThrow(Exception()));
 
-  When mockFetchCall() => when(() => this.getItem(any()));
+  When mockFetchCall() => when(() => getItem(any()));
   void mockFetch(dynamic data) =>
-      this.mockFetchCall().thenAnswer((_) async => data);
+      mockFetchCall().thenAnswer((_) async => data);
   void mockFetchError() =>
-      when(() => this.mockFetchCall().thenThrow(Exception()));
+      when(() => mockFetchCall().thenThrow(Exception()));
 }

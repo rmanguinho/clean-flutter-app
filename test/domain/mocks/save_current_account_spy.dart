@@ -5,10 +5,10 @@ import 'package:mocktail/mocktail.dart';
 
 class SaveCurrentAccountSpy extends Mock implements SaveCurrentAccount {
   SaveCurrentAccountSpy() {
-    this.mockSave();
+    mockSave();
   }
 
-  When mockSaveCall() => when(() => this.save(any()));
-  void mockSave() => this.mockSaveCall().thenAnswer((_) async => _);
-  void mockSaveError() => this.mockSaveCall().thenThrow(DomainError.unexpected);
+  When mockSaveCall() => when(() => save(any()));
+  void mockSave() => mockSaveCall().thenAnswer((_) async => _);
+  void mockSaveError() => mockSaveCall().thenThrow(DomainError.unexpected);
 }

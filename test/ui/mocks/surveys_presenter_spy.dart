@@ -10,13 +10,13 @@ class SurveysPresenterSpy extends Mock implements SurveysPresenter {
   final navigateToController = StreamController<String?>();
 
   SurveysPresenterSpy() {
-    when(() => this.loadData()).thenAnswer((_) async => _);
-    when(() => this.surveysStream).thenAnswer((_) => surveysController.stream);
-    when(() => this.isSessionExpiredStream)
+    when(() => loadData()).thenAnswer((_) async => _);
+    when(() => surveysStream).thenAnswer((_) => surveysController.stream);
+    when(() => isSessionExpiredStream)
         .thenAnswer((_) => isSessionExpiredController.stream);
-    when(() => this.isLoadingStream)
+    when(() => isLoadingStream)
         .thenAnswer((_) => isLoadingController.stream);
-    when(() => this.navigateToStream)
+    when(() => navigateToStream)
         .thenAnswer((_) => navigateToController.stream);
   }
 

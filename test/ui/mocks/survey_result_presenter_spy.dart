@@ -9,14 +9,14 @@ class SurveyResultPresenterSpy extends Mock implements SurveyResultPresenter {
   final isLoadingController = StreamController<bool>();
 
   SurveyResultPresenterSpy() {
-    when(() => this.loadData()).thenAnswer((_) async => _);
-    when(() => this.save(answer: any(named: 'answer')))
+    when(() => loadData()).thenAnswer((_) async => _);
+    when(() => save(answer: any(named: 'answer')))
         .thenAnswer((_) async => _);
-    when(() => this.surveyResultStream)
+    when(() => surveyResultStream)
         .thenAnswer((_) => surveyResultController.stream);
-    when(() => this.isSessionExpiredStream)
+    when(() => isSessionExpiredStream)
         .thenAnswer((_) => isSessionExpiredController.stream);
-    when(() => this.isLoadingStream)
+    when(() => isLoadingStream)
         .thenAnswer((_) => isLoadingController.stream);
   }
 
