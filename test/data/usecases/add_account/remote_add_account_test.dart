@@ -30,16 +30,12 @@ void main() {
   test('Should call HttpClient with correct values', () async {
     await sut.add(params);
 
-    verify(() => httpClient.request(
-      url: url,
-      method: 'post',
-      body: {
-        'name': params.name,
-        'email': params.email,
-        'password': params.password,
-        'passwordConfirmation': params.passwordConfirmation
-      }
-    ));
+    verify(() => httpClient.request(url: url, method: 'post', body: {
+          'name': params.name,
+          'email': params.email,
+          'password': params.password,
+          'passwordConfirmation': params.passwordConfirmation
+        }));
   });
 
   test('Should throw UnexpectedError if HttpClient returns 400', () async {
@@ -66,7 +62,8 @@ void main() {
     expect(future, throwsA(DomainError.unexpected));
   });
 
-  test('Should throw InvalidCredentialsError if HttpClient returns 403', () async {
+  test('Should throw InvalidCredentialsError if HttpClient returns 403',
+      () async {
     httpClient.mockRequestError(HttpError.forbidden);
 
     final future = sut.add(params);
@@ -80,7 +77,9 @@ void main() {
     expect(account.token, apiResult['accessToken']);
   });
 
-  test('Should throw UnexpectedError if HttpClient returns 200 with invalid data', () async {
+  test(
+      'Should throw UnexpectedError if HttpClient returns 200 with invalid data',
+      () async {
     httpClient.mockRequest({'invalid_key': 'invalid_value'});
 
     final future = sut.add(params);

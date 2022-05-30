@@ -7,27 +7,28 @@ import '../mixins/mixins.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class GetxSurveysPresenter extends GetxController with SessionManager, LoadingManager, NavigationManager implements SurveysPresenter {
+class GetxSurveysPresenter extends GetxController
+    with SessionManager, LoadingManager, NavigationManager
+    implements SurveysPresenter {
   final LoadSurveys loadSurveys;
   final _surveys = Rx<List<SurveyViewModel>>([]);
 
   Stream<List<SurveyViewModel>> get surveysStream => _surveys.stream;
 
-  GetxSurveysPresenter({ required this.loadSurveys });
+  GetxSurveysPresenter({required this.loadSurveys});
 
   Future<void> loadData() async {
     try {
       isLoading = true;
       final surveys = await loadSurveys.load();
       _surveys.value = surveys
-        .map((survey) => SurveyViewModel(
-          id: survey.id,
-          question: survey.question,
-          date: DateFormat('dd MMM yyyy').format(survey.dateTime),
-          didAnswer: survey.didAnswer
-        ))
-        .toList();
-    } on DomainError catch(error) {
+          .map((survey) => SurveyViewModel(
+              id: survey.id,
+              question: survey.question,
+              date: DateFormat('dd MMM yyyy').format(survey.dateTime),
+              didAnswer: survey.didAnswer))
+          .toList();
+    } on DomainError catch (error) {
       if (error == DomainError.accessDenied) {
         isSessionExpired = true;
       } else {

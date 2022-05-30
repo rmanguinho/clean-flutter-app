@@ -36,23 +36,24 @@ void main() {
     test('Should return surveyResult on success', () async {
       final surveyResult = await sut.loadBySurvey(surveyId: surveyId);
 
-      expect(surveyResult, SurveyResultEntity(
-        surveyId: data['surveyId'],
-        question: data['question'],
-        answers: [
-          SurveyAnswerEntity(
-            image: data['answers'][0]['image'],
-            answer: data['answers'][0]['answer'],
-            percent: 40,
-            isCurrentAnswer: true,
-          ),
-          SurveyAnswerEntity(
-            answer: data['answers'][1]['answer'],
-            percent: 60,
-            isCurrentAnswer: false,
-          )
-        ]
-      ));
+      expect(
+          surveyResult,
+          SurveyResultEntity(
+              surveyId: data['surveyId'],
+              question: data['question'],
+              answers: [
+                SurveyAnswerEntity(
+                  image: data['answers'][0]['image'],
+                  answer: data['answers'][0]['answer'],
+                  percent: 40,
+                  isCurrentAnswer: true,
+                ),
+                SurveyAnswerEntity(
+                  answer: data['answers'][1]['answer'],
+                  percent: 60,
+                  isCurrentAnswer: false,
+                )
+              ]));
     });
 
     test('Should throw UnexpectedError if cache is empty', () async {
@@ -125,22 +126,27 @@ void main() {
       Map json = {
         'surveyId': surveyResult.surveyId,
         'question': surveyResult.question,
-        'answers': [{
-          'image': surveyResult.answers[0].image,
-          'answer': surveyResult.answers[0].answer,
-          'percent': '40',
-          'isCurrentAnswer': 'true'
-        }, {
-          'image': null,
-          'answer': surveyResult.answers[1].answer,
-          'percent': '60',
-          'isCurrentAnswer': 'false'
-        }]
+        'answers': [
+          {
+            'image': surveyResult.answers[0].image,
+            'answer': surveyResult.answers[0].answer,
+            'percent': '40',
+            'isCurrentAnswer': 'true'
+          },
+          {
+            'image': null,
+            'answer': surveyResult.answers[1].answer,
+            'percent': '60',
+            'isCurrentAnswer': 'false'
+          }
+        ]
       };
 
       await sut.save(surveyResult);
 
-      verify(() => cacheStorage.save(key: 'survey_result/${surveyResult.surveyId}', value: json)).called(1);
+      verify(() => cacheStorage.save(
+          key: 'survey_result/${surveyResult.surveyId}',
+          value: json)).called(1);
     });
 
     test('Should throw UnexpectedError if save throws', () async {

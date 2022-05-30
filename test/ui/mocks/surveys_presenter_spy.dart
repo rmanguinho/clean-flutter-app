@@ -12,15 +12,19 @@ class SurveysPresenterSpy extends Mock implements SurveysPresenter {
   SurveysPresenterSpy() {
     when(() => this.loadData()).thenAnswer((_) async => _);
     when(() => this.surveysStream).thenAnswer((_) => surveysController.stream);
-    when(() => this.isSessionExpiredStream).thenAnswer((_) => isSessionExpiredController.stream);
-    when(() => this.isLoadingStream).thenAnswer((_) => isLoadingController.stream);
-    when(() => this.navigateToStream).thenAnswer((_) => navigateToController.stream);
+    when(() => this.isSessionExpiredStream)
+        .thenAnswer((_) => isSessionExpiredController.stream);
+    when(() => this.isLoadingStream)
+        .thenAnswer((_) => isLoadingController.stream);
+    when(() => this.navigateToStream)
+        .thenAnswer((_) => navigateToController.stream);
   }
 
   void emitSurveys(List<SurveyViewModel> data) => surveysController.add(data);
   void emitSurveysError(String error) => surveysController.addError(error);
   void emitLoading([bool show = true]) => isLoadingController.add(show);
-  void emitSessionExpired([bool show = true]) => isSessionExpiredController.add(show);
+  void emitSessionExpired([bool show = true]) =>
+      isSessionExpiredController.add(show);
   void emitNavigateTo(String route) => navigateToController.add(route);
 
   void dispose() {

@@ -34,10 +34,9 @@ void main() {
     addAccount.mockAddAccount(account);
     saveCurrentAccount = SaveCurrentAccountSpy();
     sut = GetxSignUpPresenter(
-      validation: validation,
-      addAccount: addAccount,
-      saveCurrentAccount: saveCurrentAccount
-    );
+        validation: validation,
+        addAccount: addAccount,
+        saveCurrentAccount: saveCurrentAccount);
   });
 
   setUpAll(() {
@@ -46,18 +45,26 @@ void main() {
   });
 
   test('Should call Validation with correct email', () {
-    final formData = {'name': null, 'email': email, 'password': null, 'passwordConfirmation': null};
+    final formData = {
+      'name': null,
+      'email': email,
+      'password': null,
+      'passwordConfirmation': null
+    };
 
     sut.validateEmail(email);
 
-    verify(() => validation.validate(field: 'email', input: formData)).called(1);
+    verify(() => validation.validate(field: 'email', input: formData))
+        .called(1);
   });
 
   test('Should emit invalidFieldError if email is invalid', () {
     validation.mockValidationError(value: ValidationError.invalidField);
 
-    sut.emailErrorStream.listen(expectAsync1((error) => expect(error, UIError.invalidField)));
-    sut.isFormValidStream.listen(expectAsync1((isValid) => expect(isValid, false)));
+    sut.emailErrorStream
+        .listen(expectAsync1((error) => expect(error, UIError.invalidField)));
+    sut.isFormValidStream
+        .listen(expectAsync1((isValid) => expect(isValid, false)));
 
     sut.validateEmail(email);
     sut.validateEmail(email);
@@ -66,8 +73,10 @@ void main() {
   test('Should emit requiredFieldError if email is empty', () {
     validation.mockValidationError(value: ValidationError.requiredField);
 
-    sut.emailErrorStream.listen(expectAsync1((error) => expect(error, UIError.requiredField)));
-    sut.isFormValidStream.listen(expectAsync1((isValid) => expect(isValid, false)));
+    sut.emailErrorStream
+        .listen(expectAsync1((error) => expect(error, UIError.requiredField)));
+    sut.isFormValidStream
+        .listen(expectAsync1((isValid) => expect(isValid, false)));
 
     sut.validateEmail(email);
     sut.validateEmail(email);
@@ -75,14 +84,20 @@ void main() {
 
   test('Should emit null if validation succeeds', () {
     sut.emailErrorStream.listen(expectAsync1((error) => expect(error, null)));
-    sut.isFormValidStream.listen(expectAsync1((isValid) => expect(isValid, false)));
+    sut.isFormValidStream
+        .listen(expectAsync1((isValid) => expect(isValid, false)));
 
     sut.validateEmail(email);
     sut.validateEmail(email);
   });
 
   test('Should call Validation with correct name', () {
-    final formData = {'name': name, 'email': null, 'password': null, 'passwordConfirmation': null};
+    final formData = {
+      'name': name,
+      'email': null,
+      'password': null,
+      'passwordConfirmation': null
+    };
 
     sut.validateName(name);
 
@@ -92,8 +107,10 @@ void main() {
   test('Should emit invalidFieldError if name is invalid', () {
     validation.mockValidationError(value: ValidationError.invalidField);
 
-    sut.nameErrorStream.listen(expectAsync1((error) => expect(error, UIError.invalidField)));
-    sut.isFormValidStream.listen(expectAsync1((isValid) => expect(isValid, false)));
+    sut.nameErrorStream
+        .listen(expectAsync1((error) => expect(error, UIError.invalidField)));
+    sut.isFormValidStream
+        .listen(expectAsync1((isValid) => expect(isValid, false)));
 
     sut.validateName(name);
     sut.validateName(name);
@@ -102,8 +119,10 @@ void main() {
   test('Should emit requiredFieldError if name is empty', () {
     validation.mockValidationError(value: ValidationError.requiredField);
 
-    sut.nameErrorStream.listen(expectAsync1((error) => expect(error, UIError.requiredField)));
-    sut.isFormValidStream.listen(expectAsync1((isValid) => expect(isValid, false)));
+    sut.nameErrorStream
+        .listen(expectAsync1((error) => expect(error, UIError.requiredField)));
+    sut.isFormValidStream
+        .listen(expectAsync1((isValid) => expect(isValid, false)));
 
     sut.validateName(name);
     sut.validateName(name);
@@ -111,25 +130,34 @@ void main() {
 
   test('Should emit null if validation succeeds', () {
     sut.nameErrorStream.listen(expectAsync1((error) => expect(error, null)));
-    sut.isFormValidStream.listen(expectAsync1((isValid) => expect(isValid, false)));
+    sut.isFormValidStream
+        .listen(expectAsync1((isValid) => expect(isValid, false)));
 
     sut.validateName(name);
     sut.validateName(name);
   });
 
   test('Should call Validation with correct password', () {
-    final formData = {'name': null, 'email': null, 'password': password, 'passwordConfirmation': null};
+    final formData = {
+      'name': null,
+      'email': null,
+      'password': password,
+      'passwordConfirmation': null
+    };
 
     sut.validatePassword(password);
 
-    verify(() => validation.validate(field: 'password', input: formData)).called(1);
+    verify(() => validation.validate(field: 'password', input: formData))
+        .called(1);
   });
 
   test('Should emit invalidFieldError if password is invalid', () {
     validation.mockValidationError(value: ValidationError.invalidField);
 
-    sut.passwordErrorStream.listen(expectAsync1((error) => expect(error, UIError.invalidField)));
-    sut.isFormValidStream.listen(expectAsync1((isValid) => expect(isValid, false)));
+    sut.passwordErrorStream
+        .listen(expectAsync1((error) => expect(error, UIError.invalidField)));
+    sut.isFormValidStream
+        .listen(expectAsync1((isValid) => expect(isValid, false)));
 
     sut.validatePassword(password);
     sut.validatePassword(password);
@@ -138,34 +166,47 @@ void main() {
   test('Should emit requiredFieldError if password is empty', () {
     validation.mockValidationError(value: ValidationError.requiredField);
 
-    sut.passwordErrorStream.listen(expectAsync1((error) => expect(error, UIError.requiredField)));
-    sut.isFormValidStream.listen(expectAsync1((isValid) => expect(isValid, false)));
+    sut.passwordErrorStream
+        .listen(expectAsync1((error) => expect(error, UIError.requiredField)));
+    sut.isFormValidStream
+        .listen(expectAsync1((isValid) => expect(isValid, false)));
 
     sut.validatePassword(password);
     sut.validatePassword(password);
   });
 
   test('Should emit null if validation succeeds', () {
-    sut.passwordErrorStream.listen(expectAsync1((error) => expect(error, null)));
-    sut.isFormValidStream.listen(expectAsync1((isValid) => expect(isValid, false)));
+    sut.passwordErrorStream
+        .listen(expectAsync1((error) => expect(error, null)));
+    sut.isFormValidStream
+        .listen(expectAsync1((isValid) => expect(isValid, false)));
 
     sut.validatePassword(password);
     sut.validatePassword(password);
   });
 
   test('Should call Validation with correct passwordConfirmation', () {
-    final formData = {'name': null, 'email': null, 'password': null, 'passwordConfirmation': passwordConfirmation};
+    final formData = {
+      'name': null,
+      'email': null,
+      'password': null,
+      'passwordConfirmation': passwordConfirmation
+    };
 
     sut.validatePasswordConfirmation(passwordConfirmation);
 
-    verify(() => validation.validate(field: 'passwordConfirmation', input: formData)).called(1);
+    verify(() =>
+            validation.validate(field: 'passwordConfirmation', input: formData))
+        .called(1);
   });
 
   test('Should emit invalidFieldError if passwordConfirmation is invalid', () {
     validation.mockValidationError(value: ValidationError.invalidField);
 
-    sut.passwordConfirmationErrorStream.listen(expectAsync1((error) => expect(error, UIError.invalidField)));
-    sut.isFormValidStream.listen(expectAsync1((isValid) => expect(isValid, false)));
+    sut.passwordConfirmationErrorStream
+        .listen(expectAsync1((error) => expect(error, UIError.invalidField)));
+    sut.isFormValidStream
+        .listen(expectAsync1((isValid) => expect(isValid, false)));
 
     sut.validatePasswordConfirmation(passwordConfirmation);
     sut.validatePasswordConfirmation(passwordConfirmation);
@@ -174,16 +215,20 @@ void main() {
   test('Should emit requiredFieldError if passwordConfirmation is empty', () {
     validation.mockValidationError(value: ValidationError.requiredField);
 
-    sut.passwordConfirmationErrorStream.listen(expectAsync1((error) => expect(error, UIError.requiredField)));
-    sut.isFormValidStream.listen(expectAsync1((isValid) => expect(isValid, false)));
+    sut.passwordConfirmationErrorStream
+        .listen(expectAsync1((error) => expect(error, UIError.requiredField)));
+    sut.isFormValidStream
+        .listen(expectAsync1((isValid) => expect(isValid, false)));
 
     sut.validatePasswordConfirmation(passwordConfirmation);
     sut.validatePasswordConfirmation(passwordConfirmation);
   });
 
   test('Should emit null if validation succeeds', () {
-    sut.passwordConfirmationErrorStream.listen(expectAsync1((error) => expect(error, null)));
-    sut.isFormValidStream.listen(expectAsync1((isValid) => expect(isValid, false)));
+    sut.passwordConfirmationErrorStream
+        .listen(expectAsync1((error) => expect(error, null)));
+    sut.isFormValidStream
+        .listen(expectAsync1((isValid) => expect(isValid, false)));
 
     sut.validatePasswordConfirmation(passwordConfirmation);
     sut.validatePasswordConfirmation(passwordConfirmation);
@@ -211,11 +256,10 @@ void main() {
     await sut.signUp();
 
     verify(() => addAccount.add(AddAccountParams(
-      name: name,
-      email: email,
-      password: password,
-      passwordConfirmation: passwordConfirmation
-    ))).called(1);
+        name: name,
+        email: email,
+        password: password,
+        passwordConfirmation: passwordConfirmation))).called(1);
   });
 
   test('Should call SaveCurrentAccount with correct value', () async {
@@ -286,7 +330,8 @@ void main() {
     sut.validatePassword(password);
     sut.validatePasswordConfirmation(passwordConfirmation);
 
-    sut.navigateToStream.listen(expectAsync1((page) => expect(page, '/surveys')));
+    sut.navigateToStream
+        .listen(expectAsync1((page) => expect(page, '/surveys')));
 
     await sut.signUp();
   });

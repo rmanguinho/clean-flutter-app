@@ -7,7 +7,8 @@ void main() {
   late CompareFieldsValidation sut;
 
   setUp(() {
-    sut = CompareFieldsValidation(field: 'any_field', fieldToCompare: 'other_field');
+    sut = CompareFieldsValidation(
+        field: 'any_field', fieldToCompare: 'other_field');
   });
 
   test('Should return null on invalid cases', () {

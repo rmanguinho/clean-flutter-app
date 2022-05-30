@@ -40,7 +40,7 @@ void main() {
 
     test('Should throw if deleteItem throws', () async {
       localStorage.mockSaveError();
-      
+
       final future = sut.save(key: key, value: value);
 
       expect(future, throwsA(TypeMatcher<Exception>()));

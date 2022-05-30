@@ -20,13 +20,18 @@ class RemoteSurveyResultModel {
     return RemoteSurveyResultModel(
       surveyId: json['surveyId'],
       question: json['question'],
-      answers: json['answers'].map<RemoteSurveyAnswerModel>((answerJson) => RemoteSurveyAnswerModel.fromJson(answerJson)).toList(),
+      answers: json['answers']
+          .map<RemoteSurveyAnswerModel>(
+              (answerJson) => RemoteSurveyAnswerModel.fromJson(answerJson))
+          .toList(),
     );
   }
 
   SurveyResultEntity toEntity() => SurveyResultEntity(
-    surveyId: surveyId,
-    question: question,
-    answers: answers.map<SurveyAnswerEntity>((answer) => answer.toEntity()).toList(),
-  );
+        surveyId: surveyId,
+        question: question,
+        answers: answers
+            .map<SurveyAnswerEntity>((answer) => answer.toEntity())
+            .toList(),
+      );
 }

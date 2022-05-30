@@ -14,7 +14,8 @@ class NameInput extends StatelessWidget {
         return TextFormField(
           decoration: InputDecoration(
             labelText: R.string.name,
-            icon: Icon(Icons.person, color: Theme.of(context).primaryColorLight),
+            icon:
+                Icon(Icons.person, color: Theme.of(context).primaryColorLight),
             errorText: snapshot.data?.description,
           ),
           keyboardType: TextInputType.name,

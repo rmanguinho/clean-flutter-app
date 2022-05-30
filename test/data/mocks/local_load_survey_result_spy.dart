@@ -10,8 +10,10 @@ class LocalLoadSurveyResultSpy extends Mock implements LocalLoadSurveyResult {
     this.mockSave();
   }
 
-  When mockLoadCall() => when(() => this.loadBySurvey(surveyId: any(named: 'surveyId')));
-  void mockLoad(SurveyResultEntity surveyResult) => this.mockLoadCall().thenAnswer((_) async => surveyResult);
+  When mockLoadCall() =>
+      when(() => this.loadBySurvey(surveyId: any(named: 'surveyId')));
+  void mockLoad(SurveyResultEntity surveyResult) =>
+      this.mockLoadCall().thenAnswer((_) async => surveyResult);
   void mockLoadError() => this.mockLoadCall().thenThrow(DomainError.unexpected);
 
   When mockValidateCall() => when(() => this.validate(any()));

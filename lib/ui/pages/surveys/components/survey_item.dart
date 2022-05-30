@@ -18,23 +18,26 @@ class SurveyItem extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: viewModel.didAnswer ? Theme.of(context).secondaryHeaderColor : Theme.of(context).primaryColorDark,
-            boxShadow: [
-              BoxShadow(
-                offset: Offset(0, 1),
-                spreadRadius: 0,
-                blurRadius: 2,
-                color: Colors.black
-              )
-            ],
-            borderRadius: BorderRadius.all(Radius.circular(10))
-          ),
+              color: viewModel.didAnswer
+                  ? Theme.of(context).secondaryHeaderColor
+                  : Theme.of(context).primaryColorDark,
+              boxShadow: [
+                BoxShadow(
+                    offset: Offset(0, 1),
+                    spreadRadius: 0,
+                    blurRadius: 2,
+                    color: Colors.black)
+              ],
+              borderRadius: BorderRadius.all(Radius.circular(10))),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 viewModel.date,
-                style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 20),
               Text(

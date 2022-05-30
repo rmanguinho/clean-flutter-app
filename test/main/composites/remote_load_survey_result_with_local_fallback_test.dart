@@ -25,10 +25,7 @@ void main() {
     remoteSurveyResult = EntityFactory.makeSurveyResult();
     remote = RemoteLoadSurveyResultSpy();
     remote.mockLoad(remoteSurveyResult);
-    sut = RemoteLoadSurveyResultWithLocalFallback(
-      remote: remote,
-      local: local
-    );
+    sut = RemoteLoadSurveyResultWithLocalFallback(remote: remote, local: local);
   });
 
   setUpAll(() {
@@ -53,7 +50,8 @@ void main() {
     expect(response, remoteSurveyResult);
   });
 
-  test('Should rethrow if remote loadBySurvey throws AccessDeniedError', () async {
+  test('Should rethrow if remote loadBySurvey throws AccessDeniedError',
+      () async {
     remote.mockLoadError(DomainError.accessDenied);
 
     final future = sut.loadBySurvey(surveyId: surveyId);
@@ -78,7 +76,8 @@ void main() {
     expect(response, localSurveyResult);
   });
 
-  test('Should throw UnexpectedError if remote and local loadBySurvey throws', () async {
+  test('Should throw UnexpectedError if remote and local loadBySurvey throws',
+      () async {
     remote.mockLoadError(DomainError.unexpected);
     local.mockLoadError();
 

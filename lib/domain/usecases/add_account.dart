@@ -14,10 +14,9 @@ class AddAccountParams extends Equatable {
 
   List get props => [name, email, password, passwordConfirmation];
 
-  AddAccountParams({
-    required this.name,
-    required this.email,
-    required this.password,
-    required this.passwordConfirmation
-  });
+  AddAccountParams(
+      {required this.name,
+      required this.email,
+      required this.password,
+      required this.passwordConfirmation});
 }

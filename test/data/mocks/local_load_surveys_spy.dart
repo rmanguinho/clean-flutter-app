@@ -11,7 +11,8 @@ class LocalLoadSurveysSpy extends Mock implements LocalLoadSurveys {
   }
 
   When mockLoadCall() => when(() => this.load());
-  void mockLoad(List<SurveyEntity> surveys) => this.mockLoadCall().thenAnswer((_) async => surveys);
+  void mockLoad(List<SurveyEntity> surveys) =>
+      this.mockLoadCall().thenAnswer((_) async => surveys);
   void mockLoadError() => this.mockLoadCall().thenThrow(DomainError.unexpected);
 
   When mockValidateCall() => when(() => this.validate());

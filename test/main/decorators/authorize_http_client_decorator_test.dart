@@ -28,10 +28,9 @@ void main() {
     httpClient = HttpClientSpy();
     httpClient.mockRequest(httpResponse);
     sut = AuthorizeHttpClientDecorator(
-      fetchSecureCacheStorage: secureCacheStorage,
-      deleteSecureCacheStorage: secureCacheStorage,
-      decoratee: httpClient
-    );
+        fetchSecureCacheStorage: secureCacheStorage,
+        deleteSecureCacheStorage: secureCacheStorage,
+        decoratee: httpClient);
   });
 
   test('Should call FetchSecureCacheStorage with correct key', () async {
@@ -42,15 +41,23 @@ void main() {
 
   test('Should call decoratee with access token on header', () async {
     await sut.request(url: url, method: method, body: body);
-    verify(() => httpClient.request(url: url, method: method, body: body, headers: {'x-access-token': token})).called(1);
-
-    await sut.request(url: url, method: method, body: body, headers: {'any_header': 'any_value'});
     verify(() => httpClient.request(
-      url: url,
-      method: method,
-      body: body,
-      headers: {'x-access-token': token, 'any_header': 'any_value'}
-    )).called(1);
+        url: url,
+        method: method,
+        body: body,
+        headers: {'x-access-token': token})).called(1);
+
+    await sut.request(
+        url: url,
+        method: method,
+        body: body,
+        headers: {'any_header': 'any_value'});
+    verify(() => httpClient.request(
+            url: url,
+            method: method,
+            body: body,
+            headers: {'x-access-token': token, 'any_header': 'any_value'}))
+        .called(1);
   });
 
   test('Should return same result as decoratee', () async {
@@ -59,7 +66,8 @@ void main() {
     expect(response, httpResponse);
   });
 
-  test('Should throw ForbiddenError if FetchSecureCacheStorage throws', () async {
+  test('Should throw ForbiddenError if FetchSecureCacheStorage throws',
+      () async {
     secureCacheStorage.mockFetchError();
 
     final future = sut.request(url: url, method: method, body: body);

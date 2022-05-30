@@ -4,15 +4,11 @@ import '../../composites/composites.dart';
 import '../factories.dart';
 
 RemoteLoadSurveys makeRemoteLoadSurveys() => RemoteLoadSurveys(
-  httpClient: makeAuthorizeHttpClientDecorator(),
-  url: makeApiUrl('surveys')
-);
+    httpClient: makeAuthorizeHttpClientDecorator(), url: makeApiUrl('surveys'));
 
-LocalLoadSurveys makeLocalLoadSurveys() => LocalLoadSurveys(
-  cacheStorage: makeLocalStorageAdapter()
-);
+LocalLoadSurveys makeLocalLoadSurveys() =>
+    LocalLoadSurveys(cacheStorage: makeLocalStorageAdapter());
 
-LoadSurveys makeRemoteLoadSurveysWithLocalFallback() => RemoteLoadSurveysWithLocalFallback(
-  remote: makeRemoteLoadSurveys(),
-  local: makeLocalLoadSurveys()
-);
+LoadSurveys makeRemoteLoadSurveysWithLocalFallback() =>
+    RemoteLoadSurveysWithLocalFallback(
+        remote: makeRemoteLoadSurveys(), local: makeLocalLoadSurveys());

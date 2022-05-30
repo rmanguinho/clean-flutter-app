@@ -16,14 +16,22 @@ class SignUpPresenterSpy extends Mock implements SignUpPresenter {
 
   SignUpPresenterSpy() {
     when(() => this.signUp()).thenAnswer((_) async => _);
-    when(() => this.nameErrorStream).thenAnswer((_) => nameErrorController.stream);
-    when(() => this.emailErrorStream).thenAnswer((_) => emailErrorController.stream);
-    when(() => this.passwordErrorStream).thenAnswer((_) => passwordErrorController.stream);
-    when(() => this.passwordConfirmationErrorStream).thenAnswer((_) => passwordConfirmationErrorController.stream);
-    when(() => this.mainErrorStream).thenAnswer((_) => mainErrorController.stream);
-    when(() => this.navigateToStream).thenAnswer((_) => navigateToController.stream);
-    when(() => this.isFormValidStream).thenAnswer((_) => isFormValidController.stream);
-    when(() => this.isLoadingStream).thenAnswer((_) => isLoadingController.stream);
+    when(() => this.nameErrorStream)
+        .thenAnswer((_) => nameErrorController.stream);
+    when(() => this.emailErrorStream)
+        .thenAnswer((_) => emailErrorController.stream);
+    when(() => this.passwordErrorStream)
+        .thenAnswer((_) => passwordErrorController.stream);
+    when(() => this.passwordConfirmationErrorStream)
+        .thenAnswer((_) => passwordConfirmationErrorController.stream);
+    when(() => this.mainErrorStream)
+        .thenAnswer((_) => mainErrorController.stream);
+    when(() => this.navigateToStream)
+        .thenAnswer((_) => navigateToController.stream);
+    when(() => this.isFormValidStream)
+        .thenAnswer((_) => isFormValidController.stream);
+    when(() => this.isLoadingStream)
+        .thenAnswer((_) => isLoadingController.stream);
   }
 
   void emitNameError(UIError error) => nameErrorController.add(error);
@@ -32,8 +40,10 @@ class SignUpPresenterSpy extends Mock implements SignUpPresenter {
   void emitEmailValid() => emailErrorController.add(null);
   void emitPasswordError(UIError error) => passwordErrorController.add(error);
   void emitPasswordValid() => passwordErrorController.add(null);
-  void emitPasswordConfirmationError(UIError error) => passwordConfirmationErrorController.add(error);
-  void emitPasswordConfirmationValid() => passwordConfirmationErrorController.add(null);
+  void emitPasswordConfirmationError(UIError error) =>
+      passwordConfirmationErrorController.add(error);
+  void emitPasswordConfirmationValid() =>
+      passwordConfirmationErrorController.add(null);
   void emitFormError() => isFormValidController.add(false);
   void emitFormValid() => isFormValidController.add(true);
   void emitLoading([bool show = true]) => isLoadingController.add(show);

@@ -32,7 +32,8 @@ void main() {
     expect(account, AccountEntity(token: token));
   });
 
-  test('Should throw UnexpectedError if FetchSecureCacheStorage throws', () async {
+  test('Should throw UnexpectedError if FetchSecureCacheStorage throws',
+      () async {
     secureCacheStorage.mockFetchError();
 
     final future = sut.load();
@@ -40,7 +41,8 @@ void main() {
     expect(future, throwsA(DomainError.unexpected));
   });
 
-  test('Should throw UnexpectedError if FetchSecureCacheStorage returns null', () async {
+  test('Should throw UnexpectedError if FetchSecureCacheStorage returns null',
+      () async {
     secureCacheStorage.mockFetch(null);
 
     final future = sut.load();

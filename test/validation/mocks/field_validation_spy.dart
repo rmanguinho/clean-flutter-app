@@ -11,7 +11,9 @@ class FieldValidationSpy extends Mock implements FieldValidation {
 
   When mockValidationCall() => when(() => this.validate(any()));
   void mockValidation() => this.mockValidationCall().thenReturn(null);
-  void mockValidationError(ValidationError error) => this.mockValidationCall().thenReturn(error);
+  void mockValidationError(ValidationError error) =>
+      this.mockValidationCall().thenReturn(error);
 
-  void mockFieldName(String fieldName) => when(() => this.field).thenReturn(fieldName);
+  void mockFieldName(String fieldName) =>
+      when(() => this.field).thenReturn(fieldName);
 }

@@ -8,7 +8,9 @@ import '../mixins/mixins.dart';
 
 import 'package:get/get.dart';
 
-class GetxSurveyResultPresenter extends GetxController with LoadingManager, SessionManager implements SurveyResultPresenter {
+class GetxSurveyResultPresenter extends GetxController
+    with LoadingManager, SessionManager
+    implements SurveyResultPresenter {
   final LoadSurveyResult loadSurveyResult;
   final SaveSurveyResult saveSurveyResult;
   final String surveyId;
@@ -26,7 +28,7 @@ class GetxSurveyResultPresenter extends GetxController with LoadingManager, Sess
     showResultOnAction(() => loadSurveyResult.loadBySurvey(surveyId: surveyId));
   }
 
-  Future<void> save({ required String answer }) async {
+  Future<void> save({required String answer}) async {
     showResultOnAction(() => saveSurveyResult.save(answer: answer));
   }
 
@@ -35,7 +37,7 @@ class GetxSurveyResultPresenter extends GetxController with LoadingManager, Sess
       isLoading = true;
       final surveyResult = await action();
       _surveyResult.subject.add(surveyResult.toViewModel());
-    } on DomainError catch(error) {
+    } on DomainError catch (error) {
       if (error == DomainError.accessDenied) {
         isSessionExpired = true;
       } else {

@@ -5,5 +5,5 @@ class AccountEntity extends Equatable {
 
   List get props => [token];
 
-  AccountEntity({ required this.token });
+  AccountEntity({required this.token});
 }

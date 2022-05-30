@@ -4,7 +4,7 @@ import '../http/http.dart';
 class RemoteAccountModel {
   final String accessToken;
 
-  RemoteAccountModel({ required this.accessToken });
+  RemoteAccountModel({required this.accessToken});
 
   factory RemoteAccountModel.fromJson(Map json) {
     if (!json.containsKey('accessToken')) {

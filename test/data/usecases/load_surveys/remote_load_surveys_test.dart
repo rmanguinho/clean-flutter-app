@@ -49,7 +49,9 @@ void main() {
     ]);
   });
 
-  test('Should throw UnexpectedError if HttpClient returns 200 with invalid data', () async {
+  test(
+      'Should throw UnexpectedError if HttpClient returns 200 with invalid data',
+      () async {
     httpClient.mockRequest(ApiFactory.makeInvalidList());
 
     final future = sut.load();

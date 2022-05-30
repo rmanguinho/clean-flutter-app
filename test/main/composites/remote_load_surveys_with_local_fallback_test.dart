@@ -22,10 +22,7 @@ void main() {
     remoteSurveys = EntityFactory.makeSurveyList();
     remote = RemoteLoadSurveysSpy();
     remote.mockLoad(remoteSurveys);
-    sut = RemoteLoadSurveysWithLocalFallback(
-      remote: remote,
-      local: local
-    );
+    sut = RemoteLoadSurveysWithLocalFallback(remote: remote, local: local);
   });
 
   test('Should call remote load', () async {

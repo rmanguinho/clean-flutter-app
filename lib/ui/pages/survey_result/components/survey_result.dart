@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 
 class SurveyResult extends StatelessWidget {
   final SurveyResultViewModel viewModel;
-  final void Function({ required String answer }) onSave;
+  final void Function({required String answer}) onSave;
 
-  SurveyResult({ required this.viewModel, required this.onSave });
+  SurveyResult({required this.viewModel, required this.onSave});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,9 @@ class SurveyResult extends StatelessWidget {
         }
         final answer = viewModel.answers[index - 1];
         return GestureDetector(
-          onTap: () => answer.isCurrentAnswer ? null : onSave(answer: answer.answer),
-          child: SurveyAnswer(answer)
-        );
+            onTap: () =>
+                answer.isCurrentAnswer ? null : onSave(answer: answer.answer),
+            child: SurveyAnswer(answer));
       },
       itemCount: viewModel.answers.length + 1,
     );

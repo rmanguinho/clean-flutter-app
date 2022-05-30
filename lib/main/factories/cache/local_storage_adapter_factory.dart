@@ -3,4 +3,4 @@ import '../../../infra/cache/cache.dart';
 import 'package:localstorage/localstorage.dart';
 
 LocalStorageAdapter makeLocalStorageAdapter() =>
-  LocalStorageAdapter(localStorage: LocalStorage('fordev'));
+    LocalStorageAdapter(localStorage: LocalStorage('fordev'));

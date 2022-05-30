@@ -7,7 +7,8 @@ import './signup.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SignUpPage extends StatelessWidget with KeyboardManager, LoadingManager, UIErrorManager, NavigationManager {
+class SignUpPage extends StatelessWidget
+    with KeyboardManager, LoadingManager, UIErrorManager, NavigationManager {
   final SignUpPresenter presenter;
 
   SignUpPage(this.presenter);
@@ -48,10 +49,9 @@ class SignUpPage extends StatelessWidget with KeyboardManager, LoadingManager, U
                             ),
                             SignUpButton(),
                             TextButton.icon(
-                              onPressed: presenter.goToLogin,
-                              icon: Icon(Icons.exit_to_app),
-                              label: Text(R.string.login)
-                            )
+                                onPressed: presenter.goToLogin,
+                                icon: Icon(Icons.exit_to_app),
+                                label: Text(R.string.login))
                           ],
                         ),
                       ),

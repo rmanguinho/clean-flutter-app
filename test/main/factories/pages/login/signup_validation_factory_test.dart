@@ -15,7 +15,8 @@ void main() {
       RequiredFieldValidation('password'),
       MinLengthValidation(field: 'password', size: 3),
       RequiredFieldValidation('passwordConfirmation'),
-      CompareFieldsValidation(field: 'passwordConfirmation', fieldToCompare: 'password')
+      CompareFieldsValidation(
+          field: 'passwordConfirmation', fieldToCompare: 'password')
     ]);
   });
 }

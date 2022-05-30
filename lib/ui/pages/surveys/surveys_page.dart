@@ -17,10 +17,12 @@ class SurveysPage extends StatefulWidget {
   _SurveysPageState createState() => _SurveysPageState();
 }
 
-class _SurveysPageState extends State<SurveysPage> with LoadingManager, NavigationManager, SessionManager, RouteAware {
+class _SurveysPageState extends State<SurveysPage>
+    with LoadingManager, NavigationManager, SessionManager, RouteAware {
   @override
   Widget build(BuildContext context) {
-    Get.find<RouteObserver>().subscribe(this, ModalRoute.of(context) as PageRoute);
+    Get.find<RouteObserver>()
+        .subscribe(this, ModalRoute.of(context) as PageRoute);
     return Scaffold(
       appBar: AppBar(title: Text(R.string.surveys)),
       body: Builder(
@@ -31,20 +33,20 @@ class _SurveysPageState extends State<SurveysPage> with LoadingManager, Navigati
           widget.presenter.loadData();
 
           return StreamBuilder<List<SurveyViewModel>>(
-            stream: widget.presenter.surveysStream,
-            builder: (context, snapshot) {
-              if (snapshot.hasError) {
-                return ReloadScreen(error: '${snapshot.error}', reload: widget.presenter.loadData);
-              }
-              if (snapshot.hasData) {
-                return ListenableProvider(
-                  create: (_) => widget.presenter,
-                  child: SurveyItems(snapshot.data!)
-                );
-              }
-              return SizedBox(height: 0);
-            }
-          );
+              stream: widget.presenter.surveysStream,
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return ReloadScreen(
+                      error: '${snapshot.error}',
+                      reload: widget.presenter.loadData);
+                }
+                if (snapshot.hasData) {
+                  return ListenableProvider(
+                      create: (_) => widget.presenter,
+                      child: SurveyItems(snapshot.data!));
+                }
+                return SizedBox(height: 0);
+              });
         },
       ),
     );

@@ -7,7 +7,9 @@ class R {
 
   static void load(Locale locale) {
     switch (locale.toString()) {
-      default: string = PtBr(); break;
+      default:
+        string = PtBr();
+        break;
     }
   }
 }

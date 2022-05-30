@@ -14,14 +14,16 @@ void main() {
 
   Future<void> loadPage(WidgetTester tester) async {
     presenter = SignUpPresenterSpy();
-    await tester.pumpWidget(makePage(path: '/signup', page: () => SignUpPage(presenter)));
+    await tester.pumpWidget(
+        makePage(path: '/signup', page: () => SignUpPage(presenter)));
   }
 
   tearDown(() {
     presenter.dispose();
   });
 
-  testWidgets('Should call validate with correct values', (WidgetTester tester) async {
+  testWidgets('Should call validate with correct values',
+      (WidgetTester tester) async {
     await loadPage(tester);
 
     final name = faker.person.name();
@@ -54,9 +56,9 @@ void main() {
     presenter.emitEmailValid();
     await tester.pump();
     expect(
-      find.descendant(of: find.bySemanticsLabel('Email'), matching: find.byType(Text)),
-      findsOneWidget
-    );
+        find.descendant(
+            of: find.bySemanticsLabel('Email'), matching: find.byType(Text)),
+        findsOneWidget);
   });
 
   testWidgets('Should present name error', (WidgetTester tester) async {
@@ -73,9 +75,9 @@ void main() {
     presenter.emitNameValid();
     await tester.pump();
     expect(
-      find.descendant(of: find.bySemanticsLabel('Nome'), matching: find.byType(Text)),
-      findsOneWidget
-    );
+        find.descendant(
+            of: find.bySemanticsLabel('Nome'), matching: find.byType(Text)),
+        findsOneWidget);
   });
 
   testWidgets('Should present password error', (WidgetTester tester) async {
@@ -92,12 +94,13 @@ void main() {
     presenter.emitPasswordValid();
     await tester.pump();
     expect(
-      find.descendant(of: find.bySemanticsLabel('Senha'), matching: find.byType(Text)),
-      findsOneWidget
-    );
+        find.descendant(
+            of: find.bySemanticsLabel('Senha'), matching: find.byType(Text)),
+        findsOneWidget);
   });
 
-  testWidgets('Should present passwordConfirmation error', (WidgetTester tester) async {
+  testWidgets('Should present passwordConfirmation error',
+      (WidgetTester tester) async {
     await loadPage(tester);
 
     presenter.emitPasswordConfirmationError(UIError.invalidField);
@@ -111,12 +114,14 @@ void main() {
     presenter.emitPasswordConfirmationValid();
     await tester.pump();
     expect(
-      find.descendant(of: find.bySemanticsLabel('Confirmar senha'), matching: find.byType(Text)),
-      findsOneWidget
-    );
+        find.descendant(
+            of: find.bySemanticsLabel('Confirmar senha'),
+            matching: find.byType(Text)),
+        findsOneWidget);
   });
 
-  testWidgets('Should enable button if form is valid', (WidgetTester tester) async {
+  testWidgets('Should enable button if form is valid',
+      (WidgetTester tester) async {
     await loadPage(tester);
 
     presenter.emitFormValid();
@@ -126,7 +131,8 @@ void main() {
     expect(button.onPressed, isNotNull);
   });
 
-  testWidgets('Should disable button if form is invalid', (WidgetTester tester) async {
+  testWidgets('Should disable button if form is invalid',
+      (WidgetTester tester) async {
     await loadPage(tester);
 
     presenter.emitFormError();
@@ -165,7 +171,8 @@ void main() {
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
   });
 
-  testWidgets('Should present error message if signUp fails', (WidgetTester tester) async {
+  testWidgets('Should present error message if signUp fails',
+      (WidgetTester tester) async {
     await loadPage(tester);
 
     presenter.emitMainError(UIError.emailInUse);
@@ -174,13 +181,15 @@ void main() {
     expect(find.text('O email já está em uso.'), findsOneWidget);
   });
 
-  testWidgets('Should present error message if signUp throws', (WidgetTester tester) async {
+  testWidgets('Should present error message if signUp throws',
+      (WidgetTester tester) async {
     await loadPage(tester);
 
     presenter.emitMainError(UIError.unexpected);
     await tester.pump();
 
-    expect(find.text('Algo errado aconteceu. Tente novamente em breve.'), findsOneWidget);
+    expect(find.text('Algo errado aconteceu. Tente novamente em breve.'),
+        findsOneWidget);
   });
 
   testWidgets('Should change page', (WidgetTester tester) async {
@@ -201,7 +210,8 @@ void main() {
     expect(currentRoute, '/signup');
   });
 
-  testWidgets('Should call gotoLogin on link click', (WidgetTester tester) async {
+  testWidgets('Should call gotoLogin on link click',
+      (WidgetTester tester) async {
     await loadPage(tester);
 
     final button = find.text('Login');
