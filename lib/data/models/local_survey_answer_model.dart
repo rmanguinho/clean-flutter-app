@@ -7,10 +7,10 @@ class LocalSurveyAnswerModel {
   final int percent;
 
   LocalSurveyAnswerModel({
-    this.image,
     required this.answer,
     required this.isCurrentAnswer,
     required this.percent,
+    this.image,
   });
 
   factory LocalSurveyAnswerModel.fromJson(Map json) {

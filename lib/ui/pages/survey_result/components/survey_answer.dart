@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class SurveyAnswer extends StatelessWidget {
   final SurveyAnswerViewModel viewModel;
 
-   const SurveyAnswer(this.viewModel, {super.key});
+  const SurveyAnswer(this.viewModel, {super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 class SurveyItem extends StatelessWidget {
   final SurveyViewModel viewModel;
 
-   const SurveyItem(this.viewModel, {super.key});
+  const SurveyItem(this.viewModel, {super.key});
 
   @override
   Widget build(BuildContext context) {

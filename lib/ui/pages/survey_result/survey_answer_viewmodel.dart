@@ -10,9 +10,9 @@ class SurveyAnswerViewModel extends Equatable {
   List get props => [image, answer, isCurrentAnswer, percent];
 
   const SurveyAnswerViewModel({
-    this.image,
     required this.answer,
     required this.isCurrentAnswer,
     required this.percent,
+    this.image,
   });
 }

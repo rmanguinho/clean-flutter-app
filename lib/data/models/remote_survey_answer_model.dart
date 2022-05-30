@@ -8,10 +8,10 @@ class RemoteSurveyAnswerModel {
   final int percent;
 
   RemoteSurveyAnswerModel({
-    this.image,
     required this.answer,
     required this.isCurrentAccountAnswer,
     required this.percent,
+    this.image,
   });
 
   factory RemoteSurveyAnswerModel.fromJson(Map json) {

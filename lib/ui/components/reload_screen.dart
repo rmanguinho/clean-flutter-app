@@ -6,7 +6,7 @@ class ReloadScreen extends StatelessWidget {
   final String error;
   final Future<void> Function() reload;
 
-  const ReloadScreen({super.key, required this.error, required this.reload});
+  const ReloadScreen({required this.error, required this.reload, super.key});
 
   @override
   Widget build(BuildContext context) {

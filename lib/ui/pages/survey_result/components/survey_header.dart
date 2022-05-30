@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class SurveyHeader extends StatelessWidget {
   final String question;
 
-   const SurveyHeader(this.question, {super.key});
+  const SurveyHeader(this.question, {super.key});
 
   @override
   Widget build(BuildContext context) {
