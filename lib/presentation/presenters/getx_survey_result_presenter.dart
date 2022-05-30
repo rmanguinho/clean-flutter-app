@@ -27,12 +27,14 @@ class GetxSurveyResultPresenter extends GetxController
 
   @override
   Future<void> loadData() async {
-    showResultOnAction(() => loadSurveyResult.loadBySurvey(surveyId: surveyId));
+    await showResultOnAction(
+      () => loadSurveyResult.loadBySurvey(surveyId: surveyId),
+    );
   }
 
   @override
   Future<void> save({required String answer}) async {
-    showResultOnAction(() => saveSurveyResult.save(answer: answer));
+    await showResultOnAction(() => saveSurveyResult.save(answer: answer));
   }
 
   Future<void> showResultOnAction(
