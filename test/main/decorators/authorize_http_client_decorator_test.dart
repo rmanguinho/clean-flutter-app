@@ -1,11 +1,10 @@
+import 'package:faker/faker.dart';
 import 'package:fordev/data/http/http.dart';
 import 'package:fordev/main/decorators/decorators.dart';
-
-import '../../data/mocks/mocks.dart';
-
-import 'package:faker/faker.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
+
+import '../../data/mocks/mocks.dart';
 
 void main() {
   late AuthorizeHttpClientDecorator sut;

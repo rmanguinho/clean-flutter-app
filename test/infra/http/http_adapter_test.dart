@@ -1,11 +1,10 @@
+import 'package:faker/faker.dart';
 import 'package:fordev/data/http/http.dart';
 import 'package:fordev/infra/http/http.dart';
-
-import '../mocks/mocks.dart';
-
-import 'package:faker/faker.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
+
+import '../mocks/mocks.dart';
 
 void main() {
   late HttpAdapter sut;

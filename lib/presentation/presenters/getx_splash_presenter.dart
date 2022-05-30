@@ -1,8 +1,8 @@
+import 'package:get/get.dart';
+
 import '../../domain/usecases/usecases.dart';
 import '../../ui/pages/pages.dart';
 import '../mixins/mixins.dart';
-
-import 'package:get/get.dart';
 
 class GetxSplashPresenter extends GetxController
     with NavigationManager

@@ -1,14 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:fordev/ui/helpers/helpers.dart';
 import 'package:fordev/ui/pages/pages.dart';
 import 'package:fordev/ui/pages/survey_result/components/components.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:network_image_mock/network_image_mock.dart';
 
 import '../helpers/helpers.dart';
 import '../mocks/mocks.dart';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:network_image_mock/network_image_mock.dart';
-import 'package:mocktail/mocktail.dart';
 
 void main() {
   late SurveyResultPresenterSpy presenter;

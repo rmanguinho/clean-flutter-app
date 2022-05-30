@@ -1,6 +1,5 @@
-import 'package:fordev/domain/entities/entities.dart';
-
 import 'package:faker/faker.dart';
+import 'package:fordev/domain/entities/entities.dart';
 
 class EntityFactory {
   static AccountEntity makeAccount() => AccountEntity(token: faker.guid.guid());

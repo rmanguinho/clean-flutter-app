@@ -1,7 +1,7 @@
+import 'dart:async';
+
 import 'package:fordev/ui/helpers/helpers.dart';
 import 'package:fordev/ui/pages/pages.dart';
-
-import 'dart:async';
 import 'package:mocktail/mocktail.dart';
 
 class SignUpPresenterSpy extends Mock implements SignUpPresenter {

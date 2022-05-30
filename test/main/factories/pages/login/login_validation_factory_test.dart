@@ -1,6 +1,5 @@
-import 'package:fordev/validation/validators/validators.dart';
 import 'package:fordev/main/factories/factories.dart';
-
+import 'package:fordev/validation/validators/validators.dart';
 import 'package:test/test.dart';
 
 void main() {

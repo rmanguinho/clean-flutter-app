@@ -1,11 +1,11 @@
-import '../../ui/helpers/helpers.dart';
-import '../../ui/pages/pages.dart';
+import 'package:get/get.dart';
+
 import '../../domain/helpers/helpers.dart';
 import '../../domain/usecases/usecases.dart';
-import '../protocols/protocols.dart';
+import '../../ui/helpers/helpers.dart';
+import '../../ui/pages/pages.dart';
 import '../mixins/mixins.dart';
-
-import 'package:get/get.dart';
+import '../protocols/protocols.dart';
 
 class GetxLoginPresenter extends GetxController
     with LoadingManager, NavigationManager, FormManager, UIErrorManager

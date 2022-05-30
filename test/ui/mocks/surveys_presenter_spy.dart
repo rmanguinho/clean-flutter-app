@@ -1,6 +1,6 @@
-import 'package:fordev/ui/pages/pages.dart';
-
 import 'dart:async';
+
+import 'package:fordev/ui/pages/pages.dart';
 import 'package:mocktail/mocktail.dart';
 
 class SurveysPresenterSpy extends Mock implements SurveysPresenter {

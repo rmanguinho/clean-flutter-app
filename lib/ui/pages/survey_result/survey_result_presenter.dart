@@ -1,6 +1,6 @@
-import './survey_result.dart';
-
 import 'package:flutter/material.dart';
+
+import './survey_result.dart';
 
 abstract class SurveyResultPresenter implements Listenable {
   Stream<bool> get isLoadingStream;

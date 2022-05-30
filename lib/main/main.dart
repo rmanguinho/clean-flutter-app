@@ -1,9 +1,9 @@
-import '../ui/components/components.dart';
-import './factories/factories.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+
+import './factories/factories.dart';
+import '../ui/components/components.dart';
 
 void main() {
   runApp(const App());

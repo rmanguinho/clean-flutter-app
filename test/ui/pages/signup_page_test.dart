@@ -1,13 +1,12 @@
-import 'package:fordev/ui/helpers/helpers.dart';
-import 'package:fordev/ui/pages/pages.dart';
-
-import '../helpers/helpers.dart';
-import '../mocks/mocks.dart';
-
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:fordev/ui/helpers/helpers.dart';
+import 'package:fordev/ui/pages/pages.dart';
 import 'package:mocktail/mocktail.dart';
+
+import '../helpers/helpers.dart';
+import '../mocks/mocks.dart';
 
 void main() {
   late SignUpPresenterSpy presenter;

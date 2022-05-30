@@ -1,9 +1,8 @@
 import 'package:fordev/presentation/presenters/presenters.dart';
-
-import '../../domain/mocks/mocks.dart';
-
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
+
+import '../../domain/mocks/mocks.dart';
 
 void main() {
   late GetxSplashPresenter sut;

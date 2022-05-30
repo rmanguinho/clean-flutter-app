@@ -1,11 +1,11 @@
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+
 import '../../domain/helpers/helpers.dart';
 import '../../domain/usecases/usecases.dart';
 import '../../ui/helpers/helpers.dart';
 import '../../ui/pages/pages.dart';
 import '../mixins/mixins.dart';
-
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 class GetxSurveysPresenter extends GetxController
     with SessionManager, LoadingManager, NavigationManager

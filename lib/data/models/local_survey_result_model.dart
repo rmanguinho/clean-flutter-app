@@ -1,5 +1,5 @@
-import '../../domain/entities/entities.dart';
 import './models.dart';
+import '../../domain/entities/entities.dart';
 
 class LocalSurveyResultModel {
   final String surveyId;

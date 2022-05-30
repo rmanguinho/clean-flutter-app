@@ -1,8 +1,8 @@
-import '../surveys.dart';
-import './components.dart';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+
+import './components.dart';
+import '../surveys.dart';
 
 class SurveyItems extends StatelessWidget {
   final List<SurveyViewModel> viewModels;

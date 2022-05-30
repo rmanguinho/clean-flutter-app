@@ -1,10 +1,9 @@
-import 'package:fordev/infra/cache/cache.dart';
-
-import '../mocks/mocks.dart';
-
 import 'package:faker/faker.dart';
+import 'package:fordev/infra/cache/cache.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
+
+import '../mocks/mocks.dart';
 
 void main() {
   late LocalStorageAdapter sut;
