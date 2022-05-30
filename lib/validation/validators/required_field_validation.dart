@@ -1,15 +1,19 @@
+import 'package:equatable/equatable.dart';
+
 import '../../presentation/protocols/protocols.dart';
 import '../protocols/protocols.dart';
 
-import 'package:equatable/equatable.dart';
-
 class RequiredFieldValidation extends Equatable implements FieldValidation {
+  @override
   final String field;
 
-  List get props => [field];
+  @override
+  List<String> get props => <String>[field];
 
-  RequiredFieldValidation(this.field);
+  @override
+  const RequiredFieldValidation(this.field);
 
+  @override
   ValidationError? validate(Map input) =>
-    input[field]?.isNotEmpty == true ? null : ValidationError.requiredField;
+      input[field]?.isNotEmpty == true ? null : ValidationError.requiredField;
 }

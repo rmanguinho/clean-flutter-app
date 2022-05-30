@@ -1,6 +1,6 @@
-import '../../../infra/cache/cache.dart';
-
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+import '../../../infra/cache/cache.dart';
+
 SecureStorageAdapter makeSecureStorageAdapter() =>
-  SecureStorageAdapter(secureStorage: FlutterSecureStorage());
+    SecureStorageAdapter(secureStorage: const FlutterSecureStorage());

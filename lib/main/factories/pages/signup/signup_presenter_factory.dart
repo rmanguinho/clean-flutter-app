@@ -3,7 +3,7 @@ import '../../../../ui/pages/pages.dart';
 import '../../factories.dart';
 
 SignUpPresenter makeGetxSignUpPresenter() => GetxSignUpPresenter(
-  addAccount: makeRemoteAddAccount(),
-  validation: makeSignUpValidation(),
-  saveCurrentAccount: makeLocalSaveCurrentAccount()
-);
+      addAccount: makeRemoteAddAccount(),
+      validation: makeSignUpValidation(),
+      saveCurrentAccount: makeLocalSaveCurrentAccount(),
+    );

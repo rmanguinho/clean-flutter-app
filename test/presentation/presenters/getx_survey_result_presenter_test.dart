@@ -1,15 +1,12 @@
-import 'package:fordev/domain/helpers/helpers.dart';
-import 'package:fordev/domain/entities/entities.dart';
-import 'package:fordev/ui/helpers/helpers.dart';
-import 'package:fordev/ui/pages/pages.dart';
-import 'package:fordev/presentation/presenters/presenters.dart';
+import 'package:faker/faker.dart';
+import 'package:fordev/domain/domain.dart';
+import 'package:fordev/presentation/presentation.dart';
+import 'package:fordev/ui/ui.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:test/test.dart';
 
 import '../../data/mocks/mocks.dart';
 import '../../domain/mocks/mocks.dart';
-
-import 'package:faker/faker.dart';
-import 'package:mocktail/mocktail.dart';
-import 'package:test/test.dart';
 
 void main() {
   late GetxSurveyResultPresenter sut;
@@ -20,23 +17,24 @@ void main() {
   late String surveyId;
   late String answer;
 
-  SurveyResultViewModel mapToViewModel(SurveyResultEntity entity) => SurveyResultViewModel(
-    surveyId: entity.surveyId,
-    question: entity.question,
-    answers: [
-      SurveyAnswerViewModel(
-        image: entity.answers[0].image,
-        answer: entity.answers[0].answer,
-        isCurrentAnswer: entity.answers[0].isCurrentAnswer,
-        percent: '${entity.answers[0].percent}%'
-      ),
-      SurveyAnswerViewModel(
-        answer: entity.answers[1].answer,
-        isCurrentAnswer: entity.answers[1].isCurrentAnswer,
-        percent: '${entity.answers[1].percent}%'
-      )
-    ]
-  );
+  SurveyResultViewModel mapToViewModel(SurveyResultEntity entity) =>
+      SurveyResultViewModel(
+        surveyId: entity.surveyId,
+        question: entity.question,
+        answers: [
+          SurveyAnswerViewModel(
+            image: entity.answers[0].image,
+            answer: entity.answers[0].answer,
+            isCurrentAnswer: entity.answers[0].isCurrentAnswer,
+            percent: '${entity.answers[0].percent}%',
+          ),
+          SurveyAnswerViewModel(
+            answer: entity.answers[1].answer,
+            isCurrentAnswer: entity.answers[1].isCurrentAnswer,
+            percent: '${entity.answers[1].percent}%',
+          )
+        ],
+      );
 
   setUp(() {
     saveResult = EntityFactory.makeSurveyResult();
@@ -50,7 +48,7 @@ void main() {
     sut = GetxSurveyResultPresenter(
       loadSurveyResult: loadSurveyResult,
       saveSurveyResult: saveSurveyResult,
-      surveyId: surveyId
+      surveyId: surveyId,
     );
   });
 
@@ -63,7 +61,12 @@ void main() {
 
     test('Should emit correct events on success', () async {
       expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
-      sut.surveyResultStream.listen(expectAsync1((result) => expect(result, mapToViewModel(loadResult))));
+      sut.surveyResultStream.listen(
+        expectAsync1(
+          (SurveyResultViewModel? result) =>
+              expect(result, mapToViewModel(loadResult)),
+        ),
+      );
 
       await sut.loadData();
     });
@@ -72,7 +75,12 @@ void main() {
       loadSurveyResult.mockLoadError(DomainError.unexpected);
 
       expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
-      sut.surveyResultStream.listen(null, onError: expectAsync1((error) => expect(error, UIError.unexpected.description)));
+      sut.surveyResultStream.listen(
+        null,
+        onError: expectAsync1(
+          (Object? error) => expect(error, UIError.unexpected.description),
+        ),
+      );
 
       await sut.loadData();
     });
@@ -96,10 +104,13 @@ void main() {
 
     test('Should emit correct events on success', () async {
       expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
-      expectLater(sut.surveyResultStream, emitsInOrder([
-        mapToViewModel(loadResult),
-        mapToViewModel(saveResult),
-      ]));
+      expectLater(
+        sut.surveyResultStream,
+        emitsInOrder([
+          mapToViewModel(loadResult),
+          mapToViewModel(saveResult),
+        ]),
+      );
 
       await sut.loadData();
       await sut.save(answer: answer);
@@ -109,7 +120,12 @@ void main() {
       saveSurveyResult.mockSaveError(DomainError.unexpected);
 
       expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
-      sut.surveyResultStream.listen(null, onError: expectAsync1((error) => expect(error, UIError.unexpected.description)));
+      sut.surveyResultStream.listen(
+        null,
+        onError: expectAsync1(
+          (Object? error) => expect(error, UIError.unexpected.description),
+        ),
+      );
 
       await sut.save(answer: answer);
     });
