@@ -11,10 +11,10 @@ import 'package:provider/provider.dart';
 class SurveysPage extends StatefulWidget {
   final SurveysPresenter presenter;
 
-  const SurveysPage(this.presenter);
+  const SurveysPage(this.presenter, {Key? key}) : super(key: key);
 
   @override
-  _SurveysPageState createState() => _SurveysPageState();
+  State<SurveysPage> createState() => _SurveysPageState();
 }
 
 class _SurveysPageState extends State<SurveysPage>

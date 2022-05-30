@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class SurveyAnswer extends StatelessWidget {
   final SurveyAnswerViewModel viewModel;
 
-  const SurveyAnswer(this.viewModel);
+   const SurveyAnswer(this.viewModel, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class SurveyAnswer extends StatelessWidget {
             color: Theme.of(context).primaryColorDark,
           ),
         ),
-        viewModel.isCurrentAnswer ? ActiveIcon() : DisabledIcon()
+        viewModel.isCurrentAnswer ? const ActiveIcon() : const DisabledIcon()
       ];
       if (viewModel.image != null) {
         children.insert(

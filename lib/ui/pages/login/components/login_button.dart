@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class LoginButton extends StatelessWidget {
+  const LoginButton({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final presenter = Provider.of<LoginPresenter>(context);

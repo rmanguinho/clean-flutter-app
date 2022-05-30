@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class SplashPage extends StatelessWidget with NavigationManager {
   final SplashPresenter presenter;
 
-  SplashPage({required this.presenter});
+  SplashPage({Key? key, required this.presenter}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

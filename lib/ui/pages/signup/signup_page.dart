@@ -11,7 +11,7 @@ class SignUpPage extends StatelessWidget
     with KeyboardManager, LoadingManager, UIErrorManager, NavigationManager {
   final SignUpPresenter presenter;
 
-  SignUpPage(this.presenter);
+  SignUpPage(this.presenter, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class SignUpPage extends StatelessWidget
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  LoginHeader(),
+                  const LoginHeader(),
                   Headline1(text: R.string.addAccount),
                   Padding(
                     padding: const EdgeInsets.all(32),
@@ -37,18 +37,17 @@ class SignUpPage extends StatelessWidget
                       child: Form(
                         child: Column(
                           children: <Widget>[
-                            NameInput(),
-                            Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 8),
+                            const NameInput(),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 8),
                               child: EmailInput(),
                             ),
-                            PasswordInput(),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 8, bottom: 32),
+                            const PasswordInput(),
+                            const Padding(
+                              padding: EdgeInsets.only(top: 8, bottom: 32),
                               child: PasswordConfirmationInput(),
                             ),
-                            SignUpButton(),
+                            const SignUpButton(),
                             TextButton.icon(
                               onPressed: presenter.goToLogin,
                               icon: const Icon(Icons.exit_to_app),

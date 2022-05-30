@@ -10,7 +10,7 @@ class SurveyResultPage extends StatelessWidget
     with LoadingManager, SessionManager {
   final SurveyResultPresenter presenter;
 
-  SurveyResultPage(this.presenter);
+  SurveyResultPage(this.presenter, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class NameInput extends StatelessWidget {
+  const NameInput({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final presenter = Provider.of<SignUpPresenter>(context);

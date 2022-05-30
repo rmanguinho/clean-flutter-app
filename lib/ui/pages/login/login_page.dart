@@ -11,7 +11,7 @@ class LoginPage extends StatelessWidget
     with KeyboardManager, LoadingManager, UIErrorManager, NavigationManager {
   final LoginPresenter presenter;
 
-  LoginPage(this.presenter);
+  LoginPage(this.presenter, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class LoginPage extends StatelessWidget
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  LoginHeader(),
+                  const LoginHeader(),
                   Headline1(text: R.string.login),
                   Padding(
                     padding: const EdgeInsets.all(32),
@@ -37,13 +37,13 @@ class LoginPage extends StatelessWidget
                       child: Form(
                         child: Column(
                           children: <Widget>[
-                            EmailInput(),
-                            Padding(
+                            const EmailInput(),
+                            const Padding(
                               padding:
-                                  const EdgeInsets.only(top: 8, bottom: 32),
-                              child: PasswordInput(),
+                                  EdgeInsets.only(top: 8, bottom: 32),
+                              child:  PasswordInput(),
                             ),
-                            LoginButton(),
+                            const LoginButton(),
                             TextButton.icon(
                               onPressed: presenter.goToSignUp,
                               icon: const Icon(Icons.person),
