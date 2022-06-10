@@ -1,3 +1,4 @@
+import 'package:flutter_test/flutter_test.dart';
 import 'package:fordev/domain/helpers/helpers.dart';
 import 'package:fordev/domain/usecases/usecases.dart';
 import 'package:fordev/data/http/http.dart';
@@ -30,11 +31,7 @@ void main() {
   test('Should call HttpClient with correct values', () async {
     await sut.auth(params);
 
-    verify(() => httpClient.request(
-      url: url,
-      method: 'post',
-      body: {'email': params.email, 'password': params.secret}
-    ));
+    verify(() => httpClient.request(url: url, method: 'post', body: {'email': params.email, 'password': params.secret}));
   });
 
   test('Should throw UnexpectedError if HttpClient returns 400', () async {
@@ -80,6 +77,12 @@ void main() {
 
     final future = sut.auth(params);
 
+    expect(future, throwsA(DomainError.unexpected));
+  });
+
+  test('Should throw UnexpectedError if RemoteAccountModel throws when HttpClient returns 204', () async {
+    httpClient.mockRequest(null);
+    final future = sut.auth(params);
     expect(future, throwsA(DomainError.unexpected));
   });
 }
