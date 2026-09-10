@@ -1,10 +1,9 @@
-import 'package:fordev/infra/cache/cache.dart';
-
-import '../mocks/mocks.dart';
-
 import 'package:faker/faker.dart';
+import 'package:fordev/infra/infra.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
+
+import '../mocks/mocks.dart';
 
 void main() {
   late SecureStorageAdapter sut;
@@ -30,9 +29,9 @@ void main() {
     test('Should throw if save secure throws', () async {
       secureStorage.mockSaveError();
 
-      final future = sut.save(key: key, value: value);
+      final Future<void> future = sut.save(key: key, value: value);
 
-      expect(future, throwsA(TypeMatcher<Exception>()));
+      expect(future, throwsA(const TypeMatcher<Exception>()));
     });
   });
 
@@ -44,7 +43,7 @@ void main() {
     });
 
     test('Should return correct value on success', () async {
-      final fetchedValue = await sut.fetch(key);
+      final String? fetchedValue = await sut.fetch(key);
 
       expect(fetchedValue, value);
     });
@@ -52,9 +51,9 @@ void main() {
     test('Should throw if fetch secure throws', () async {
       secureStorage.mockFetchError();
 
-      final future = sut.fetch(key);
+      final Future<String?> future = sut.fetch(key);
 
-      expect(future, throwsA(TypeMatcher<Exception>()));
+      expect(future, throwsA(const TypeMatcher<Exception>()));
     });
   });
 
@@ -68,9 +67,9 @@ void main() {
     test('Should throw if delete throws', () async {
       secureStorage.mockDeleteError();
 
-      final future = sut.delete(key);
+      final Future<void> future = sut.delete(key);
 
-      expect(future, throwsA(TypeMatcher<Exception>()));
+      expect(future, throwsA(const TypeMatcher<Exception>()));
     });
   });
 }

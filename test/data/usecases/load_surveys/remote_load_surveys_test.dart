@@ -1,14 +1,11 @@
-import 'package:fordev/domain/entities/entities.dart';
-import 'package:fordev/domain/helpers/helpers.dart';
-import 'package:fordev/data/http/http.dart';
-import 'package:fordev/data/usecases/usecases.dart';
+import 'package:faker/faker.dart';
+import 'package:fordev/data/data.dart';
+import 'package:fordev/domain/domain.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:test/test.dart';
 
 import '../../../infra/mocks/mocks.dart';
 import '../../mocks/mocks.dart';
-
-import 'package:faker/faker.dart';
-import 'package:mocktail/mocktail.dart';
-import 'package:test/test.dart';
 
 void main() {
   late RemoteLoadSurveys sut;
@@ -31,7 +28,7 @@ void main() {
   });
 
   test('Should return surveys on 200', () async {
-    final surveys = await sut.load();
+    final List<SurveyEntity> surveys = await sut.load();
 
     expect(surveys, [
       SurveyEntity(
@@ -49,10 +46,12 @@ void main() {
     ]);
   });
 
-  test('Should throw UnexpectedError if HttpClient returns 200 with invalid data', () async {
+  test(
+      'Should throw UnexpectedError if HttpClient returns 200 with invalid data',
+      () async {
     httpClient.mockRequest(ApiFactory.makeInvalidList());
 
-    final future = sut.load();
+    final Future<List<SurveyEntity>> future = sut.load();
 
     expect(future, throwsA(DomainError.unexpected));
   });
@@ -60,7 +59,7 @@ void main() {
   test('Should throw UnexpectedError if HttpClient returns 404', () async {
     httpClient.mockRequestError(HttpError.notFound);
 
-    final future = sut.load();
+    final Future<List<SurveyEntity>> future = sut.load();
 
     expect(future, throwsA(DomainError.unexpected));
   });
@@ -68,7 +67,7 @@ void main() {
   test('Should throw UnexpectedError if HttpClient returns 500', () async {
     httpClient.mockRequestError(HttpError.serverError);
 
-    final future = sut.load();
+    final Future<List<SurveyEntity>> future = sut.load();
 
     expect(future, throwsA(DomainError.unexpected));
   });
@@ -76,7 +75,7 @@ void main() {
   test('Should throw AccessDeniedError if HttpClient returns 403', () async {
     httpClient.mockRequestError(HttpError.forbidden);
 
-    final future = sut.load();
+    final Future<List<SurveyEntity>> future = sut.load();
 
     expect(future, throwsA(DomainError.accessDenied));
   });

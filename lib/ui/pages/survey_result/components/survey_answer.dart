@@ -1,12 +1,11 @@
-import '../survey_result.dart';
-import './components.dart';
-
 import 'package:flutter/material.dart';
+
+import '../survey_result.dart';
 
 class SurveyAnswer extends StatelessWidget {
   final SurveyAnswerViewModel viewModel;
 
-  SurveyAnswer(this.viewModel);
+  const SurveyAnswer(this.viewModel, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +13,8 @@ class SurveyAnswer extends StatelessWidget {
       List<Widget> children = [
         Expanded(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Text(
-              viewModel.answer,
-              style: TextStyle(fontSize: 16)
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Text(viewModel.answer, style: const TextStyle(fontSize: 16)),
           ),
         ),
         Text(
@@ -27,15 +23,18 @@ class SurveyAnswer extends StatelessWidget {
             fontSize: 16,
             fontWeight: FontWeight.bold,
             color: Theme.of(context).primaryColorDark,
-          )
+          ),
         ),
-        viewModel.isCurrentAnswer ? ActiveIcon() : DisabledIcon()
+        viewModel.isCurrentAnswer ? const ActiveIcon() : const DisabledIcon()
       ];
       if (viewModel.image != null) {
-        children.insert(0, Image.network(
-          viewModel.image!,
-          width: 40,
-        ));
+        children.insert(
+          0,
+          Image.network(
+            viewModel.image!,
+            width: 40,
+          ),
+        );
       }
       return children;
     }
@@ -43,16 +42,14 @@ class SurveyAnswer extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.all(15),
-          decoration: BoxDecoration(
-            color: Theme.of(context).backgroundColor
-          ),
+          padding: const EdgeInsets.all(15),
+          decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: _buildItems(),
           ),
         ),
-        Divider(height: 1)
+        const Divider(height: 1)
       ],
     );
   }

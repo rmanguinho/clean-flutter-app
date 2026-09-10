@@ -1,5 +1,5 @@
-import 'package:fordev/presentation/protocols/protocols.dart';
-import 'package:fordev/validation/validators/validators.dart';
+import 'package:fordev/presentation/presentation.dart';
+import 'package:fordev/validation/validation.dart';
 
 import 'package:test/test.dart';
 
@@ -7,7 +7,7 @@ void main() {
   late RequiredFieldValidation sut;
 
   setUp(() {
-    sut = RequiredFieldValidation('any_field');
+    sut = const RequiredFieldValidation('any_field');
   });
 
   test('Should return null if value is not empty', () {

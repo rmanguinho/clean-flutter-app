@@ -1,16 +1,18 @@
-import '../../../helpers/helpers.dart';
-import '../login.dart';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../helpers/helpers.dart';
+import '../login.dart';
+
 class EmailInput extends StatelessWidget {
+  const EmailInput({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<LoginPresenter>(context);
+    final LoginPresenter presenter = Provider.of<LoginPresenter>(context);
     return StreamBuilder<UIError?>(
       stream: presenter.emailErrorStream,
-      builder: (context, snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<UIError?> snapshot) {
         return TextFormField(
           decoration: InputDecoration(
             labelText: R.string.email,

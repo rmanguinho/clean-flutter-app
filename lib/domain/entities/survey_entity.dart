@@ -6,9 +6,10 @@ class SurveyEntity extends Equatable {
   final DateTime dateTime;
   final bool didAnswer;
 
-  List get props => [id, question, dateTime, didAnswer];
+  @override
+  List<Object> get props => <Object>[id, question, dateTime, didAnswer];
 
-  SurveyEntity({
+  const SurveyEntity({
     required this.id,
     required this.question,
     required this.dateTime,

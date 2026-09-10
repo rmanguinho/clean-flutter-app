@@ -1,12 +1,10 @@
-import 'package:fordev/domain/entities/entities.dart';
-import 'package:fordev/domain/helpers/helpers.dart';
-import 'package:fordev/main/composites/composites.dart';
+import 'package:fordev/domain/domain.dart';
+import 'package:fordev/main/main.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:test/test.dart';
 
 import '../../data/mocks/mocks.dart';
 import '../../domain/mocks/mocks.dart';
-
-import 'package:mocktail/mocktail.dart';
-import 'package:test/test.dart';
 
 void main() {
   late RemoteLoadSurveysWithLocalFallback sut;
@@ -22,10 +20,7 @@ void main() {
     remoteSurveys = EntityFactory.makeSurveyList();
     remote = RemoteLoadSurveysSpy();
     remote.mockLoad(remoteSurveys);
-    sut = RemoteLoadSurveysWithLocalFallback(
-      remote: remote,
-      local: local
-    );
+    sut = RemoteLoadSurveysWithLocalFallback(remote: remote, local: local);
   });
 
   test('Should call remote load', () async {
@@ -41,7 +36,7 @@ void main() {
   });
 
   test('Should return remote surveys', () async {
-    final surveys = await sut.load();
+    final List<SurveyEntity> surveys = await sut.load();
 
     expect(surveys, remoteSurveys);
   });
@@ -49,7 +44,7 @@ void main() {
   test('Should rethrow if remote load throws AccessDeniedError', () async {
     remote.mockLoadError(DomainError.accessDenied);
 
-    final future = sut.load();
+    final Future<List<SurveyEntity>> future = sut.load();
 
     expect(future, throwsA(DomainError.accessDenied));
   });
@@ -66,7 +61,7 @@ void main() {
   test('Should return local surveys', () async {
     remote.mockLoadError(DomainError.unexpected);
 
-    final surveys = await sut.load();
+    final List<SurveyEntity> surveys = await sut.load();
 
     expect(surveys, localSurveys);
   });
@@ -75,7 +70,7 @@ void main() {
     remote.mockLoadError(DomainError.unexpected);
     local.mockLoadError();
 
-    final future = sut.load();
+    final Future<List<SurveyEntity>> future = sut.load();
 
     expect(future, throwsA(DomainError.unexpected));
   });

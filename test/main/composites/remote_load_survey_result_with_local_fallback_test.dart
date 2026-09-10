@@ -1,13 +1,11 @@
-import 'package:fordev/domain/entities/entities.dart';
-import 'package:fordev/domain/helpers/helpers.dart';
-import 'package:fordev/main/composites/composites.dart';
-
-import '../../data/mocks/mocks.dart';
-import '../../domain/mocks/mocks.dart';
-
 import 'package:faker/faker.dart';
+import 'package:fordev/domain/domain.dart';
+import 'package:fordev/main/main.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
+
+import '../../data/mocks/mocks.dart';
+import '../../domain/domain.dart';
 
 void main() {
   late RemoteLoadSurveyResultWithLocalFallback sut;
@@ -25,10 +23,7 @@ void main() {
     remoteSurveyResult = EntityFactory.makeSurveyResult();
     remote = RemoteLoadSurveyResultSpy();
     remote.mockLoad(remoteSurveyResult);
-    sut = RemoteLoadSurveyResultWithLocalFallback(
-      remote: remote,
-      local: local
-    );
+    sut = RemoteLoadSurveyResultWithLocalFallback(remote: remote, local: local);
   });
 
   setUpAll(() {
@@ -48,15 +43,18 @@ void main() {
   });
 
   test('Should return remote surveyResult', () async {
-    final response = await sut.loadBySurvey(surveyId: surveyId);
+    final SurveyResultEntity response =
+        await sut.loadBySurvey(surveyId: surveyId);
 
     expect(response, remoteSurveyResult);
   });
 
-  test('Should rethrow if remote loadBySurvey throws AccessDeniedError', () async {
+  test('Should rethrow if remote loadBySurvey throws AccessDeniedError',
+      () async {
     remote.mockLoadError(DomainError.accessDenied);
 
-    final future = sut.loadBySurvey(surveyId: surveyId);
+    final Future<SurveyResultEntity> future =
+        sut.loadBySurvey(surveyId: surveyId);
 
     expect(future, throwsA(DomainError.accessDenied));
   });
@@ -73,16 +71,19 @@ void main() {
   test('Should return local surveyResult', () async {
     remote.mockLoadError(DomainError.unexpected);
 
-    final response = await sut.loadBySurvey(surveyId: surveyId);
+    final SurveyResultEntity response =
+        await sut.loadBySurvey(surveyId: surveyId);
 
     expect(response, localSurveyResult);
   });
 
-  test('Should throw UnexpectedError if remote and local loadBySurvey throws', () async {
+  test('Should throw UnexpectedError if remote and local loadBySurvey throws',
+      () async {
     remote.mockLoadError(DomainError.unexpected);
     local.mockLoadError();
 
-    final future = sut.loadBySurvey(surveyId: surveyId);
+    final Future<SurveyResultEntity> future =
+        sut.loadBySurvey(surveyId: surveyId);
 
     expect(future, throwsA(DomainError.unexpected));
   });

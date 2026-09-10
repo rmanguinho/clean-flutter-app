@@ -1,31 +1,34 @@
-import 'package:fordev/ui/pages/pages.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:fordev/ui/ui.dart';
+import 'package:mocktail/mocktail.dart';
 
 import '../helpers/helpers.dart';
 import '../mocks/mocks.dart';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 
 void main() {
   late SplashPresenterSpy presenter;
 
   Future<void> loadPage(WidgetTester tester) async {
     presenter = SplashPresenterSpy();
-    await tester.pumpWidget(makePage(path: '/', page: () => SplashPage(presenter: presenter)));
+    await tester.pumpWidget(
+      makePage(path: '/', page: () => SplashPage(presenter: presenter)),
+    );
   }
 
   tearDown(() {
     presenter.dispose();
   });
 
-  testWidgets('Should present spinner on page load', (WidgetTester tester) async {
+  testWidgets('Should present spinner on page load',
+      (WidgetTester tester) async {
     await loadPage(tester);
 
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
   });
 
-  testWidgets('Should call loadCurrentAccount on page load', (WidgetTester tester) async {
+  testWidgets('Should call loadCurrentAccount on page load',
+      (WidgetTester tester) async {
     await loadPage(tester);
 
     verify(() => presenter.checkAccount()).called(1);

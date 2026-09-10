@@ -6,12 +6,13 @@ class SurveyAnswerEntity extends Equatable {
   final bool isCurrentAnswer;
   final int percent;
 
-  List get props => [image, answer, isCurrentAnswer, percent];
+  @override
+  List<Object?> get props => <Object?>[image, answer, isCurrentAnswer, percent];
 
-  SurveyAnswerEntity({
-    this.image,
+  const SurveyAnswerEntity({
     required this.answer,
-    required this.isCurrentAnswer,
     required this.percent,
+    required this.isCurrentAnswer,
+    this.image,
   });
 }

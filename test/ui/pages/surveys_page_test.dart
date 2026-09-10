@@ -1,26 +1,27 @@
-import 'package:fordev/ui/helpers/helpers.dart';
-import 'package:fordev/ui/pages/pages.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:fordev/ui/ui.dart';
+import 'package:mocktail/mocktail.dart';
 
 import '../helpers/helpers.dart';
 import '../mocks/mocks.dart';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
 
 void main() {
   late SurveysPresenterSpy presenter;
 
   Future<void> loadPage(WidgetTester tester) async {
     presenter = SurveysPresenterSpy();
-    await tester.pumpWidget(makePage(path: '/surveys', page: () => SurveysPage(presenter)));
+    await tester.pumpWidget(
+      makePage(path: '/surveys', page: () => SurveysPage(presenter)),
+    );
   }
 
   tearDown(() {
     presenter.dispose();
   });
 
-  testWidgets('Should call LoadSurveys on page load', (WidgetTester tester) async {
+  testWidgets('Should call LoadSurveys on page load',
+      (WidgetTester tester) async {
     await loadPage(tester);
 
     verify(() => presenter.loadData()).called(1);
@@ -52,24 +53,32 @@ void main() {
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
   });
 
-  testWidgets('Should present error if surveysStream fails', (WidgetTester tester) async {
+  testWidgets('Should present error if surveysStream fails',
+      (WidgetTester tester) async {
     await loadPage(tester);
 
     presenter.emitSurveysError(UIError.unexpected.description);
     await tester.pump();
 
-    expect(find.text('Algo errado aconteceu. Tente novamente em breve.'), findsOneWidget);
+    expect(
+      find.text('Algo errado aconteceu. Tente novamente em breve.'),
+      findsOneWidget,
+    );
     expect(find.text('Recarregar'), findsOneWidget);
     expect(find.text('Question 1'), findsNothing);
   });
 
-  testWidgets('Should present list if surveysStream succeeds', (WidgetTester tester) async {
+  testWidgets('Should present list if surveysStream succeeds',
+      (WidgetTester tester) async {
     await loadPage(tester);
 
     presenter.emitSurveys(ViewModelFactory.makeSurveyList());
     await tester.pump();
 
-    expect(find.text('Algo errado aconteceu. Tente novamente em breve.'), findsNothing);
+    expect(
+      find.text('Algo errado aconteceu. Tente novamente em breve.'),
+      findsNothing,
+    );
     expect(find.text('Recarregar'), findsNothing);
     expect(find.text('Question 1'), findsWidgets);
     expect(find.text('Question 2'), findsWidgets);
@@ -77,7 +86,8 @@ void main() {
     expect(find.text('Date 2'), findsWidgets);
   });
 
-  testWidgets('Should call LoadSurveys on reload button click', (WidgetTester tester) async {
+  testWidgets('Should call LoadSurveys on reload button click',
+      (WidgetTester tester) async {
     await loadPage(tester);
 
     presenter.emitSurveysError(UIError.unexpected.description);
@@ -87,7 +97,8 @@ void main() {
     verify(() => presenter.loadData()).called(2);
   });
 
-  testWidgets('Should call gotoSurveyResult on survey click', (WidgetTester tester) async {
+  testWidgets('Should call gotoSurveyResult on survey click',
+      (WidgetTester tester) async {
     await loadPage(tester);
 
     presenter.emitSurveys(ViewModelFactory.makeSurveyList());

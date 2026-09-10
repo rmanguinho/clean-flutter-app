@@ -1,16 +1,18 @@
-import '../../../helpers/helpers.dart';
-import '../login.dart';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../helpers/helpers.dart';
+import '../login.dart';
+
 class PasswordInput extends StatelessWidget {
+  const PasswordInput({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final presenter = Provider.of<LoginPresenter>(context);
+    final LoginPresenter presenter = Provider.of<LoginPresenter>(context);
     return StreamBuilder<UIError?>(
       stream: presenter.passwordErrorStream,
-      builder: (context, snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<UIError?> snapshot) {
         return TextFormField(
           decoration: InputDecoration(
             labelText: R.string.password,
@@ -20,7 +22,7 @@ class PasswordInput extends StatelessWidget {
           obscureText: true,
           onChanged: presenter.validatePassword,
         );
-      }
+      },
     );
   }
 }
